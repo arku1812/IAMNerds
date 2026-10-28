@@ -1,0 +1,14 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "AzureWebJobsFeatureFlags": "EnableWorkerIndexing",
+    "CONTACT_TO": "hello@iamnerds.io",
+    "MAIL_FROM": "hello@iamnerds.io",
+    "SMTP_HOST": "smtp.office365.com",
+    "SMTP_PORT": "587",
+    "SMTP_SECURE": "false",
+    "SMTP_USER": "hello@iamnerds.io",
+    "SMTP_PASS": ""
+  }
+}
