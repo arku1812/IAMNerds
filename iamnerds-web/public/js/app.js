@@ -25,7 +25,7 @@
       var b = { el:el, x:x, y:y, w:w, h:h,
         vx: reduced ? 0 : (Math.random()-.5)*1.4,
         vy: reduced ? 0 : (Math.random()-.5)*1.4,
-        rot:(Math.random()-.5)*16, vr: reduced ? 0 : (Math.random()-.5)*0.3,
+        rot:(Math.random()-.5)*10, vr: reduced ? 0 : (Math.random()-.5)*0.3,
         drag:false, alive:true };
       el.style.backgroundPosition = Math.round(Math.random()*100) + '% 50%';
       bodies.push(b);
@@ -96,7 +96,7 @@
       if(!a.drag) a.vy = b.vy * rest;
       if(!b.drag) b.vy = t2 * rest;
     }
-    if(mode === 'zero'){ a.vr += (Math.random()-.5)*.4; b.vr += (Math.random()-.5)*.4; }
+    if(mode === 'zero'){ a.vr += (Math.random()-.5)*.12; b.vr += (Math.random()-.5)*.12; }
   }
 
   function step(){
@@ -116,7 +116,7 @@
       if(b.y + b.h > H){ b.y = H - b.h; b.vy = -Math.abs(b.vy) * m.rest; if(mode==='earth') b.vx *= .9; }
       b.rot += b.vr; b.vr *= .985;
       if(mode !== 'zero'){ b.rot *= .93; b.vr *= .9; }
-      else if(Math.abs(b.rot) > 30){ b.vr -= b.rot * .002; }
+      else { b.vr -= b.rot * .004; if(b.rot > 12) b.rot = 12; if(b.rot < -12) b.rot = -12; }
     }
     for(var pass=0; pass<2; pass++){
       for(var p=0;p<bodies.length;p++){
