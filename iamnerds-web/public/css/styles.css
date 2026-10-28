@@ -207,7 +207,6 @@ header.top::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1p
 .hero{background:radial-gradient(55% 75% at 88% 18%,#ECE8FE 0%,transparent 62%),radial-gradient(45% 65% at 6% 92%,#FBE9F2 0%,transparent 60%),radial-gradient(40% 55% at 40% 0%,#E7F0FB 0%,transparent 60%)}
 .btn.primary{background:var(--grad);border-color:transparent;color:var(--fg)}
 .btn.primary:hover{background:var(--grad);filter:saturate(1.35) brightness(.98)}
-.chamber-box{border:1px solid transparent;background:linear-gradient(var(--panel),var(--panel)) padding-box,var(--grad) border-box}
 .dot{background:var(--grad);box-shadow:0 0 0 4px #EFEAFE}
 .mode[aria-pressed="true"]{background:var(--grad);border-color:transparent;color:var(--fg)}
 .services{background:var(--grad);border:0;padding:1px}
