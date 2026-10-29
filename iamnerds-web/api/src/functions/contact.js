@@ -1,15 +1,17 @@
-'use strict';
-
 // Azure Function: POST /api/contact
-// Receives the "Talk to a nerd" form and emails it to hello@iamnerds.io via SMTP.
+// Receives the "Talk to a nerd" form and emails it to hello@iamnerds.io via Microsoft Graph
+// (app-only, client credentials). hello@iamnerds.io is a shared mailbox, so Graph sends as it
+// directly; no mailbox password or SMTP AUTH involved.
 // Settings come from the Static Web App's environment variables (Azure portal → Settings → Environment variables),
-// or from api/local.settings.json when running locally.
+// or from api/local.settings.json when running locally:
+//   GRAPH_TENANT_ID, GRAPH_CLIENT_ID, GRAPH_CLIENT_SECRET  (app registration with Mail.Send, Application)
+//   MAIL_FROM   mailbox Graph sends as (default hello@iamnerds.io)
+//   CONTACT_TO  where form messages go (default hello@iamnerds.io)
 
 const { app } = require('@azure/functions');
-const nodemailer = require('nodemailer');
 
 const CONTACT_TO = process.env.CONTACT_TO || 'hello@iamnerds.io';
-const MAIL_FROM = process.env.MAIL_FROM || process.env.SMTP_USER || 'hello@iamnerds.io';
+const MAIL_FROM = process.env.MAIL_FROM || 'hello@iamnerds.io';
 
 const TOPICS = new Set([
   'IGA strategy & architecture',
@@ -25,18 +27,53 @@ const TOPICS = new Set([
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-let transporter = null;
-function getTransporter() {
-  if (!process.env.SMTP_HOST) return null;
-  if (!transporter) {
-    transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_SECURE === 'true', // true for port 465
-      auth: process.env.SMTP_USER ? { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS } : undefined,
-    });
+// Microsoft Graph: app-only token (cached until shortly before expiry) and sendMail.
+const graphConfigured = () =>
+  !!(process.env.GRAPH_TENANT_ID && process.env.GRAPH_CLIENT_ID && process.env.GRAPH_CLIENT_SECRET);
+
+let cachedToken = null;
+async function getGraphToken() {
+  if (cachedToken && cachedToken.expires > Date.now() + 60 * 1000) return cachedToken.value;
+  const res = await fetch(
+    `https://login.microsoftonline.com/${encodeURIComponent(process.env.GRAPH_TENANT_ID)}/oauth2/v2.0/token`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        client_id: process.env.GRAPH_CLIENT_ID,
+        client_secret: process.env.GRAPH_CLIENT_SECRET,
+        scope: 'https://graph.microsoft.com/.default',
+        grant_type: 'client_credentials',
+      }),
+    }
+  );
+  const json = await res.json().catch(() => ({}));
+  if (!res.ok || !json.access_token) {
+    throw new Error(`Token request failed (${res.status}): ${json.error || ''} ${json.error_description || ''}`.trim());
   }
-  return transporter;
+  cachedToken = { value: json.access_token, expires: Date.now() + (Number(json.expires_in) || 3600) * 1000 };
+  return cachedToken.value;
+}
+
+async function sendMail({ subject, text, replyToName, replyToEmail }) {
+  const token = await getGraphToken();
+  const res = await fetch(`https://graph.microsoft.com/v1.0/users/${encodeURIComponent(MAIL_FROM)}/sendMail`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      message: {
+        subject,
+        body: { contentType: 'Text', content: text },
+        toRecipients: [{ emailAddress: { address: CONTACT_TO } }],
+        replyTo: [{ emailAddress: { address: replyToEmail, name: replyToName } }],
+      },
+      saveToSentItems: false,
+    }),
+  });
+  if (res.status !== 202) {
+    const detail = await res.text().catch(() => '');
+    throw new Error(`Graph sendMail failed (${res.status}): ${detail.slice(0, 300)}`);
+  }
 }
 
 // Best-effort rate limit per function instance: 5 messages per IP per 15 minutes.
@@ -102,17 +139,15 @@ async function contactHandler(request, context) {
     return { status: 400, jsonBody: { ok: false, error: 'Validation failed', errors } };
   }
 
-  const mailer = getTransporter();
-  if (!mailer) {
-    context.error(`SMTP is not configured: set SMTP_HOST, SMTP_USER and SMTP_PASS. Message from ${data.email} was NOT delivered to ${CONTACT_TO}.`);
+  if (!graphConfigured()) {
+    context.error(`Graph is not configured: set GRAPH_TENANT_ID, GRAPH_CLIENT_ID and GRAPH_CLIENT_SECRET. Message from ${data.email} was NOT delivered to ${CONTACT_TO}.`);
     return { status: 503, jsonBody: { ok: false, error: 'Email is not configured' } };
   }
 
   try {
-    await mailer.sendMail({
-      from: `IAMNerds website <${MAIL_FROM}>`,
-      to: CONTACT_TO,
-      replyTo: `${data.name.replace(/[<>"]/g, '')} <${data.email}>`,
+    await sendMail({
+      replyToName: data.name.replace(/[<>"]/g, ''),
+      replyToEmail: data.email,
       subject: `Talk to a nerd: ${data.topic} — ${data.name}${data.company ? ` (${data.company})` : ''}`,
       text: [
         `Name:    ${data.name}`,
