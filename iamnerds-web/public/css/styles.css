@@ -231,3 +231,37 @@ header.top::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1p
 .lang a[aria-current="page"]{background:var(--grad);color:var(--fg)}
 @media (max-width:760px){header.top .lang{margin-left:auto}header.top .btn{margin-left:0}}
 @media (max-width:520px){header.top .btn{display:none}}
+
+/* Qubital look: Geist + Instrument Serif, violet→teal */
+:root{
+  --fg:#0C0C16; --muted:#55556C;
+  --violet:#6650F2; --pop:#6650F2; --teal:#0A8BA6;
+  --grad:linear-gradient(100deg,#C9C1FB 0%,#B7D9F0 55%,#A9E3EC 100%);
+  --grad-soft:linear-gradient(135deg,#EFEDFE 0%,#ECF2FB 50%,#E8F6F8 100%);
+  --grad-text:linear-gradient(100deg,#6650F2 10%,#0A9FBD 90%);
+  --f-display:"Geist","Segoe UI",system-ui,sans-serif;
+  --f-body:"Geist","Segoe UI",system-ui,sans-serif;
+  --f-mono:"Geist Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+h1,h2{font-weight:500;letter-spacing:-.025em}
+h3{font-weight:600}
+.hero h1{font-weight:500;letter-spacing:-.035em}
+.brand,.brand b,.fact .n{font-weight:600}
+h1 em,h2 em{
+  font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;
+  letter-spacing:-.01em;padding-right:.08em;
+  background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+/* Footer wordmark: bigger, Qubital aurora colours */
+.giant{
+  font-weight:600;letter-spacing:-.045em;
+  font-size:clamp(84px,20vw,260px);
+  background:linear-gradient(90deg,#6650F2,#F472B6,#5B8CFF,#0A9FBD,#6650F2);
+  background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  opacity:.4;
+  animation:aurora 8s linear infinite;
+}
+@keyframes aurora{from{background-position:0% 50%}to{background-position:200% 50%}}
+@media (prefers-reduced-motion:reduce){.giant{animation:none}}
