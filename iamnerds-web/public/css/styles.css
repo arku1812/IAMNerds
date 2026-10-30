@@ -145,7 +145,7 @@ section.band{padding-block:var(--s9) 0}
 .email:hover{border-color:var(--teal);color:var(--teal)}
 footer{color:var(--muted);font-size:14px;overflow:hidden}
 .giant-wrap{padding-top:var(--s7);overflow:hidden}
-.giant{font-family:var(--f-display);font-weight:800;font-size:clamp(72px,19vw,236px);line-height:.82;letter-spacing:-.05em;white-space:nowrap;text-align:center;user-select:none;
+.giant{font-family:var(--f-display);font-weight:800;font-size:clamp(56px,16.5vw,212px);padding-inline:.06em;line-height:.82;letter-spacing:-.05em;white-space:nowrap;text-align:center;user-select:none;
   background:linear-gradient(90deg,#A7C7E7 0%,#B4B0EE 30%,#CDB3EA 55%,#EAB6DC 80%,#F2BCD4 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
   -webkit-mask-image:linear-gradient(to bottom,#000 35%,transparent 100%);mask-image:linear-gradient(to bottom,#000 35%,transparent 100%)}
 .footbar{display:flex;flex-wrap:wrap;gap:var(--s4);justify-content:space-between;border-top:1px solid var(--line);padding-block:var(--s5)}
