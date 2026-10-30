@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Non-Human Identities &amp; KI-Agenten Governance | IAMNerds</title>
+<meta name="description" content="Servicekonten, API-Keys, Secrets, Workload-Identitäten und KI-Agenten steuern: mit benannten Verantwortlichen, Least Privilege und Ablaufdatum.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://iamnerds.io/de/non-human-identities">
+<link rel="alternate" hreflang="en" href="https://iamnerds.io/non-human-identities">
+<link rel="alternate" hreflang="de" href="https://iamnerds.io/de/non-human-identities">
+<link rel="alternate" hreflang="x-default" href="https://iamnerds.io/non-human-identities">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="IAMNerds">
+<meta property="og:title" content="Non-Human Identities &amp; KI-Agenten Governance | IAMNerds">
+<meta property="og:description" content="Servicekonten, API-Keys, Secrets, Workload-Identitäten und KI-Agenten steuern: mit benannten Verantwortlichen, Least Privilege und Ablaufdatum.">
+<meta property="og:url" content="https://iamnerds.io/de/non-human-identities">
+<meta property="og:locale" content="de_DE">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="https://iamnerds.io/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="IAMNerds: least privilege, maximum nerdiness">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Non-Human Identities &amp; KI-Agenten Governance | IAMNerds">
+<meta name="twitter:description" content="Servicekonten, API-Keys, Secrets, Workload-Identitäten und KI-Agenten steuern: mit benannten Verantwortlichen, Least Privilege und Ablaufdatum.">
+<meta name="twitter:image" content="https://iamnerds.io/og.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebPage",
+   "@id": "https://iamnerds.io/de/non-human-identities#webpage",
+   "url": "https://iamnerds.io/de/non-human-identities",
+   "name": "Non-Human Identities & KI-Agenten Governance | IAMNerds",
+   "description": "Servicekonten, API-Keys, Secrets, Workload-Identitäten und KI-Agenten steuern: mit benannten Verantwortlichen, Least Privilege und Ablaufdatum.",
+   "inLanguage": "de",
+   "isPartOf": {
+    "@id": "https://iamnerds.io/#website"
+   },
+   "about": {
+    "@id": "https://iamnerds.io/#organization"
+   },
+   "breadcrumb": {
+    "@id": "https://iamnerds.io/de/non-human-identities#breadcrumb"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://iamnerds.io/de/non-human-identities#breadcrumb",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Startseite",
+     "item": "https://iamnerds.io/de/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Non-Human Identities",
+     "item": "https://iamnerds.io/de/non-human-identities"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://iamnerds.io/de/non-human-identities#faq",
+   "inLanguage": "de",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Was ist eine Non-Human Identity?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Jede Identität, die keine Person ist: Servicekonten, API-Keys, Secrets, Zertifikate, Workload-Identitäten, Bots und KI-Agenten."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Warum brauchen KI-Agenten Identity Governance?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "KI-Agenten arbeiten mit echten Berechtigungen auf echten Systemen. Ohne Owner, definierten Umfang und Ablaufdatum werden sie zur nächsten Generation verwaister, überprivilegierter Konten."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Funktioniert das mit unserer bestehenden IGA-Plattform?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "In der Regel ja. Die meisten IGA-Plattformen können Non-Human Identities und ihre Owner verwalten. Wir erweitern zuerst, was Sie haben, bevor wir etwas Neues vorschlagen."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+<meta name="theme-color" content="#F6F6F9">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&family=Instrument+Serif:ital@1&display=swap">
+<link rel="stylesheet" href="/css/styles.css?v=20261030">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/de/" aria-label="IAMNerds Startseite">
+      <svg width="34" height="20" viewBox="0 0 120 52" aria-hidden="true"><circle cx="32" cy="28" r="20" fill="none" stroke="#12A594" stroke-width="8"/><circle cx="88" cy="28" r="20" fill="none" stroke="#12A594" stroke-width="8"/><path d="M53 24 Q60 15 67 24" fill="none" stroke="#12A594" stroke-width="7" stroke-linecap="round"/><circle cx="32" cy="24" r="5" fill="#F5B841"/><path d="M29 27 L35 27 L37 37 L27 37 Z" fill="#F5B841"/><path d="M80 28 L86 34 L97 22" fill="none" stroke="#F5B841" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span><b>IAM</b>Nerds</span>
+    </a>
+    <nav class="links" aria-label="Hauptnavigation">
+      <a href="/de/leistungen">Leistungen</a>
+      <a href="/de/branchen">Branchen</a>
+      <a href="/de/non-human-identities" aria-current="page">Non-Human Identities</a>
+      <a href="/de/vorgehen">Vorgehen</a>
+      <a href="/de/plattformen">Plattformen</a>
+      <a href="/de/ueber-uns">Über uns</a>
+    </nav>
+    <nav class="lang" aria-label="Sprache"><a href="/non-human-identities" lang="en" hreflang="en">EN</a><a href="/de/non-human-identities" lang="de" aria-current="page">DE</a></nav>
+    <a class="btn primary" href="/de/kontakt#talk">Mit einem Nerd sprechen</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero page-hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/de/">Startseite</a> <span aria-hidden="true">/</span> <span aria-current="page">Non-Human Identities</span></nav>
+      <div class="eyebrow">Non-Human Identities &amp; KI-Agenten</div>
+      <h1>Nicht jede Identität hat einen <em>Puls.</em></h1>
+      <p class="lede">Maschinenidentitäten sind in den meisten Umgebungen längst in der Überzahl, und KI-Agenten kommen schnell hinzu. Sie melden sich an, rufen APIs auf und greifen auf Produktionsdaten zu. Wir steuern sie mit derselben Disziplin wie Ihre Mitarbeitenden.</p>
+    </div>
+  </section>
+
+<section class="band"><div class="wrap">
+<div class="sec-head"><h2>Vier Regeln für jede Maschinenidentität</h2><p>Ob zehn Jahre altes Servicekonto oder KI-Agent von letzter Woche: Dieselben vier Fragen entscheiden, ob er unter Kontrolle ist.</p></div>
+<ul class="rules rules-wide">
+<li><span class="rk">Owner</span><span class="rv">Jedes Servicekonto und jeder Agent hat einen benannten, verantwortlichen Menschen. Verlässt diese Person das Unternehmen, wird die Verantwortung übergeben, nicht vergessen.</span></li>
+<li><span class="rk">Zweck</span><span class="rv">Zugriffe hängen an einer dokumentierten Aufgabe, nicht an „könnte man mal brauchen“. Kein Zweck, kein Zugriff.</span></li>
+<li><span class="rk">Umfang</span><span class="rv">Least Privilege als Standard, Secrets im Tresor und rotiert statt fest in Skripten hinterlegt.</span></li>
+<li><span class="rk">Ablauf</span><span class="rv">Zugangsdaten und Berechtigungen enden, wenn die Aufgabe endet, und werden dazwischen regelmäßig geprüft.</span></li>
+</ul>
+</div></section>
+
+<section class="band"><div class="wrap">
+<div class="sec-head"><h2>Was wir unter Governance bringen</h2><p>Non-Human Identities verstecken sich an vielen Stellen. Wir fangen damit an, sie zu finden.</p></div>
+<div class="services">
+<article class="svc"><span class="k">KONTEN</span><h3>Servicekonten</h3><p>Technische Konten in Active Directory, Entra ID, SAP und Datenbanken, viele ohne Owner und mit viel zu vielen Rechten.</p></article>
+<article class="svc"><span class="k">SECRETS</span><h3>API-Keys &amp; Secrets</h3><p>Keys, Tokens und Passwörter in Code, Pipelines und Konfigurationsdateien, in einen Tresor verlagert und rotiert.</p></article>
+<article class="svc"><span class="k">WORKLOADS</span><h3>Workload-Identitäten</h3><p>Cloud-Workloads, Container und Managed Identities mit eng begrenzten statt pauschalen Berechtigungen.</p></article>
+<article class="svc"><span class="k">KI-AGENTEN</span><h3>KI-Agenten</h3><p>Agenten, die im Auftrag von Nutzern oder Teams handeln, mit delegierten, befristeten Zugriffen und vollständigem Aktivitätsprotokoll.</p></article>
+</div>
+</div></section>
+
+<section class="band"><div class="wrap">
+<div class="sec-head"><h2>So starten wir</h2><p>Ein praktisches erstes Projekt, das in Wochen statt Quartalen Ergebnisse zeigt.</p></div>
+<ol class="steps">
+<li><h3>Inventur</h3><p>Servicekonten, Secrets und Agenten in Verzeichnissen, Cloud und wichtigen Anwendungen finden.</p></li>
+<li><h3>Zuordnen</h3><p>Jeder Identität einen benannten Owner und einen dokumentierten Zweck geben. Verwaiste Konten markieren.</p></li>
+<li><h3>Reduzieren</h3><p>Ungenutzte Konten entfernen, überzogene Rechte kürzen und Secrets in den Tresor verlagern.</p></li>
+<li><h3>Steuern</h3><p>Maschinenidentitäten in die Rezertifizierung aufnehmen und standardmäßig befristen.</p></li>
+</ol>
+</div></section>
+
+  <section class="band"><div class="wrap">
+    <div class="sec-head"><h2>Häufige Fragen</h2><p></p></div>
+    <div class="faq">
+<details><summary>Was ist eine Non-Human Identity?</summary><p>Jede Identität, die keine Person ist: Servicekonten, API-Keys, Secrets, Zertifikate, Workload-Identitäten, Bots und KI-Agenten.</p></details>
+<details><summary>Warum brauchen KI-Agenten Identity Governance?</summary><p>KI-Agenten arbeiten mit echten Berechtigungen auf echten Systemen. Ohne Owner, definierten Umfang und Ablaufdatum werden sie zur nächsten Generation verwaister, überprivilegierter Konten.</p></details>
+<details><summary>Funktioniert das mit unserer bestehenden IGA-Plattform?</summary><p>In der Regel ja. Die meisten IGA-Plattformen können Non-Human Identities und ihre Owner verwalten. Wir erweitern zuerst, was Sie haben, bevor wir etwas Neues vorschlagen.</p></details>
+    </div>
+  </div></section>
+  <section class="contact cta-band">
+    <div class="wrap contact-inner">
+      <div><h2>Zugriffs-Chaos?</h2><p class="contact-lead">Erzählen Sie uns, was Sie entwirren möchten. Jede Nachricht liest ein Nerd persönlich.</p></div>
+      <a class="btn primary" href="/de/kontakt#talk">Ihr IAM-Projekt starten</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap giant-wrap" aria-hidden="true"><div class="giant">IAMNerds</div></div>
+  <div class="wrap footbar">
+    <span>© 2026 IAMNerds · Deutschland</span>
+    <nav class="footnav" aria-label="Footer"><a href="/de/leistungen">Leistungen</a> · <a href="/de/branchen">Branchen</a> · <a href="/de/non-human-identities">Non-Human Identities</a> · <a href="/de/vorgehen">Vorgehen</a> · <a href="/de/plattformen">Plattformen</a> · <a href="/de/ueber-uns">Über uns</a> · <a href="/de/kontakt">Kontakt</a></nav>
+    <span><a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a></span>
+  </div>
+</footer>
+
+<script src="/js/app.js?v=20261030" defer></script>
+<script src="/js/ai.min.js" defer></script>
+<script src="/js/analytics.js" defer></script>
+</body>
+</html>
