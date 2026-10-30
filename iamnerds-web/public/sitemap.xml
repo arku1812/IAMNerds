@@ -16,4 +16,116 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://iamnerds.io/de/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://iamnerds.io/"/>
   </url>
+  <url>
+    <loc>https://iamnerds.io/services</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamnerds.io/services"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamnerds.io/de/leistungen"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://iamnerds.io/services"/>
+  </url>
+  <url>
+    <loc>https://iamnerds.io/de/leistungen</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamnerds.io/services"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamnerds.io/de/leistungen"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://iamnerds.io/services"/>
+  </url>
+  <url>
+    <loc>https://iamnerds.io/industries</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamnerds.io/industries"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamnerds.io/de/branchen"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://iamnerds.io/industries"/>
+  </url>
+  <url>
+    <loc>https://iamnerds.io/de/branchen</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamnerds.io/industries"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamnerds.io/de/branchen"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://iamnerds.io/industries"/>
+  </url>
+  <url>
+    <loc>https://iamnerds.io/non-human-identities</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamnerds.io/non-human-identities"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamnerds.io/de/non-human-identities"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://iamnerds.io/non-human-identities"/>
+  </url>
+  <url>
+    <loc>https://iamnerds.io/de/non-human-identities</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamnerds.io/non-human-identities"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamnerds.io/de/non-human-identities"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://iamnerds.io/non-human-identities"/>
+  </url>
+  <url>
+    <loc>https://iamnerds.io/approach</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamnerds.io/approach"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamnerds.io/de/vorgehen"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://iamnerds.io/approach"/>
+  </url>
+  <url>
+    <loc>https://iamnerds.io/de/vorgehen</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamnerds.io/approach"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamnerds.io/de/vorgehen"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://iamnerds.io/approach"/>
+  </url>
+  <url>
+    <loc>https://iamnerds.io/platforms</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamnerds.io/platforms"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamnerds.io/de/plattformen"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://iamnerds.io/platforms"/>
+  </url>
+  <url>
+    <loc>https://iamnerds.io/de/plattformen</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamnerds.io/platforms"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamnerds.io/de/plattformen"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://iamnerds.io/platforms"/>
+  </url>
+  <url>
+    <loc>https://iamnerds.io/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamnerds.io/about"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamnerds.io/de/ueber-uns"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://iamnerds.io/about"/>
+  </url>
+  <url>
+    <loc>https://iamnerds.io/de/ueber-uns</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamnerds.io/about"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamnerds.io/de/ueber-uns"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://iamnerds.io/about"/>
+  </url>
+  <url>
+    <loc>https://iamnerds.io/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamnerds.io/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamnerds.io/de/kontakt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://iamnerds.io/contact"/>
+  </url>
+  <url>
+    <loc>https://iamnerds.io/de/kontakt</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamnerds.io/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamnerds.io/de/kontakt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://iamnerds.io/contact"/>
+  </url>
 </urlset>

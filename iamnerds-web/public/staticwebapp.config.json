@@ -1,12 +1,87 @@
 {
   "routes": [
-    { "route": "/impressum", "rewrite": "/impressum.html" },
-    { "route": "/datenschutz", "rewrite": "/datenschutz.html" },
-    { "route": "/css/*", "headers": { "Cache-Control": "public, max-age=604800" } },
-    { "route": "/js/*", "headers": { "Cache-Control": "public, max-age=604800" } }
+    {
+      "route": "/impressum",
+      "rewrite": "/impressum.html"
+    },
+    {
+      "route": "/datenschutz",
+      "rewrite": "/datenschutz.html"
+    },
+    {
+      "route": "/services",
+      "rewrite": "/services.html"
+    },
+    {
+      "route": "/industries",
+      "rewrite": "/industries.html"
+    },
+    {
+      "route": "/non-human-identities",
+      "rewrite": "/non-human-identities.html"
+    },
+    {
+      "route": "/approach",
+      "rewrite": "/approach.html"
+    },
+    {
+      "route": "/platforms",
+      "rewrite": "/platforms.html"
+    },
+    {
+      "route": "/about",
+      "rewrite": "/about.html"
+    },
+    {
+      "route": "/contact",
+      "rewrite": "/contact.html"
+    },
+    {
+      "route": "/de/leistungen",
+      "rewrite": "/de/leistungen.html"
+    },
+    {
+      "route": "/de/branchen",
+      "rewrite": "/de/branchen.html"
+    },
+    {
+      "route": "/de/non-human-identities",
+      "rewrite": "/de/non-human-identities.html"
+    },
+    {
+      "route": "/de/vorgehen",
+      "rewrite": "/de/vorgehen.html"
+    },
+    {
+      "route": "/de/plattformen",
+      "rewrite": "/de/plattformen.html"
+    },
+    {
+      "route": "/de/ueber-uns",
+      "rewrite": "/de/ueber-uns.html"
+    },
+    {
+      "route": "/de/kontakt",
+      "rewrite": "/de/kontakt.html"
+    },
+    {
+      "route": "/css/*",
+      "headers": {
+        "Cache-Control": "public, max-age=604800"
+      }
+    },
+    {
+      "route": "/js/*",
+      "headers": {
+        "Cache-Control": "public, max-age=604800"
+      }
+    }
   ],
   "responseOverrides": {
-    "404": { "rewrite": "/404.html", "statusCode": 404 }
+    "404": {
+      "rewrite": "/404.html",
+      "statusCode": 404
+    }
   },
   "globalHeaders": {
     "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://germanywestcentral-1.in.applicationinsights.azure.com; form-action 'self'; frame-ancestors 'none'; base-uri 'self'",
