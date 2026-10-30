@@ -66,7 +66,7 @@
   }
 
   // Click empty space: a small shockwave
-  chamber.addEventListener('pointerdown', function(e){
+  if(chamber) chamber.addEventListener('pointerdown', function(e){
     var r = chamber.getBoundingClientRect();
     var px = e.clientX - r.left, py = e.clientY - r.top;
     bodies.forEach(function(b){
@@ -142,7 +142,7 @@
   }
 
   var visible = true;
-  if('IntersectionObserver' in window){
+  if(chamber && 'IntersectionObserver' in window){
     new IntersectionObserver(function(en){ visible = en[0].isIntersecting; }).observe(chamber);
   }
   function loop(){
@@ -190,6 +190,7 @@
           fail:'Ihre Nachricht konnte nicht gesendet werden. Bitte schreiben Sie direkt an {mail}.' }
   }[LANG];
   var form = document.getElementById('talk');
+  if(form){
   var sendBtn = document.getElementById('f-send'), status = document.getElementById('f-status');
   var nameInput = document.getElementById('f-name');
   document.querySelectorAll('a[href="#talk"]').forEach(function(a){
@@ -239,7 +240,9 @@
       });
   });
 
-  window.addEventListener('resize', function(){ measure(); step(); render(); });
+  }
+
+  if(chamber) window.addEventListener('resize', function(){ measure(); step(); render(); });
 
   function start(){
     init();
@@ -248,6 +251,6 @@
       chamber.addEventListener('pointerup', function(){ var n=0; (function settle(){ step(); render(); if(++n<240) requestAnimationFrame(settle); })(); });
     }
   }
-  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(start); } else { start(); }
+  if(chamber){ if(document.fonts && document.fonts.ready){ document.fonts.ready.then(start); } else { start(); } }
 
 })();
