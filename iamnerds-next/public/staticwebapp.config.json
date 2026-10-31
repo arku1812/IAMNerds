@@ -2,6 +2,19 @@
   "trailingSlash": "never",
   "routes": [
     {
+      "route": "/blog/microsoft-entra-id-interview-questions",
+      "rewrite": "/blog/microsoft-entra-id-interview-questions.html"
+    },
+    {
+      "route": "/blog/sap-cloud-identity-services-interview-questions",
+      "rewrite": "/blog/sap-cloud-identity-services-interview-questions.html"
+    },
+    {
+      "route": "/courses/sap-identity-authorizations",
+      "redirect": "/courses/sap-cloud-identity-services",
+      "statusCode": 301
+    },
+    {
       "route": "/blog/one-identity-manager-interview-questions",
       "rewrite": "/blog/one-identity-manager-interview-questions.html"
     },
@@ -89,10 +102,6 @@
     {
       "route": "/courses/saviynt",
       "rewrite": "/courses/saviynt.html"
-    },
-    {
-      "route": "/courses/sap-identity-authorizations",
-      "rewrite": "/courses/sap-identity-authorizations.html"
     },
     {
       "route": "/courses/sap-cloud-identity-services",
