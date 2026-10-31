@@ -6,8 +6,13 @@
       "rewrite": "/privacy-policy.html"
     },
     {
+      "route": "/terms",
+      "rewrite": "/terms.html"
+    },
+    {
       "route": "/refund-policy",
-      "rewrite": "/refund-policy.html"
+      "redirect": "/terms",
+      "statusCode": 301
     },
     {
       "route": "/impressum",
