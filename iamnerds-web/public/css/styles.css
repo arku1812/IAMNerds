@@ -321,3 +321,31 @@ nav.links a[aria-current="page"]{color:var(--fg);font-weight:500}
 @media (max-width:860px){.services.three{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:760px){.detail-list{grid-template-columns:minmax(0,1fr)}.phase{grid-template-columns:minmax(0,1fr);gap:var(--s3)}.rules-wide li{grid-template-columns:90px minmax(0,1fr)}}
 @media (max-width:1100px){nav.links{display:none}header.top .lang{margin-left:auto}}
+
+/* Training platform */
+.course-card{display:flex;flex-direction:column;gap:var(--s2);text-decoration:none;color:var(--fg);min-width:0;transition:transform .2s ease,background .2s ease}
+.course-card:hover{transform:translateY(-2px)}
+.course-card .k{font-family:var(--f-mono);font-size:12px;color:var(--teal);letter-spacing:.06em}
+.course-card p{flex:1}
+.course-card .meta{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);margin-top:var(--s2)}
+.course-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4);margin-top:var(--s6);max-width:960px}
+.course-facts .fact{background:var(--panel)}
+.course-facts .fact .n{font-size:26px}
+.mod-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:18px;background:var(--panel)}
+.mod-table{width:100%;border-collapse:collapse;font-size:15.5px}
+.mod-table th{font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:var(--s4) var(--s5);border-bottom:1px solid var(--line)}
+.mod-table td{padding:var(--s4) var(--s5);border-bottom:1px solid var(--chamber-line);vertical-align:top}
+.mod-table tr:last-child td{border-bottom:0}
+.mod-table td.mn{font-family:var(--f-mono);color:var(--pop);width:56px}
+.mod-table td strong{display:block;font-family:var(--f-display);font-size:17px}
+.mod-table td span{display:block;color:var(--muted);margin-top:2px}
+.mod-table td:last-child{color:var(--muted);width:32%}
+.capstone h2 em{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent}
+.path-list{margin:var(--s3) 0 0;padding-left:1.4em;display:grid;gap:6px;color:var(--muted)}
+.path-list a{font-weight:500}
+.note{color:var(--muted);font-size:14.5px;margin-top:var(--s5)}
+.legal-note{color:var(--muted);font-size:13px;padding-bottom:var(--s5)}
+@media (max-width:860px){.course-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.mod-table thead{display:none}.mod-table tr{display:grid;grid-template-columns:44px minmax(0,1fr);border-bottom:1px solid var(--chamber-line)}.mod-table td{border:0;padding:var(--s3) var(--s4)}.mod-table td:last-child{grid-column:2;width:auto;padding-top:0;font-size:14.5px}.mod-table td:last-child::before{content:"Lab: ";font-weight:600}.mod-table td.mn{width:auto}}
+@media (max-width:1100px){header.top .btn{margin-left:auto}}
+@media (max-width:520px){.course-facts .fact .n{font-size:20px;overflow-wrap:anywhere}}
