@@ -427,13 +427,13 @@ nav.links a[aria-current="page"]{color:var(--fg);font-weight:500}
 .companies-h{font-size:clamp(26px,3.4vw,40px);max-width:20em}
 .companies-h em{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent}
 .mq{margin-top:var(--s6);overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.mq-track{display:flex;gap:var(--s4);width:max-content;animation:mq 50s linear infinite;padding-block:6px}
+.mq-track{display:flex;gap:var(--s4);width:max-content;animation:mq 110s linear infinite;padding-block:6px}
 .mq:hover .mq-track{animation-play-state:paused}
 .mq-item{display:flex;flex-direction:column;justify-content:center;min-width:120px;padding:12px 22px;border:1px solid var(--line);border-radius:14px;background:var(--panel);white-space:nowrap}
 .mq-item b{font-family:var(--f-display);font-size:17px;font-weight:700;color:var(--fg)}
 .mq-item small{font-size:12.5px;color:var(--muted)}
 @keyframes mq{to{transform:translateX(calc(-50% - var(--s4) / 2))}}
-@media (prefers-reduced-motion:reduce){.mq-track{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.mq-track > :nth-child(n+16){display:none}.mq{-webkit-mask-image:none;mask-image:none}}
+@media (prefers-reduced-motion:reduce){.mq-track{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.mq-track > :nth-child(n+33){display:none}.mq{-webkit-mask-image:none;mask-image:none}}
 
 /* LinkedIn */
 .li-btn svg{color:#0A66C2}
