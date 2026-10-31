@@ -5,6 +5,7 @@ import CourseCard from '../lib/CourseCard';
 import { COURSES, PATHS, SITE, STUDENTS, bySlug } from '../lib/data';
 import { logoMap } from '../lib/logos';
 import { CompanyMarquee, LinkedInButton, StudentsStat } from '../lib/Showcase';
+import Testimonials from '../lib/Testimonials';
 
 const FEATURED = ['one-identity-manager', 'sailpoint', 'sap-identity-authorizations', 'microsoft-entra-id', 'okta', 'cyberark', 'active-directory', 'saviynt'];
 
@@ -32,7 +33,7 @@ export default function Home({ logos }) {
             <p className="lede">Hands-on online training for Identity &amp; Access Management, taught by people who have run the projects and fixed the war rooms. {COURSES.length} courses, 30 hours each, real labs, zero fluff.</p>
             <div className="cta">
               <Link className="btn primary" href="/courses">Browse courses</Link>
-              <Link className="btn" href="/contact#talk">Enquire now</Link>
+              <Link className="btn" href="/contact?type=demo#talk">Book a free demo</Link>
             </div>
             <p className="hero-proof"><b>{STUDENTS}</b> students trained across the world in IAM platforms</p>
           </div>
@@ -72,6 +73,8 @@ export default function Home({ logos }) {
         </div>
       </section>
 
+      <Testimonials />
+
       <section className="band" id="paths">
         <div className="wrap">
           <div className="sec-head">
@@ -107,7 +110,7 @@ export default function Home({ logos }) {
         </div>
       </section>
 
-      <CtaBand title="Ready to start?" text="Tell us which course you want and we will send you the next batch dates." href="/contact#talk" label="Enquire now" />
+      <CtaBand title="Ready to start?" text="Book a free demo session, meet the instructor and see the labs before you register." href="/contact?type=demo#talk" label="Book a free demo" />
     </>
   );
 }

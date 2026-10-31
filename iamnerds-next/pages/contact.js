@@ -1,17 +1,18 @@
 import { useRouter } from 'next/router';
 import { Seo, Crumbs } from '../lib/Layout';
 import ContactForm, { countryList } from '../lib/ContactForm';
-import { COURSES, EMAIL, SITE, WHATSAPP } from '../lib/data';
+import { COURSES, EMAIL, ENQUIRY_TYPES, SITE, WHATSAPP } from '../lib/data';
 import { LinkedInButton } from '../lib/Showcase';
 
 export default function Contact({ countries }) {
   const { query, isReady } = useRouter();
+  const type = isReady && query.type === 'register' ? ENQUIRY_TYPES[1] : isReady && query.type === 'question' ? ENQUIRY_TYPES[2] : ENQUIRY_TYPES[0];
   const pre = isReady && COURSES.some((c) => c.title === query.course) ? query.course : '';
   return (
     <>
       <Seo
-        title="Contact IAMNerds | Course Enquiries"
-        description="Enquire about an IAMNerds course: next batch dates, timings and team training. Reach us by form, email or WhatsApp."
+        title="Book a Free Demo | Contact IAMNerds"
+        description="Book a free demo session or register for an IAMNerds course batch. Reach us by form, email or WhatsApp."
         path="/contact"
         jsonLd={{ '@context': 'https://schema.org', '@type': 'ContactPage', url: `${SITE}/contact`, name: 'Contact IAMNerds', inLanguage: 'en' }}
       />
@@ -28,7 +29,7 @@ export default function Contact({ countries }) {
               <a className="email" href={`mailto:${EMAIL}`}>{EMAIL}</a>
             </div>
           </div>
-          <ContactForm key={pre} countries={countries} defaultCourse={pre} />
+          <ContactForm key={pre + type} countries={countries} defaultCourse={pre} defaultType={type} />
         </div>
       </section>
     </>
