@@ -1236,8 +1236,24 @@ export const RECAPTCHA_SITE_KEY = '6LdTUwouAAAAADCJLjBsfopqQuy4WHcuV-Jh6EOJ';
 export const BATCHES = [];
 
 // Course fees by course slug. Leave a course out to show "Fee on request".
-// 'okta': { inr: 45000, usd: 650 }
-export const PRICES = {};
+// USD = INR fee at 1 USD = 94.97 INR (Wise mid-market, 31 Oct 2026), rounded up to end in 9.
+export const PRICES = {
+  'one-identity-manager': { inr: 39999, usd: 429 },
+  'sailpoint': { inr: 44999, usd: 479 },
+  'omada': { inr: 39999, usd: 429 },
+  'saviynt': { inr: 39999, usd: 429 },
+  'sap-cloud-identity-services': { inr: 44999, usd: 479 },
+  'microsoft-entra-id': { inr: 29999, usd: 319 },
+  'active-directory': { inr: 19999, usd: 219 },
+  'okta': { inr: 29999, usd: 319 },
+  'onelogin': { inr: 29999, usd: 319 },
+  'ping-identity': { inr: 29999, usd: 319 },
+  'cyberark': { inr: 39999, usd: 429 },
+  'beyondtrust': { inr: 39999, usd: 429 },
+};
+
+// Shown when BATCHES is empty: batches start every month.
+export const BATCH_NOTE = 'New batches start every month.';
 
 // Real student testimonials only, shared with the student's permission.
 // { name: 'Full Name', role: 'IAM Engineer', company: 'Company', course: 'sailpoint', quote: '…', linkedin: 'https://…' }
