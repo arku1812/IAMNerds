@@ -2,6 +2,22 @@
   "trailingSlash": "never",
   "routes": [
     {
+      "route": "/blog/one-identity-manager-interview-questions",
+      "rewrite": "/blog/one-identity-manager-interview-questions.html"
+    },
+    {
+      "route": "/blog/sailpoint-interview-questions",
+      "rewrite": "/blog/sailpoint-interview-questions.html"
+    },
+    {
+      "route": "/blog",
+      "rewrite": "/blog.html"
+    },
+    {
+      "route": "/batches",
+      "rewrite": "/batches.html"
+    },
+    {
       "route": "/privacy-policy",
       "rewrite": "/privacy-policy.html"
     },
