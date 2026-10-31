@@ -9,24 +9,12 @@
       "rewrite": "/datenschutz.html"
     },
     {
-      "route": "/services",
-      "rewrite": "/services.html"
+      "route": "/courses",
+      "rewrite": "/courses.html"
     },
     {
-      "route": "/industries",
-      "rewrite": "/industries.html"
-    },
-    {
-      "route": "/non-human-identities",
-      "rewrite": "/non-human-identities.html"
-    },
-    {
-      "route": "/approach",
-      "rewrite": "/approach.html"
-    },
-    {
-      "route": "/platforms",
-      "rewrite": "/platforms.html"
+      "route": "/learning-paths",
+      "rewrite": "/learning-paths.html"
     },
     {
       "route": "/about",
@@ -37,32 +25,124 @@
       "rewrite": "/contact.html"
     },
     {
-      "route": "/de/leistungen",
-      "rewrite": "/de/leistungen.html"
+      "route": "/courses/iam-fundamentals",
+      "rewrite": "/courses/iam-fundamentals.html"
     },
     {
-      "route": "/de/branchen",
-      "rewrite": "/de/branchen.html"
+      "route": "/courses/one-identity-manager",
+      "rewrite": "/courses/one-identity-manager.html"
     },
     {
-      "route": "/de/non-human-identities",
-      "rewrite": "/de/non-human-identities.html"
+      "route": "/courses/sailpoint",
+      "rewrite": "/courses/sailpoint.html"
     },
     {
-      "route": "/de/vorgehen",
-      "rewrite": "/de/vorgehen.html"
+      "route": "/courses/omada",
+      "rewrite": "/courses/omada.html"
     },
     {
-      "route": "/de/plattformen",
-      "rewrite": "/de/plattformen.html"
+      "route": "/courses/saviynt",
+      "rewrite": "/courses/saviynt.html"
     },
     {
-      "route": "/de/ueber-uns",
-      "rewrite": "/de/ueber-uns.html"
+      "route": "/courses/sap-identity-authorizations",
+      "rewrite": "/courses/sap-identity-authorizations.html"
     },
     {
-      "route": "/de/kontakt",
-      "rewrite": "/de/kontakt.html"
+      "route": "/courses/sap-cloud-identity-services",
+      "rewrite": "/courses/sap-cloud-identity-services.html"
+    },
+    {
+      "route": "/courses/microsoft-entra-id",
+      "rewrite": "/courses/microsoft-entra-id.html"
+    },
+    {
+      "route": "/courses/active-directory",
+      "rewrite": "/courses/active-directory.html"
+    },
+    {
+      "route": "/courses/okta",
+      "rewrite": "/courses/okta.html"
+    },
+    {
+      "route": "/courses/onelogin",
+      "rewrite": "/courses/onelogin.html"
+    },
+    {
+      "route": "/courses/ping-identity",
+      "rewrite": "/courses/ping-identity.html"
+    },
+    {
+      "route": "/courses/cyberark",
+      "rewrite": "/courses/cyberark.html"
+    },
+    {
+      "route": "/courses/beyondtrust",
+      "rewrite": "/courses/beyondtrust.html"
+    },
+    {
+      "route": "/courses/non-human-identity-ai-agents",
+      "rewrite": "/courses/non-human-identity-ai-agents.html"
+    },
+    {
+      "route": "/services",
+      "redirect": "/courses",
+      "statusCode": 301
+    },
+    {
+      "route": "/services.html",
+      "redirect": "/courses",
+      "statusCode": 301
+    },
+    {
+      "route": "/platforms",
+      "redirect": "/courses",
+      "statusCode": 301
+    },
+    {
+      "route": "/platforms.html",
+      "redirect": "/courses",
+      "statusCode": 301
+    },
+    {
+      "route": "/industries",
+      "redirect": "/courses",
+      "statusCode": 301
+    },
+    {
+      "route": "/industries.html",
+      "redirect": "/courses",
+      "statusCode": 301
+    },
+    {
+      "route": "/approach",
+      "redirect": "/learning-paths",
+      "statusCode": 301
+    },
+    {
+      "route": "/approach.html",
+      "redirect": "/learning-paths",
+      "statusCode": 301
+    },
+    {
+      "route": "/non-human-identities",
+      "redirect": "/courses/non-human-identity-ai-agents",
+      "statusCode": 301
+    },
+    {
+      "route": "/non-human-identities.html",
+      "redirect": "/courses/non-human-identity-ai-agents",
+      "statusCode": 301
+    },
+    {
+      "route": "/de",
+      "redirect": "/",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/*",
+      "redirect": "/",
+      "statusCode": 301
     },
     {
       "route": "/css/*",

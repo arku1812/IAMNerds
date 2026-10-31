@@ -3,27 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>About IAMNerds | Identity &amp; Access Management Consultancy</title>
-<meta name="description" content="IAMNerds is an IAM/IGA consultancy based in Germany, founded by an architect with 18+ years of enterprise identity projects. Clients worldwide.">
+<title>About IAMNerds | IAM Training by Practitioners</title>
+<meta name="description" content="IAMNerds is an online training platform for Identity &amp; Access Management, written by an IAM/IGA architect with 18+ years of enterprise projects.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://iamnerds.io/about">
-<link rel="alternate" hreflang="en" href="https://iamnerds.io/about">
-<link rel="alternate" hreflang="de" href="https://iamnerds.io/de/ueber-uns">
-<link rel="alternate" hreflang="x-default" href="https://iamnerds.io/about">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="IAMNerds">
-<meta property="og:title" content="About IAMNerds | Identity &amp; Access Management Consultancy">
-<meta property="og:description" content="IAMNerds is an IAM/IGA consultancy based in Germany, founded by an architect with 18+ years of enterprise identity projects. Clients worldwide.">
+<meta property="og:title" content="About IAMNerds | IAM Training by Practitioners">
+<meta property="og:description" content="IAMNerds is an online training platform for Identity &amp; Access Management, written by an IAM/IGA architect with 18+ years of enterprise projects.">
 <meta property="og:url" content="https://iamnerds.io/about">
 <meta property="og:locale" content="en_US">
-<meta property="og:locale:alternate" content="de_DE">
 <meta property="og:image" content="https://iamnerds.io/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="IAMNerds: least privilege, maximum nerdiness">
+<meta property="og:image:alt" content="IAMNerds: least privilege, maximum learning">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="About IAMNerds | Identity &amp; Access Management Consultancy">
-<meta name="twitter:description" content="IAMNerds is an IAM/IGA consultancy based in Germany, founded by an architect with 18+ years of enterprise identity projects. Clients worldwide.">
+<meta name="twitter:title" content="About IAMNerds | IAM Training by Practitioners">
+<meta name="twitter:description" content="IAMNerds is an online training platform for Identity &amp; Access Management, written by an IAM/IGA architect with 18+ years of enterprise projects.">
 <meta name="twitter:image" content="https://iamnerds.io/og.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">
@@ -31,20 +27,26 @@
  "@context": "https://schema.org",
  "@graph": [
   {
-   "@type": "WebPage",
+   "@type": "EducationalOrganization",
+   "@id": "https://iamnerds.io/#organization",
+   "name": "IAMNerds",
+   "url": "https://iamnerds.io/",
+   "logo": "https://iamnerds.io/icon-512.png",
+   "image": "https://iamnerds.io/og.png",
+   "email": "hello@iamnerds.io",
+   "description": "Online training for Identity & Access Management technologies: IGA, SAP identity, access management, PAM, non-human identity and AI agents.",
+   "sameAs": [
+    "https://www.linkedin.com/company/iamnerds/"
+   ]
+  },
+  {
+   "@type": "AboutPage",
    "@id": "https://iamnerds.io/about#webpage",
    "url": "https://iamnerds.io/about",
-   "name": "About IAMNerds | Identity & Access Management Consultancy",
-   "description": "IAMNerds is an IAM/IGA consultancy based in Germany, founded by an architect with 18+ years of enterprise identity projects. Clients worldwide.",
+   "name": "About IAMNerds",
    "inLanguage": "en",
    "isPartOf": {
     "@id": "https://iamnerds.io/#website"
-   },
-   "about": {
-    "@id": "https://iamnerds.io/#organization"
-   },
-   "breadcrumb": {
-    "@id": "https://iamnerds.io/about#breadcrumb"
    }
   },
   {
@@ -74,7 +76,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&family=Instrument+Serif:ital@1&display=swap">
-<link rel="stylesheet" href="/css/styles.css?v=20261030">
+<link rel="stylesheet" href="/css/styles.css?v=20261031">
 </head>
 <body>
 
@@ -85,15 +87,13 @@
       <span><b>IAM</b>Nerds</span>
     </a>
     <nav class="links" aria-label="Main">
-      <a href="/services">Services</a>
-      <a href="/industries">Industries</a>
-      <a href="/non-human-identities">Non-human identities</a>
-      <a href="/approach">Approach</a>
-      <a href="/platforms">Platforms</a>
+      <a href="/courses">Courses</a>
+      <a href="/learning-paths">Learning paths</a>
+      <a href="/courses/non-human-identity-ai-agents">AI agents & NHI</a>
       <a href="/about" aria-current="page">About</a>
+      <a href="/contact">Contact</a>
     </nav>
-    <nav class="lang" aria-label="Language"><a href="/about" lang="en" aria-current="page">EN</a><a href="/de/ueber-uns" lang="de" hreflang="de">DE</a></nav>
-    <a class="btn primary" href="/contact#talk">Talk to a nerd</a>
+    <a class="btn primary" href="/courses/iam-fundamentals">Start free</a>
   </div>
 </header>
 
@@ -103,38 +103,37 @@
       <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">About</span></nav>
       <div class="eyebrow">About</div>
       <h1>Nerds, <em>on purpose.</em></h1>
-      <p class="lede">IAMNerds is an Identity &amp; Access Management consultancy based in Germany, working with organizations worldwide, remotely or on site.</p>
+      <p class="lede">IAMNerds is an online training platform purely for Identity &amp; Access Management technologies, based in Germany and open to learners worldwide.</p>
     </div>
   </section>
 
 <section class="band"><div class="wrap about">
-<div><h2>Who we are</h2></div>
+<div><h2>Who teaches</h2></div>
 <div>
 <p>IAMNerds was founded by an IAM/IGA architect with more than 18 years of hands-on enterprise identity projects, from greenfield rollouts to rescuing implementations that had stalled.</p>
-<p>We are based in Germany and work with organizations worldwide, remotely or on site, in English and German. We like clean role models, readable documentation and audit findings that never happen.</p>
+<p>The courses teach what those projects taught: how the platforms really behave, where they break and how to design them so they still work when the auditors arrive.</p>
 <div class="facts" style="margin-top:var(--s6)">
 <div class="fact"><div class="n">18+</div><div class="l">years in enterprise IAM</div></div>
-<div class="fact"><div class="n">13</div><div class="l">identity platforms</div></div>
-<div class="fact"><div class="n">Global</div><div class="l">clients worldwide, remote or on site</div></div>
+<div class="fact"><div class="n">15</div><div class="l">courses, one free</div></div>
+<div class="fact"><div class="n">Global</div><div class="l">learners worldwide, in English</div></div>
 <div class="fact"><div class="n">0</div><div class="l">orphaned accounts tolerated</div></div>
 </div>
 </div>
 </div></section>
 
 <section class="band"><div class="wrap">
-<div class="sec-head"><h2>How we work</h2><p>A few principles we bring to every project.</p></div>
+<div class="sec-head"><h2>How we teach</h2><p>A few principles behind every course.</p></div>
 <div class="services">
-<article class="svc"><span class="k">NEUTRAL</span><h3>Vendor-neutral</h3><p>We recommend the platform that fits your landscape, not the one with the best partner margin.</p></article>
-<article class="svc"><span class="k">HANDS-ON</span><h3>Architects who build</h3><p>The people who design your solution also configure it, so nothing gets lost between slides and systems.</p></article>
-<article class="svc"><span class="k">CLEAR</span><h3>Plain language</h3><p>Documentation and decisions your business owners, auditors and operations team can all follow.</p></article>
-<article class="svc"><span class="k">LASTING</span><h3>Built to hand over</h3><p>We measure success by how well your team runs the system after the project ends.</p></article>
+<article class="svc"><span class="k">NEUTRAL</span><h3>Vendor-neutral</h3><p>Independent courses for every major platform, so you learn the concepts that carry over, not just one product's menus.</p></article>
+<article class="svc"><span class="k">HANDS-ON</span><h3>Labs, not slides</h3><p>Every module ends in a lab in a real environment, with a worked solution when you get stuck.</p></article>
+<article class="svc"><span class="k">REAL</span><h3>Project scenarios</h3><p>Messy HR feeds, slow job queues and audit findings, solved the way they are solved on real projects.</p></article>
+<article class="svc"><span class="k">PROVEN</span><h3>Reviewed capstones</h3><p>Your capstone is reviewed by an instructor who has built the same thing for real clients.</p></article>
 </div>
 </div></section>
-
   <section class="contact cta-band">
     <div class="wrap contact-inner">
-      <div><h2>Got an access mess?</h2><p class="contact-lead">Tell us what you're untangling. A nerd reads every message personally.</p></div>
-      <a class="btn primary" href="/contact#talk">Start your IAM project</a>
+      <div><h2>Questions about a course?</h2><p class="contact-lead">A nerd reads every message personally.</p></div>
+      <a class="btn primary" href="/contact#talk">Talk to a nerd</a>
     </div>
   </section>
 </main>
@@ -143,12 +142,13 @@
   <div class="wrap giant-wrap" aria-hidden="true"><div class="giant">IAMNerds</div></div>
   <div class="wrap footbar">
     <span>© 2026 IAMNerds · Germany</span>
-    <nav class="footnav" aria-label="Footer"><a href="/services">Services</a> · <a href="/industries">Industries</a> · <a href="/non-human-identities">Non-human identities</a> · <a href="/approach">Approach</a> · <a href="/platforms">Platforms</a> · <a href="/about">About</a> · <a href="/contact">Contact</a></nav>
+    <nav class="footnav" aria-label="Footer"><a href="/courses">Courses</a> · <a href="/learning-paths">Learning paths</a> · <a href="/courses/non-human-identity-ai-agents">AI agents &amp; NHI</a> · <a href="/about">About</a> · <a href="/contact">Contact</a></nav>
     <span><a href="/impressum">Imprint</a> · <a href="/datenschutz">Privacy policy</a></span>
   </div>
+  <div class="wrap legal-note">Independent training. Vendor and product names are trademarks of their owners; IAMNerds is not affiliated with or endorsed by them.</div>
 </footer>
 
-<script src="/js/app.js?v=20261030" defer></script>
+<script src="/js/app.js?v=20261031" defer></script>
 <script src="/js/ai.min.js" defer></script>
 <script src="/js/analytics.js" defer></script>
 </body>
