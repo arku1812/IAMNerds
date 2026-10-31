@@ -5,11 +5,6 @@ import { SITE, LINKEDIN } from './data';
 import { LinkedInIcon } from './Showcase';
 import WhatsAppChat from './WhatsAppChat';
 
-export const MARKETS = [
-  ['/iam-training-india', 'IAM training in India'],
-  ['/iam-training-usa', 'IAM training in the USA'],
-];
-
 const NAV = [
   ['/courses', 'Courses'],
   ['/learning-paths', 'Learning paths'],
@@ -123,7 +118,7 @@ export default function Layout({ children }) {
               <span key={href}>{i > 0 && ' · '}<Link href={href}>{label}</Link></span>
             ))}
           </nav>
-          <span>{MARKETS.map(([h, l]) => <span key={h}><Link href={h}>{l}</Link> · </span>)}<Link href="/privacy-policy">Privacy policy</Link> · <Link href="/terms">Terms and Conditions</Link></span>
+          <span><Link href="/privacy-policy">Privacy policy</Link> · <Link href="/terms">Terms and Conditions</Link></span>
         </div>
         <div className="wrap legal-note">
           Independent training. Vendor and product names are trademarks of their owners; IAMNerds is not affiliated with or endorsed by them.
