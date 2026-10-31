@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }) {
         <Component {...pageProps} />
       </Layout>
       <Script src="/js/ai.min.js" strategy="afterInteractive" />
-      <Script src="/js/analytics.js" strategy="lazyOnload" />
+      <Script src="/js/analytics.js?v=20261101" strategy="lazyOnload" />
     </>
   );
 }
