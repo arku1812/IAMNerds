@@ -561,3 +561,10 @@ main h3{width:fit-content;max-width:100%}
 .students-t{width:fit-content}
 /* Keep form and widget titles readable in plain colour */
 .talk h3,.wa h3{background:none;color:var(--fg);-webkit-background-clip:border-box;background-clip:border-box}
+
+/* Career guides */
+.guide-p{color:var(--muted);margin-top:var(--s4);font-size:17px}
+.guide-list{margin:var(--s4) 0 0;padding-left:1.3em;display:grid;gap:10px;color:var(--muted);font-size:16.5px}
+.guide-list li::marker{color:var(--violet)}
+.blog-group + .blog-group{margin-top:var(--s8)}
+.side-fee{font-size:16px}
