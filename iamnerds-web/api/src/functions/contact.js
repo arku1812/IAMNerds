@@ -1,5 +1,5 @@
 // Azure Function: POST /api/contact
-// Receives the "Talk to a nerd" form and emails it to hello@iamnerds.io via Microsoft Graph
+// Receives the course enquiry form and emails it to hello@iamnerds.io via Microsoft Graph
 // (app-only, client credentials). hello@iamnerds.io is a shared mailbox, so Graph sends as it
 // directly; no mailbox password or SMTP AUTH involved.
 // Settings come from the Static Web App's environment variables (Azure portal → Settings → Environment variables),
@@ -13,14 +13,23 @@ const { app } = require('@azure/functions');
 const CONTACT_TO = process.env.CONTACT_TO || 'hello@iamnerds.io';
 const MAIL_FROM = process.env.MAIL_FROM || 'hello@iamnerds.io';
 
-const TOPICS = new Set([
-  'Course waitlist',
-  'IAM Fundamentals access',
-  'Team training',
-  'Live instructor-led batch',
-  'Question about a course',
-  'Something else',
+const COURSES = new Set([
+  "IAM Fundamentals",
+  "One Identity Manager",
+  "SailPoint",
+  "Omada",
+  "Saviynt",
+  "SAP Identity & Authorizations",
+  "SAP Cloud Identity Services",
+  "Microsoft Entra ID",
+  "Active Directory",
+  "Okta",
+  "OneLogin",
+  "Ping Identity",
+  "CyberArk",
+  "BeyondTrust",
 ]);
+const PHONE_RE = /^\+\d{1,4}$/;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -94,17 +103,19 @@ function validate(body) {
     name: clean(body.name, 100),
     company: clean(body.company, 120),
     email: clean(body.email, 160),
-    topic: clean(body.topic, 60),
+    dialCode: clean(body.dialCode, 6),
+    country: clean(body.country, 2).toUpperCase(),
+    phone: clean(body.phone, 20).replace(/[^\d]/g, ''),
+    course: clean(body.course, 80),
     message: clean(body.message, 5000),
     consent: body.consent === true,
-    lang: body.lang === 'de' ? 'DE' : 'EN',
   };
   const errors = {};
-  if (!data.name) errors.name = 'Enter your name.';
-  if (!EMAIL_RE.test(data.email)) errors.email = 'Enter a valid email address, like alex@acme.com.';
-  if (data.message.length < 10) errors.message = 'Tell us a little more, at least 10 characters.';
+  if (!data.name) errors.name = 'Enter your full name.';
+  if (!EMAIL_RE.test(data.email)) errors.email = 'Enter a valid email address.';
+  if (!PHONE_RE.test(data.dialCode) || data.phone.length < 5 || data.phone.length > 15) errors.phone = 'Enter a valid mobile number.';
+  if (!COURSES.has(data.course)) errors.course = 'Choose a course.';
   if (!data.consent) errors.consent = 'Tick the box so we can reply to you.';
-  if (!TOPICS.has(data.topic)) data.topic = 'Something else';
   return { data, errors };
 }
 
@@ -145,19 +156,19 @@ async function contactHandler(request, context) {
     await sendMail({
       replyToName: data.name.replace(/[<>"]/g, ''),
       replyToEmail: data.email,
-      subject: `Talk to a nerd: ${data.topic} — ${data.name}${data.company ? ` (${data.company})` : ''}`,
+      subject: `Course enquiry: ${data.course} — ${data.name}${data.company ? ` (${data.company})` : ''}`,
       text: [
         `Name:    ${data.name}`,
-        `Company: ${data.company || '-'}`,
         `Email:   ${data.email}`,
-        `Topic:   ${data.topic}`,
-        `Page:    ${data.lang}`,
+        `Mobile:  ${data.dialCode} ${data.phone} (${data.country || '-'})`,
+        `Company: ${data.company || '-'}`,
+        `Course:  ${data.course}`,
         `Sent:    ${new Date().toISOString()}`,
         '',
-        data.message,
+        data.message || '(no message)',
       ].join('\n'),
     });
-    context.log(`Contact form: ${data.topic} from ${data.email} emailed to ${CONTACT_TO}`);
+    context.log(`Course enquiry: ${data.course} from ${data.email} emailed to ${CONTACT_TO}`);
     return { status: 200, jsonBody: { ok: true } };
   } catch (err) {
     context.error(`Contact form email failed: ${err.message}`);
