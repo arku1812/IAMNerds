@@ -1,11 +1,9 @@
 import Link from 'next/link';
 
 export function VendorMark({ course: c, logo, big = false }) {
-  if (!c.vendor) return null;
-  if (logo) {
-    return <img className={`vendor-logo ${big ? 'big' : ''}`} src={logo} alt={`${c.vendor} logo`} loading="lazy" />;
-  }
-  return <span className={`vendor-badge ${big ? 'big' : ''}`}>{c.vendor}</span>;
+  // Shows the vendor logo when a file exists in public/logos; no text badge (it would repeat the course name).
+  if (!c.vendor || !logo) return null;
+  return <img className={`vendor-logo ${big ? 'big' : ''}`} src={logo} alt={`${c.vendor} logo`} loading="lazy" />;
 }
 
 export default function CourseCard({ course: c, logo }) {

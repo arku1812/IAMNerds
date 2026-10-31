@@ -42,7 +42,7 @@ function CompanyName({ c }) {
 export function CompanyMarquee() {
   if (!COMPANIES.length) return null;
   const row = (k) => COMPANIES.map((c) => (
-    <span className="mq-item" key={k + c.name}><CompanyName c={c} /><small>{c.sector}</small></span>
+    <span className="mq-item" key={k + c.name}><CompanyName c={c} /></span>
   ));
   return (
     <section className="band companies" aria-labelledby="companies-h">
