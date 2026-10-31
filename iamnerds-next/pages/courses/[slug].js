@@ -3,7 +3,7 @@ import { Seo, Crumbs, CtaBand } from '../../lib/Layout';
 import { COURSES, SITE, bySlug } from '../../lib/data';
 import { logoFor } from '../../lib/logos';
 import { VendorMark } from '../../lib/CourseCard';
-import { CourseBatches, upcomingBatches, demoHref } from '../../lib/Batches';
+import { CourseBatches, Price, upcomingBatches, demoHref } from '../../lib/Batches';
 import Testimonials from '../../lib/Testimonials';
 
 export default function Course({ slug, logo, batches }) {
@@ -39,6 +39,7 @@ export default function Course({ slug, logo, batches }) {
           <div className="course-facts">
             <div className="fact"><div className="n">{c.hours} h</div><div className="l">training and labs</div></div>
             <div className="fact"><div className="n">{n}</div><div className="l">modules, each with a lab</div></div>
+            <div className="fact"><div className="n"><Price slug={c.slug} block /></div><div className="l">course fee</div></div>
           </div>
           <div className="cta" style={{ marginTop: 'var(--s6)' }}>
             <Link className="btn primary" href={demoHref(c.title)}>Book a free demo</Link>
