@@ -40,7 +40,6 @@ const COURSES = new Set([
   "SailPoint",
   "Omada",
   "Saviynt",
-  "SAP Identity & Authorizations",
   "SAP Cloud Identity Services",
   "Microsoft Entra ID",
   "Active Directory",
