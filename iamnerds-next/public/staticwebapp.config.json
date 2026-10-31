@@ -3,11 +3,13 @@
   "routes": [
     {
       "route": "/iam-training-usa",
-      "rewrite": "/iam-training-usa.html"
+      "redirect": "/courses",
+      "statusCode": 301
     },
     {
       "route": "/iam-training-india",
-      "rewrite": "/iam-training-india.html"
+      "redirect": "/courses",
+      "statusCode": 301
     },
     {
       "route": "/blog/sailpoint-vs-saviynt-vs-one-identity-manager",
