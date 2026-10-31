@@ -8,6 +8,8 @@ import WhatsAppChat from './WhatsAppChat';
 const NAV = [
   ['/courses', 'Courses'],
   ['/learning-paths', 'Learning paths'],
+  ['/batches', 'Batches'],
+  ['/blog', 'Blog'],
   ['/vision-mission', 'Vision & Mission'],
   ['/about', 'About'],
   ['/contact', 'Contact'],
@@ -100,7 +102,7 @@ export default function Layout({ children }) {
               <Link key={href} href={href} aria-current={current === href ? 'page' : undefined}>{label}</Link>
             ))}
           </nav>
-          <Link className="btn primary" href="/contact#talk">Enquire now</Link>
+          <Link className="btn primary" href="/contact?type=demo#talk">Free demo</Link>
         </div>
       </header>
       <main id="top">{children}</main>

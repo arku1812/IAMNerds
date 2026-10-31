@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
 import { getCountries, getCountryCallingCode, isValidPhoneNumber } from 'libphonenumber-js';
-import { COURSES, EMAIL, RECAPTCHA_SITE_KEY } from './data';
+import { COURSES, EMAIL, ENQUIRY_TYPES, RECAPTCHA_SITE_KEY } from './data';
 import CountrySelect from './CountrySelect';
 import Recaptcha from './Recaptcha';
 
@@ -15,7 +15,7 @@ export function countryList() {
     .sort((a, b) => a.name.localeCompare(b.name));
 }
 
-export default function ContactForm({ countries, defaultCourse = '' }) {
+export default function ContactForm({ countries, defaultCourse = '', defaultType = ENQUIRY_TYPES[0] }) {
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState({ kind: '', text: '' });
   const [sending, setSending] = useState(false);
@@ -39,6 +39,7 @@ export default function ContactForm({ countries, defaultCourse = '' }) {
       phone: v('phone').value.trim(),
       company: v('company').value.trim(),
       course: v('course').value,
+      enquiryType: v('enquiryType').value,
       message: v('message').value.trim(),
       consent: v('consent').checked,
       website: v('website').value,
@@ -93,7 +94,7 @@ export default function ContactForm({ countries, defaultCourse = '' }) {
 
   return (
     <form className={`talk ${sent ? 'sent' : ''}`} id="talk" noValidate onSubmit={onSubmit}>
-      <h3>Course enquiry</h3>
+      <h3>{defaultType === ENQUIRY_TYPES[0] ? 'Book a free demo' : 'Course enquiry'}</h3>
       <div className="fields">
         <div className={fieldClass('name', 'full')}>
           <label htmlFor="f-name">Full name <span className="req">*</span></label>
@@ -117,6 +118,17 @@ export default function ContactForm({ countries, defaultCourse = '' }) {
           <label htmlFor="f-company">Company <span className="opt">optional</span></label>
           <input id="f-company" name="company" type="text" autoComplete="organization" placeholder="Acme Ltd" maxLength={120} />
           <span className="err" />
+        </div>
+        <div className="field full">
+          <span className="lbl" id="l-type">I&apos;d like to <span className="req">*</span></span>
+          <div className="seg" role="radiogroup" aria-labelledby="l-type">
+            {ENQUIRY_TYPES.map((t) => (
+              <label key={t} className="seg-opt">
+                <input type="radio" name="enquiryType" value={t} defaultChecked={t === defaultType} />
+                <span>{t === ENQUIRY_TYPES[0] ? 'Book a free demo' : t === ENQUIRY_TYPES[1] ? 'Register for a batch' : 'Ask a question'}</span>
+              </label>
+            ))}
+          </div>
         </div>
         <div className={fieldClass('course')}>
           <label htmlFor="f-course">Course <span className="req">*</span></label>

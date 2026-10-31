@@ -1226,3 +1226,21 @@ export const COMPANIES = [
 // Public by design. Leave empty to hide the checkbox. The matching secret key goes into the
 // Azure Static Web App environment variable RECAPTCHA_SECRET.
 export const RECAPTCHA_SITE_KEY = '6LdTUwouAAAAADCJLjBsfopqQuy4WHcuV-Jh6EOJ';
+
+// ---------------------------------------------------------------------------
+// Batches, prices and testimonials. Edit these lists and redeploy.
+// ---------------------------------------------------------------------------
+
+// Upcoming batches. Past start dates are hidden automatically at build time.
+// { course: 'okta', start: '2026-12-05', days: 'Sat & Sun', time: '10:00–13:00 IST', seats: 15 }
+export const BATCHES = [];
+
+// Course fees by course slug. Leave a course out to show "Fee on request".
+// 'okta': { inr: 45000, usd: 650 }
+export const PRICES = {};
+
+// Real student testimonials only, shared with the student's permission.
+// { name: 'Full Name', role: 'IAM Engineer', company: 'Company', course: 'sailpoint', quote: '…', linkedin: 'https://…' }
+export const TESTIMONIALS = [];
+
+export const ENQUIRY_TYPES = ['Free demo session', 'Register for a batch', 'Question about a course'];
