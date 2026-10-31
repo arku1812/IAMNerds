@@ -2,6 +2,7 @@
 export const COURSES = [
  {
   "slug": "iam-fundamentals",
+  "vendor": null,
   "title": "IAM Fundamentals",
   "tag": "FOUNDATION",
   "category": "Foundation",
@@ -52,6 +53,7 @@ export const COURSES = [
  },
  {
   "slug": "one-identity-manager",
+  "vendor": "One Identity",
   "title": "One Identity Manager",
   "tag": "IGA",
   "category": "IGA",
@@ -152,6 +154,7 @@ export const COURSES = [
  },
  {
   "slug": "sailpoint",
+  "vendor": "SailPoint",
   "title": "SailPoint",
   "tag": "IGA",
   "category": "IGA",
@@ -242,6 +245,7 @@ export const COURSES = [
  },
  {
   "slug": "omada",
+  "vendor": "Omada",
   "title": "Omada",
   "tag": "IGA",
   "category": "IGA",
@@ -322,6 +326,7 @@ export const COURSES = [
  },
  {
   "slug": "saviynt",
+  "vendor": "Saviynt",
   "title": "Saviynt",
   "tag": "IGA",
   "category": "IGA",
@@ -402,6 +407,7 @@ export const COURSES = [
  },
  {
   "slug": "sap-identity-authorizations",
+  "vendor": "SAP",
   "title": "SAP Identity & Authorizations",
   "tag": "SAP",
   "category": "SAP",
@@ -482,6 +488,7 @@ export const COURSES = [
  },
  {
   "slug": "sap-cloud-identity-services",
+  "vendor": "SAP",
   "title": "SAP Cloud Identity Services",
   "tag": "SAP",
   "category": "SAP",
@@ -542,6 +549,7 @@ export const COURSES = [
  },
  {
   "slug": "microsoft-entra-id",
+  "vendor": "Microsoft",
   "title": "Microsoft Entra ID",
   "tag": "ACCESS",
   "category": "Access management",
@@ -627,6 +635,7 @@ export const COURSES = [
  },
  {
   "slug": "active-directory",
+  "vendor": "Microsoft",
   "title": "Active Directory",
   "tag": "DIRECTORY",
   "category": "Directory",
@@ -702,6 +711,7 @@ export const COURSES = [
  },
  {
   "slug": "okta",
+  "vendor": "Okta",
   "title": "Okta",
   "tag": "ACCESS",
   "category": "Access management",
@@ -777,6 +787,7 @@ export const COURSES = [
  },
  {
   "slug": "onelogin",
+  "vendor": "One Identity",
   "title": "OneLogin",
   "tag": "ACCESS",
   "category": "Access management",
@@ -837,6 +848,7 @@ export const COURSES = [
  },
  {
   "slug": "ping-identity",
+  "vendor": "Ping Identity",
   "title": "Ping Identity",
   "tag": "ACCESS",
   "category": "Access management",
@@ -917,6 +929,7 @@ export const COURSES = [
  },
  {
   "slug": "cyberark",
+  "vendor": "CyberArk",
   "title": "CyberArk",
   "tag": "PAM",
   "category": "PAM",
@@ -997,6 +1010,7 @@ export const COURSES = [
  },
  {
   "slug": "beyondtrust",
+  "vendor": "BeyondTrust",
   "title": "BeyondTrust",
   "tag": "PAM",
   "category": "PAM",
@@ -1166,3 +1180,31 @@ export const bySlug = (slug) => COURSES.find((c) => c.slug === slug);
 export const SITE = 'https://iamnerds.io';
 export const WHATSAPP = '919703330367';
 export const EMAIL = 'hello@iamnerds.io';
+
+export const LINKEDIN = 'https://www.linkedin.com/company/iamnerds/';
+export const STUDENTS = '2,700+';
+
+// Companies shown in the scrolling strip ("Join the World's Leading Companies").
+// Companies where past students work. The strip hides itself if this list is empty.
+export const COMPANIES = [
+  { name: 'Infosys', sector: 'IT Services' },
+  { name: 'TCS', sector: 'IT Services' },
+  { name: 'Wipro', sector: 'IT Services' },
+  { name: 'Accenture', sector: 'Consulting' },
+  { name: 'Deloitte', sector: 'Consulting' },
+  { name: 'IBM', sector: 'Technology' },
+  { name: 'Capgemini', sector: 'IT Services' },
+  { name: 'Cognizant', sector: 'IT Services' },
+  { name: 'HCL Technologies', sector: 'IT Services' },
+  { name: 'Tech Mahindra', sector: 'IT Services' },
+  { name: 'HDFC Bank', sector: 'BFSI' },
+  { name: 'Axis Bank', sector: 'BFSI' },
+  { name: 'Oracle', sector: 'Technology' },
+  { name: 'SAP India', sector: 'Technology' },
+  { name: 'Microsoft', sector: 'Technology' },
+];
+
+// Google reCAPTCHA v2 ("I'm not a robot") site key from https://www.google.com/recaptcha/admin.
+// Public by design. Leave empty to hide the checkbox. The matching secret key goes into the
+// Azure Static Web App environment variable RECAPTCHA_SECRET.
+export const RECAPTCHA_SITE_KEY = '';

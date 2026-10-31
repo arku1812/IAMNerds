@@ -42,7 +42,7 @@ export default function WhatsAppChat() {
             <a className="wa-btn" href={href} target="_blank" rel="noopener noreferrer">
               <WaIcon size={22} /> WhatsApp Us
             </a>
-            <p className="wa-meta">Online | <a href="/datenschutz">Privacy policy</a></p>
+            <p className="wa-meta">Online | <a href="/privacy-policy">Privacy policy</a></p>
           </div>
         </div>
       )}

@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { SITE } from './data';
+import { SITE, LINKEDIN } from './data';
+import { LinkedInIcon } from './Showcase';
 import WhatsAppChat from './WhatsAppChat';
 
 const NAV = [
@@ -106,13 +107,13 @@ export default function Layout({ children }) {
       <footer>
         <div className="wrap giant-wrap" aria-hidden="true"><div className="giant">IAMNerds</div></div>
         <div className="wrap footbar">
-          <span>© 2026 IAMNerds · India</span>
+          <span className="foot-brand">© 2026 IAMNerds · India <a className="foot-li" href={LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="IAMNerds on LinkedIn"><LinkedInIcon size={16} /></a></span>
           <nav className="footnav" aria-label="Footer">
             {NAV.map(([href, label], i) => (
               <span key={href}>{i > 0 && ' · '}<Link href={href}>{label}</Link></span>
             ))}
           </nav>
-          <span><a href="/impressum">Imprint</a> · <a href="/datenschutz">Privacy policy</a></span>
+          <span><Link href="/privacy-policy">Privacy policy</Link> · <Link href="/refund-policy">Refund policy</Link></span>
         </div>
         <div className="wrap legal-note">
           Independent training. Vendor and product names are trademarks of their owners; IAMNerds is not affiliated with or endorsed by them.

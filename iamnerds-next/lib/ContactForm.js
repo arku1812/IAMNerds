@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { getCountries, getCountryCallingCode, isValidPhoneNumber } from 'libphonenumber-js';
-import { COURSES, EMAIL } from './data';
+import { COURSES, EMAIL, RECAPTCHA_SITE_KEY } from './data';
+import CountrySelect from './CountrySelect';
+import Recaptcha from './Recaptcha';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -18,6 +20,10 @@ export default function ContactForm({ countries, defaultCourse = '' }) {
   const [status, setStatus] = useState({ kind: '', text: '' });
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [country, setCountry] = useState('IN');
+  const [captcha, setCaptcha] = useState('');
+  const captchaRef = useRef(null);
+  const onCaptcha = useCallback((t) => { setCaptcha(t); if (t) setErrors((e) => ({ ...e, captcha: '' })); }, []);
 
   const clear = (k) => setErrors((e) => (e[k] ? { ...e, [k]: '' } : e));
 
@@ -25,7 +31,6 @@ export default function ContactForm({ countries, defaultCourse = '' }) {
     e.preventDefault();
     const f = e.currentTarget;
     const v = (n) => f.elements.namedItem(n);
-    const country = v('country').value;
     const data = {
       name: v('name').value.trim(),
       email: v('email').value.trim(),
@@ -37,6 +42,7 @@ export default function ContactForm({ countries, defaultCourse = '' }) {
       message: v('message').value.trim(),
       consent: v('consent').checked,
       website: v('website').value,
+      recaptcha: captcha,
     };
     const err = {};
     if (!data.name) err.name = 'Enter your full name.';
@@ -44,6 +50,7 @@ export default function ContactForm({ countries, defaultCourse = '' }) {
     if (!data.phone || !isValidPhoneNumber(data.phone, country)) err.phone = `Enter a valid mobile number for ${data.dialCode}.`;
     if (!data.course) err.course = 'Choose a course.';
     if (!data.consent) err.consent = 'Tick the box so we can reply to you.';
+    if (RECAPTCHA_SITE_KEY && !captcha) err.captcha = 'Please confirm you are not a robot.';
     setErrors(err);
     if (Object.keys(err).length) {
       setStatus({ kind: 'fail', text: 'Check the highlighted fields.' });
@@ -66,6 +73,8 @@ export default function ContactForm({ countries, defaultCourse = '' }) {
         setStatus({ kind: 'ok', text: 'Thanks! A nerd will get back to you soon.' });
         return;
       }
+      if (captchaRef.current) captchaRef.current.reset();
+      setCaptcha('');
       if (r.status === 400 && j.errors) setErrors(j.errors);
       throw new Error(r.status === 429 ? 'rate' : 'fail');
     } catch (ex) {
@@ -99,11 +108,7 @@ export default function ContactForm({ countries, defaultCourse = '' }) {
         <div className={fieldClass('phone', 'full')}>
           <label htmlFor="f-phone">Mobile number <span className="req">*</span></label>
           <div className="phone-row">
-            <select id="f-country" name="country" aria-label="Country code" defaultValue="IN" autoComplete="tel-country-code" onChange={() => clear('phone')}>
-              {countries.map((c) => (
-                <option key={c.iso} value={c.iso}>{`+${c.code} · ${c.name}`}</option>
-              ))}
-            </select>
+            <CountrySelect countries={countries} value={country} onChange={(iso) => { setCountry(iso); clear('phone'); }} invalid={!!errors.phone} />
             <input id="f-phone" name="phone" type="tel" inputMode="tel" autoComplete="tel-national" placeholder="98765 43210" required maxLength={20} onInput={() => clear('phone')} />
           </div>
           <span className="err">{errors.phone}</span>
@@ -132,9 +137,15 @@ export default function ContactForm({ countries, defaultCourse = '' }) {
         </div>
         <div className={`field full check ${errors.consent ? 'bad' : ''}`}>
           <input id="f-consent" name="consent" type="checkbox" required onChange={() => clear('consent')} />
-          <label htmlFor="f-consent">IAMNerds may use my details to reply to this enquiry. More in the <a href="/datenschutz">privacy policy</a>.</label>
+          <label htmlFor="f-consent">IAMNerds may use my details to reply to this enquiry. More in the <a href="/privacy-policy">privacy policy</a>.</label>
           <span className="err">{errors.consent}</span>
         </div>
+        {RECAPTCHA_SITE_KEY && (
+          <div className={`field full ${errors.captcha ? 'bad' : ''}`}>
+            <Recaptcha ref={captchaRef} onChange={onCaptcha} />
+            <span className="err">{errors.captcha}</span>
+          </div>
+        )}
       </div>
       <div className="talk-foot">
         <button className="btn primary" type="submit" disabled={sending || sent}>
