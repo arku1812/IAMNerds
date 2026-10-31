@@ -25,8 +25,8 @@ export default function Course({ slug, logo, batches }) {
   return (
     <>
       <Seo
-        title={`${c.title} Course: 30-Hour Online Training with Labs | IAMNerds`}
-        description={`${c.title} online course by IAMNerds: 30 hours, ${n} modules with hands-on labs${c.capstone ? ' and a capstone project' : ''}. ${c.intro}`.slice(0, 300)}
+        title={`${c.title} Course: ${c.hours}-Hour Online Training with Labs | IAMNerds`}
+        description={`${c.title} online course by IAMNerds: ${c.hours} hours, ${n} modules with hands-on labs${c.capstone ? ' and a capstone project' : ''}. ${c.intro}`.slice(0, 300)}
         path={path}
         jsonLd={jsonLd}
       />
