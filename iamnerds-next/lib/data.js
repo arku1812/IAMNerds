@@ -1,4 +1,4 @@
-// Course catalogue for IAMNerds. Every course is 30 hours.
+// Course catalogue for IAMNerds. Hours per course are set in `hours`.
 export const COURSES = [
  {
   "slug": "iam-fundamentals",
@@ -57,7 +57,7 @@ export const COURSES = [
   "title": "One Identity Manager",
   "tag": "IGA",
   "category": "IGA",
-  "hours": 30,
+  "hours": 35,
   "free": false,
   "scope": "Identity Manager on-premises, Web Portal",
   "tagline": "From Designer to DBQueue, minus the 3 a.m. panic.",
@@ -158,7 +158,7 @@ export const COURSES = [
   "title": "SailPoint",
   "tag": "IGA",
   "category": "IGA",
-  "hours": 30,
+  "hours": 35,
   "free": false,
   "scope": "IdentityIQ, Identity Security Cloud",
   "tagline": "Aggregate, correlate, certify. Repeat without tears.",
@@ -406,97 +406,16 @@ export const COURSES = [
   "capstone": "End-to-end: HR, AD, a SaaS app, roles, SoD, certification"
  },
  {
-  "slug": "sap-identity-authorizations",
-  "vendor": "SAP",
-  "title": "SAP Identity & Authorizations",
-  "tag": "SAP",
-  "category": "SAP",
-  "hours": 30,
-  "free": false,
-  "scope": "SAP ABAP / S/4HANA security, SAP GRC Access Control",
-  "tagline": "PFCG without the guesswork.",
-  "intro": "SAP user and role management in ABAP systems and S/4HANA, plus SAP GRC Access Control.",
-  "lab": "Prepared lab virtual machines (subject to vendor licence terms)",
-  "modules": [
-   {
-    "name": "SAP security basics",
-    "topics": "Clients, users, authorization concept, authorization objects and fields",
-    "lab": "Log on and explore a user"
-   },
-   {
-    "name": "User management",
-    "topics": "SU01, SU10, user types, password and logon rules",
-    "lab": "Create and lock users"
-   },
-   {
-    "name": "Roles",
-    "topics": "PFCG single, composite and derived roles, profiles",
-    "lab": "Build a single role"
-   },
-   {
-    "name": "Reporting",
-    "topics": "SUIM, SU53, ST01 / STAUTHTRACE",
-    "lab": "Trace a missing authorization"
-   },
-   {
-    "name": "Role design",
-    "topics": "SU24 proposals, derived roles by org level, naming conventions",
-    "lab": "Build a derived role set"
-   },
-   {
-    "name": "S/4HANA & Fiori",
-    "topics": "Business catalogs, spaces and pages, Fiori launchpad roles, OData services",
-    "lab": "Grant a Fiori app end to end"
-   },
-   {
-    "name": "Central user administration",
-    "topics": "CUA setup, distribution, troubleshooting",
-    "lab": "Distribute users to a child system"
-   },
-   {
-    "name": "Critical access",
-    "topics": "SAP_ALL, critical transactions, emergency users, security audit log (SM19/SM20, RSAU)",
-    "lab": "Audit critical access"
-   },
-   {
-    "name": "Integration with IGA",
-    "topics": "Provisioning SAP users and roles from One Identity, SailPoint or Saviynt",
-    "lab": "Provision a user from an IGA tool"
-   },
-   {
-    "name": "Transports & operations",
-    "topics": "Role transports, mass changes, user comparison (PFUD)",
-    "lab": "Transport a role change"
-   },
-   {
-    "name": "SAP GRC Access Control",
-    "topics": "Access Risk Analysis, Emergency Access Management, Access Request Management, Business Role Management",
-    "lab": "Run a risk analysis and firefighter session"
-   },
-   {
-    "name": "SoD rulesets",
-    "topics": "Ruleset design, mitigating controls, remediation projects",
-    "lab": "Remediate SoD conflicts"
-   },
-   {
-    "name": "Redesign projects",
-    "topics": "Role redesign methodology, S/4HANA migration security",
-    "lab": "Redesign plan for a sample client"
-   }
-  ],
-  "capstone": "Role concept, GRC setup and IGA integration for a sample company"
- },
- {
   "slug": "sap-cloud-identity-services",
   "vendor": "SAP",
   "title": "SAP Cloud Identity Services",
   "tag": "SAP",
   "category": "SAP",
-  "hours": 30,
+  "hours": 45,
   "free": false,
   "scope": "Identity Authentication, Identity Provisioning, BTP",
   "tagline": "IAS, IPS and BTP, untangled.",
-  "intro": "Identity for SAP cloud applications on SAP BTP.",
+  "intro": "Identity for SAP cloud applications on SAP BTP: SAP Cloud Identity Services, single sign-on, provisioning and authorizations.",
   "lab": "SAP BTP trial account",
   "modules": [
    {
@@ -1106,9 +1025,8 @@ export const GROUPS = [
  },
  {
   "title": "SAP identity",
-  "text": "Where business roles meet ERP authorizations.",
+  "text": "Identity and access for SAP cloud applications on SAP BTP.",
   "slugs": [
-   "sap-identity-authorizations",
    "sap-cloud-identity-services"
   ]
  },
@@ -1147,11 +1065,11 @@ export const PATHS = [
  {
   "name": "SAP Security Track",
   "tag": "SAP",
-  "text": "SAP authorizations on-premises and in the cloud, from PFCG roles to GRC and BTP.",
+  "text": "Identity for SAP cloud landscapes: SAP Cloud Identity Services on BTP, with Microsoft Entra ID as the corporate identity provider.",
   "steps": [
    "iam-fundamentals",
-   "sap-identity-authorizations",
-   "sap-cloud-identity-services"
+   "sap-cloud-identity-services",
+   "microsoft-entra-id"
   ]
  },
  {
@@ -1238,6 +1156,7 @@ export const BATCHES = [];
 // Course fees by course slug. Leave a course out to show "Fee on request".
 // USD = INR fee at 1 USD = 94.97 INR (Wise mid-market, 31 Oct 2026), rounded up to end in 9.
 export const PRICES = {
+  'iam-fundamentals': { inr: 29999, usd: 319 },
   'one-identity-manager': { inr: 39999, usd: 429 },
   'sailpoint': { inr: 44999, usd: 479 },
   'omada': { inr: 39999, usd: 429 },
@@ -1260,3 +1179,9 @@ export const BATCH_NOTE = 'New batches start every month.';
 export const TESTIMONIALS = [];
 
 export const ENQUIRY_TYPES = ['Free demo session', 'Register for a batch', 'Question about a course'];
+
+export const HOURS_RANGE = (() => {
+  const hs = COURSES.map((c) => c.hours);
+  const lo = Math.min(...hs), hi = Math.max(...hs);
+  return lo === hi ? `${lo}` : `${lo}–${hi}`;
+})();

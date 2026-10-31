@@ -45,7 +45,7 @@ export function Seo({ title, description, path, jsonLd }) {
 
 function Brand() {
   return (
-    <svg width="34" height="20" viewBox="0 0 120 52" aria-hidden="true">
+    <svg width="48" height="28" viewBox="0 0 120 52" aria-hidden="true">
       <circle cx="32" cy="28" r="20" fill="none" stroke="#12A594" strokeWidth="8" />
       <circle cx="88" cy="28" r="20" fill="none" stroke="#12A594" strokeWidth="8" />
       <path d="M53 24 Q60 15 67 24" fill="none" stroke="#12A594" strokeWidth="7" strokeLinecap="round" />
