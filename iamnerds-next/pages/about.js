@@ -1,5 +1,6 @@
 import { Seo, Crumbs, CtaBand } from '../lib/Layout';
-import { COURSES, SITE } from '../lib/data';
+import { COURSES, SITE, STUDENTS } from '../lib/data';
+import { LinkedInButton } from '../lib/Showcase';
 
 export default function About() {
   return (
@@ -16,6 +17,7 @@ export default function About() {
           <div className="eyebrow">About</div>
           <h1>Nerds, <em>on purpose.</em></h1>
           <p className="lede">IAMNerds is an online training platform purely for Identity &amp; Access Management technologies, based in India and open to learners worldwide.</p>
+          <div className="cta" style={{ marginTop: 'var(--s5)' }}><LinkedInButton /></div>
         </div>
       </section>
 
@@ -27,7 +29,7 @@ export default function About() {
           <div className="facts" style={{ marginTop: 'var(--s6)' }}>
             <div className="fact"><div className="n">18+</div><div className="l">years in enterprise IAM</div></div>
             <div className="fact"><div className="n">{COURSES.length}</div><div className="l">IAM courses</div></div>
-            <div className="fact"><div className="n">Global</div><div className="l">learners worldwide, in English</div></div>
+            <div className="fact"><div className="n">{STUDENTS}</div><div className="l">students trained across the world</div></div>
             <div className="fact"><div className="n">0</div><div className="l">orphaned accounts tolerated</div></div>
           </div>
         </div>

@@ -2,8 +2,9 @@ import Link from 'next/link';
 import { Seo, Crumbs, CtaBand } from '../lib/Layout';
 import CourseCard from '../lib/CourseCard';
 import { COURSES, GROUPS, SITE, bySlug } from '../lib/data';
+import { logoMap } from '../lib/logos';
 
-export default function Courses() {
+export default function Courses({ logos }) {
   return (
     <>
       <Seo
@@ -28,7 +29,7 @@ export default function Courses() {
               <h2>{g.title}</h2>
               <p>{g.text}</p>
               <div className="plat-cards">
-                {g.slugs.map((s) => <CourseCard key={s} course={bySlug(s)} />)}
+                {g.slugs.map((s) => <CourseCard key={s} course={bySlug(s)} logo={logos[s]} />)}
               </div>
             </div>
           ))}
@@ -47,4 +48,8 @@ export default function Courses() {
       <CtaBand title="Not sure where to start?" text="Tell us your role and we will suggest a course or learning path." href="/contact#talk" label="Enquire now" />
     </>
   );
+}
+
+export function getStaticProps() {
+  return { props: { logos: logoMap(COURSES.map((c) => c.slug)) } };
 }

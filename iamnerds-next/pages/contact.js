@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { Seo, Crumbs } from '../lib/Layout';
 import ContactForm, { countryList } from '../lib/ContactForm';
 import { COURSES, EMAIL, SITE, WHATSAPP } from '../lib/data';
+import { LinkedInButton } from '../lib/Showcase';
 
 export default function Contact({ countries }) {
   const { query, isReady } = useRouter();
@@ -23,6 +24,7 @@ export default function Contact({ countries }) {
             <p className="contact-lead">Tell us which course you are interested in and we will share the next batch dates and timings. A nerd reads every enquiry personally.</p>
             <div className="ways">
               <a className="btn primary" href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noopener noreferrer">WhatsApp us</a>
+              <LinkedInButton />
               <a className="email" href={`mailto:${EMAIL}`}>{EMAIL}</a>
             </div>
           </div>

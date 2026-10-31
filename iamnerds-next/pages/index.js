@@ -2,11 +2,13 @@ import Link from 'next/link';
 import Chamber from '../lib/Chamber';
 import { Seo, CtaBand } from '../lib/Layout';
 import CourseCard from '../lib/CourseCard';
-import { COURSES, PATHS, SITE, bySlug } from '../lib/data';
+import { COURSES, PATHS, SITE, STUDENTS, bySlug } from '../lib/data';
+import { logoMap } from '../lib/logos';
+import { CompanyMarquee, LinkedInButton, StudentsStat } from '../lib/Showcase';
 
 const FEATURED = ['one-identity-manager', 'sailpoint', 'sap-identity-authorizations', 'microsoft-entra-id', 'okta', 'cyberark', 'active-directory', 'saviynt'];
 
-export default function Home() {
+export default function Home({ logos }) {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -32,10 +34,13 @@ export default function Home() {
               <Link className="btn primary" href="/courses">Browse courses</Link>
               <Link className="btn" href="/contact#talk">Enquire now</Link>
             </div>
+            <p className="hero-proof"><b>{STUDENTS}</b> students trained across the world in IAM platforms</p>
           </div>
           <Chamber />
         </div>
       </section>
+
+      <StudentsStat />
 
       <section className="band" id="courses">
         <div className="wrap">
@@ -44,11 +49,13 @@ export default function Home() {
             <p>One course per technology, from the first login to architecture and tuning. Every module ends in a lab, not a slide.</p>
           </div>
           <div className="plat-cards">
-            {FEATURED.map((s) => <CourseCard key={s} course={bySlug(s)} />)}
+            {FEATURED.map((s) => <CourseCard key={s} course={bySlug(s)} logo={logos[s]} />)}
           </div>
           <p className="more"><Link href="/courses">All {COURSES.length} courses →</Link></p>
         </div>
       </section>
+
+      <CompanyMarquee />
 
       <section className="band" id="how">
         <div className="wrap">
@@ -91,16 +98,20 @@ export default function Home() {
             <p>So the labs look like real projects: messy HR feeds, slow job queues, audit findings and service accounts nobody owns.</p>
             <div className="facts" style={{ marginTop: 'var(--s6)' }}>
               <div className="fact"><div className="n">18+</div><div className="l">years in enterprise IAM</div></div>
+              <div className="fact"><div className="n">{STUDENTS}</div><div className="l">students trained worldwide</div></div>
               <div className="fact"><div className="n">{COURSES.length}</div><div className="l">IAM courses</div></div>
               <div className="fact"><div className="n">30 h</div><div className="l">per course</div></div>
-              <div className="fact"><div className="n">100%</div><div className="l">modules with a hands-on lab</div></div>
             </div>
           </div>
-          <p className="more"><Link href="/about">More about IAMNerds →</Link></p>
+          <div className="more more-row"><Link href="/about">More about IAMNerds →</Link><LinkedInButton /></div>
         </div>
       </section>
 
       <CtaBand title="Ready to start?" text="Tell us which course you want and we will send you the next batch dates." href="/contact#talk" label="Enquire now" />
     </>
   );
+}
+
+export function getStaticProps() {
+  return { props: { logos: logoMap(COURSES.map((c) => c.slug)) } };
 }
