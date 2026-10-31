@@ -1,0 +1,182 @@
+{
+  "trailingSlash": "never",
+  "routes": [
+    {
+      "route": "/impressum",
+      "rewrite": "/impressum.html"
+    },
+    {
+      "route": "/datenschutz",
+      "rewrite": "/datenschutz.html"
+    },
+    {
+      "route": "/about",
+      "rewrite": "/about.html"
+    },
+    {
+      "route": "/contact",
+      "rewrite": "/contact.html"
+    },
+    {
+      "route": "/courses",
+      "rewrite": "/courses.html"
+    },
+    {
+      "route": "/learning-paths",
+      "rewrite": "/learning-paths.html"
+    },
+    {
+      "route": "/vision-mission",
+      "rewrite": "/vision-mission.html"
+    },
+    {
+      "route": "/courses/iam-fundamentals",
+      "rewrite": "/courses/iam-fundamentals.html"
+    },
+    {
+      "route": "/courses/one-identity-manager",
+      "rewrite": "/courses/one-identity-manager.html"
+    },
+    {
+      "route": "/courses/sailpoint",
+      "rewrite": "/courses/sailpoint.html"
+    },
+    {
+      "route": "/courses/omada",
+      "rewrite": "/courses/omada.html"
+    },
+    {
+      "route": "/courses/saviynt",
+      "rewrite": "/courses/saviynt.html"
+    },
+    {
+      "route": "/courses/sap-identity-authorizations",
+      "rewrite": "/courses/sap-identity-authorizations.html"
+    },
+    {
+      "route": "/courses/sap-cloud-identity-services",
+      "rewrite": "/courses/sap-cloud-identity-services.html"
+    },
+    {
+      "route": "/courses/microsoft-entra-id",
+      "rewrite": "/courses/microsoft-entra-id.html"
+    },
+    {
+      "route": "/courses/active-directory",
+      "rewrite": "/courses/active-directory.html"
+    },
+    {
+      "route": "/courses/okta",
+      "rewrite": "/courses/okta.html"
+    },
+    {
+      "route": "/courses/onelogin",
+      "rewrite": "/courses/onelogin.html"
+    },
+    {
+      "route": "/courses/ping-identity",
+      "rewrite": "/courses/ping-identity.html"
+    },
+    {
+      "route": "/courses/cyberark",
+      "rewrite": "/courses/cyberark.html"
+    },
+    {
+      "route": "/courses/beyondtrust",
+      "rewrite": "/courses/beyondtrust.html"
+    },
+    {
+      "route": "/services",
+      "redirect": "/courses",
+      "statusCode": 301
+    },
+    {
+      "route": "/services.html",
+      "redirect": "/courses",
+      "statusCode": 301
+    },
+    {
+      "route": "/platforms",
+      "redirect": "/courses",
+      "statusCode": 301
+    },
+    {
+      "route": "/platforms.html",
+      "redirect": "/courses",
+      "statusCode": 301
+    },
+    {
+      "route": "/industries",
+      "redirect": "/courses",
+      "statusCode": 301
+    },
+    {
+      "route": "/industries.html",
+      "redirect": "/courses",
+      "statusCode": 301
+    },
+    {
+      "route": "/approach",
+      "redirect": "/learning-paths",
+      "statusCode": 301
+    },
+    {
+      "route": "/approach.html",
+      "redirect": "/learning-paths",
+      "statusCode": 301
+    },
+    {
+      "route": "/non-human-identities",
+      "redirect": "/vision-mission",
+      "statusCode": 301
+    },
+    {
+      "route": "/non-human-identities.html",
+      "redirect": "/vision-mission",
+      "statusCode": 301
+    },
+    {
+      "route": "/courses/non-human-identity-ai-agents",
+      "redirect": "/vision-mission",
+      "statusCode": 301
+    },
+    {
+      "route": "/de",
+      "redirect": "/",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/*",
+      "redirect": "/",
+      "statusCode": 301
+    },
+    {
+      "route": "/_next/static/*",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/js/*",
+      "headers": {
+        "Cache-Control": "public, max-age=604800"
+      }
+    }
+  ],
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/404.html",
+      "statusCode": 404
+    }
+  },
+  "globalHeaders": {
+    "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://germanywestcentral-1.in.applicationinsights.azure.com; form-action 'self'; frame-ancestors 'none'; base-uri 'self'",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=()"
+  },
+  "platform": {
+    "apiRuntime": "node:20"
+  }
+}
