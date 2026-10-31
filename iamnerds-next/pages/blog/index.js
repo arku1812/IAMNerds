@@ -34,7 +34,7 @@ export default function Blog() {
           ))}
         </div>
       </div></section>
-      <CtaBand title="Prepare with a nerd." text="Our 30-hour courses include interview-style scenarios in every module." href="/contact?type=demo#talk" label="Book a free demo" />
+      <CtaBand title="Prepare with a nerd." text="Our courses include interview-style scenarios in every module." href="/contact?type=demo#talk" label="Book a free demo" />
     </>
   );
 }

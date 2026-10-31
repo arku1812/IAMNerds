@@ -58,7 +58,7 @@ export default function Article({ slug }) {
           <div className="side-card">
             <span className="k">{c.tag} · COURSE</span>
             <h3>{c.title}</h3>
-            <p>{c.tagline} 30 hours, {c.modules.length} modules, every module with a lab.</p>
+            <p>{c.tagline} {c.hours} hours, {c.modules.length} modules, every module with a lab.</p>
             <Link className="btn primary" href={demoHref(c.title)}>Book a free demo</Link>
             <Link className="btn" href={`/courses/${c.slug}`}>See the curriculum</Link>
           </div>
