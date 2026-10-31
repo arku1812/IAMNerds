@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import { Seo, Crumbs, CtaBand } from '../lib/Layout';
-import { BatchTable, FeeTable, upcomingBatches } from '../lib/Batches';
-import { BATCH_NOTE, COURSES, SITE } from '../lib/data';
+import { BatchTable, upcomingBatches } from '../lib/Batches';
+import { BATCH_NOTE, SITE } from '../lib/data';
 
 export default function Batches({ batches }) {
   return (
     <>
       <Seo
-        title="Batches & Course Fees | IAMNerds IAM Training"
-        description="Upcoming IAMNerds batch start dates, schedules and course fees for One Identity Manager, SailPoint, Saviynt, SAP, Entra ID, Okta, CyberArk and more."
+        title="Upcoming Batches | IAMNerds IAM Training"
+        description="IAMNerds batches start every month. Upcoming start dates and schedules for One Identity Manager, SailPoint, Saviynt, SAP, Entra ID, Okta, CyberArk and more."
         path="/batches"
         jsonLd={{ '@context': 'https://schema.org', '@type': 'WebPage', url: `${SITE}/batches`, name: 'Upcoming batches | IAMNerds', inLanguage: 'en' }}
       />
@@ -36,9 +36,6 @@ export default function Batches({ batches }) {
             </div>
           </div>
         )}
-        <h2 className="fees-h">Course fees</h2>
-        <p className="fees-note">Fees are shown in Indian rupees and US dollars. US dollar amounts are approximate; you pay the amount confirmed on your invoice.</p>
-        <FeeTable courses={COURSES} />
       </div></section>
       <CtaBand title="Training a team?" text="We run private batches for teams, on your schedule." href="/contact?type=question#talk" label="Ask about team batches" />
     </>
