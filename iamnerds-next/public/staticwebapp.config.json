@@ -2,6 +2,38 @@
   "trailingSlash": "never",
   "routes": [
     {
+      "route": "/blog/sailpoint-vs-saviynt-vs-one-identity-manager",
+      "rewrite": "/blog/sailpoint-vs-saviynt-vs-one-identity-manager.html"
+    },
+    {
+      "route": "/blog/iga-vs-pam-vs-access-management",
+      "rewrite": "/blog/iga-vs-pam-vs-access-management.html"
+    },
+    {
+      "route": "/blog/how-to-start-a-career-in-iam",
+      "rewrite": "/blog/how-to-start-a-career-in-iam.html"
+    },
+    {
+      "route": "/blog/ping-identity-interview-questions",
+      "rewrite": "/blog/ping-identity-interview-questions.html"
+    },
+    {
+      "route": "/blog/active-directory-interview-questions",
+      "rewrite": "/blog/active-directory-interview-questions.html"
+    },
+    {
+      "route": "/blog/saviynt-interview-questions",
+      "rewrite": "/blog/saviynt-interview-questions.html"
+    },
+    {
+      "route": "/blog/cyberark-interview-questions",
+      "rewrite": "/blog/cyberark-interview-questions.html"
+    },
+    {
+      "route": "/blog/okta-interview-questions",
+      "rewrite": "/blog/okta-interview-questions.html"
+    },
+    {
       "route": "/blog/microsoft-entra-id-interview-questions",
       "rewrite": "/blog/microsoft-entra-id-interview-questions.html"
     },
