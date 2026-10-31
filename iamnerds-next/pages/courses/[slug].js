@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { Seo, Crumbs, CtaBand } from '../../lib/Layout';
 import { COURSES, SITE, bySlug } from '../../lib/data';
+import { logoFor } from '../../lib/logos';
+import { VendorMark } from '../../lib/CourseCard';
 
-export default function Course({ slug }) {
+export default function Course({ slug, logo }) {
   const c = bySlug(slug);
   const path = `/courses/${c.slug}`;
   const n = c.modules.length;
@@ -29,7 +31,7 @@ export default function Course({ slug }) {
       <section className="hero page-hero">
         <div className="wrap">
           <Crumbs items={[['/', 'Home'], ['/courses', 'Courses'], [path, c.title]]} />
-          <div className="eyebrow">{c.tag} · Course</div>
+          <div className="course-head"><div className="eyebrow">{c.tag} · Course</div><VendorMark course={c} logo={logo} big /></div>
           <h1>{c.title}: <em>{c.tagline}</em></h1>
           <p className="lede">{c.intro}</p>
           <div className="course-facts">
@@ -57,6 +59,10 @@ export default function Course({ slug }) {
             ))}
           </tbody>
         </table></div>
+        <div className="register-row">
+          <p><b>Next batch forming now.</b> Reserve your seat for the {c.title} course.</p>
+          <Link className="btn primary btn-lg" href={`/contact?course=${encodeURIComponent(c.title)}#talk`}>Register for a Batch</Link>
+        </div>
       </div></section>
 
       {c.capstone && (
@@ -94,5 +100,5 @@ export function getStaticPaths() {
 }
 
 export function getStaticProps({ params }) {
-  return { props: { slug: params.slug } };
+  return { props: { slug: params.slug, logo: logoFor(params.slug) } };
 }
