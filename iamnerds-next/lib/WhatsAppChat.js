@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { WHATSAPP } from './data';
+import { track } from './track';
 
 const GREETING = 'Hi! I would like to know more about the IAMNerds courses.';
 
@@ -51,7 +52,7 @@ export default function WhatsAppChat() {
         type="button"
         aria-label={open ? 'Close WhatsApp chat' : 'Chat with us on WhatsApp'}
         aria-expanded={open}
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => { if (!open) track('WhatsApp chat opened'); setOpen((o) => !o); }}
       >
         <WaIcon size={34} />
       </button>

@@ -234,6 +234,338 @@ export const ARTICLES = [
       },
     ],
   },
+  {
+    slug: 'okta-interview-questions',
+    title: 'Okta Interview Questions and Answers (Workforce Identity)',
+    short: 'Okta interview questions',
+    description: '16 Okta interview questions with clear answers: Universal Directory, SSO, Lifecycle Management, authentication policies, FastPass, Okta Workflows and troubleshooting.',
+    date: '2026-11-01',
+    course: 'okta',
+    tag: 'ACCESS',
+    intro: [
+      'Okta interviews focus on how you run a workforce identity platform day to day: directories and profile mastering, single sign-on, provisioning and the policies that decide how people authenticate.',
+      'Answer with a concrete example: an application you integrated, a policy you designed or an incident you fixed.',
+    ],
+    sections: [
+      { title: 'Fundamentals', qa: [
+        ['What is Universal Directory?', 'Okta\'s user store. It holds Okta user profiles and the profiles of connected applications and directories, with profile mappings that define how attributes flow between them.'],
+        ['Okta Workforce Identity vs Customer Identity?', 'Workforce Identity secures employees, contractors and partners signing in to business applications. Customer Identity (built on Auth0) is for customer-facing applications, with self-service registration and developer-focused APIs.'],
+        ['SAML or OpenID Connect for a new application?', 'Prefer OpenID Connect for modern web and mobile applications and APIs; it is token-based and simpler. Use SAML when the application only supports SAML, which is still common for enterprise SaaS.'],
+        ['What is attribute mastering?', 'Deciding which source owns each user attribute, for example HR for job title and Active Directory for the username. Profile sources and mappings in Okta enforce it so values are not overwritten by the wrong system.'],
+      ]},
+      { title: 'Directories and lifecycle', qa: [
+        ['How does Okta integrate with Active Directory?', 'Through lightweight AD agents installed on domain-joined servers. They import users and groups, can push changes back, and support delegated authentication so users sign in with their AD password.'],
+        ['What does Lifecycle Management do?', 'It automates provisioning and deprovisioning to applications, usually over SCIM: creating accounts when users are assigned, updating attributes, and deactivating accounts when users are unassigned or leave.'],
+        ['What are group rules?', 'Rules that add users to groups automatically based on profile attributes, such as department or location. Combined with group-based application assignment, they give people the right apps without manual work.'],
+        ['How would you design HR-driven provisioning?', 'Make the HR system (for example Workday) the profile source, import new hires before their start date, use group rules for birthright access, push accounts to AD and SaaS apps, and deactivate on the termination date.'],
+      ]},
+      { title: 'Authentication and security', qa: [
+        ['Global session policy vs authentication policies?', 'The global session policy controls how users establish an Okta session and which factors are needed for that. Authentication policies (app sign-in policies) set requirements per application, such as phishing-resistant authentication for admin consoles.'],
+        ['What is Okta FastPass?', 'A passwordless, phishing-resistant authenticator built into Okta Verify. It uses device-bound keys and can check device posture before granting access.'],
+        ['What is ThreatInsight?', 'An Okta feature that detects credential-based attacks, such as password spraying from suspicious IP addresses, and can log or block those requests before authentication.'],
+      ]},
+      { title: 'Automation and governance', qa: [
+        ['What can you build with Okta Workflows?', 'No-code automations triggered by Okta events or schedules, such as a leaver workflow that suspends accounts, transfers files and notifies the manager, using connectors to other systems.'],
+        ['Inline hooks vs event hooks?', 'Inline hooks call your service during an Okta process and can change the outcome, for example to add claims to a token. Event hooks notify your service after something happened, without changing the process.'],
+        ['How do you manage Okta configuration as code?', 'With the Okta Terraform provider and the management APIs, using OAuth service applications with scoped permissions instead of long-lived API tokens.'],
+      ]},
+      { title: 'Troubleshooting scenarios', qa: [
+        ['A user cannot sign in to a SAML application. What do you check?', 'Search the System Log for the user and application, check assignment and the sign-on policy result, then compare the SAML assertion (captured with a SAML tracer) with what the application expects: NameID format, audience, ACS URL and certificate.'],
+        ['A leaver still has an active SaaS account. How do you investigate?', 'Confirm the user was deactivated in Okta, check that provisioning (deactivate users) is enabled for that application, look for failed provisioning tasks in the System Log, and verify the account was linked to the Okta user in the first place.'],
+      ]},
+    ],
+  },
+  {
+    slug: 'cyberark-interview-questions',
+    title: 'CyberArk Interview Questions and Answers (PAM)',
+    short: 'CyberArk interview questions',
+    description: '16 CyberArk interview questions with clear answers: Vault, PVWA, CPM, PSM, safes, platforms, reconciliation, Privilege Cloud, Secrets Manager and troubleshooting.',
+    date: '2026-11-01',
+    course: 'cyberark',
+    tag: 'PAM',
+    intro: [
+      'CyberArk interviews check whether you understand the components, can design a safe model and can keep password rotation and session management running in production.',
+      'Expect at least one troubleshooting question about a failed password change. Practise explaining the CPM workflow step by step.',
+    ],
+    sections: [
+      { title: 'Architecture', qa: [
+        ['Name the core CyberArk PAM components.', 'The Vault (secure storage), PVWA (web interface), CPM (Central Policy Manager, which verifies and changes passwords), PSM (Privileged Session Manager for isolated, recorded sessions) and PSM for SSH (PSMP) for Unix sessions.'],
+        ['PAM Self-Hosted vs Privilege Cloud?', 'With PAM Self-Hosted you install and run the Vault and all components. With Privilege Cloud, CyberArk runs the Vault and core services as SaaS, while you run connector components (such as CPM and PSM) in your network to reach target systems.'],
+        ['Why is the Vault so hardened?', 'It holds every privileged credential. It runs on a dedicated server with its own firewall, minimal services and no domain membership, and only CyberArk components and authorised users connect to it.'],
+      ]},
+      { title: 'Safes, platforms and policies', qa: [
+        ['How do you design safes?', 'Group accounts by ownership and access needs, for example per team, platform and environment, so permissions can be granted per safe. Avoid one huge safe; keep naming consistent and document who owns each safe.'],
+        ['What is a platform?', 'A template that defines how CyberArk manages a type of account: password policy, change and verify intervals, connection components and plug-ins. Accounts inherit settings from their platform.'],
+        ['What is the Master Policy?', 'The global set of rules for privileged access, such as dual control, exclusive access, one-time passwords and session recording, with exceptions defined per platform.'],
+        ['Explain dual control, exclusive access and one-time passwords.', 'Dual control requires approval before a password is used. Exclusive access lets only one user check out an account at a time. One-time passwords trigger a password change after each use, so a retrieved password never stays valid.'],
+      ]},
+      { title: 'Password management and sessions', qa: [
+        ['Verify, change and reconcile: what is the difference?', 'Verify checks that the password stored in the Vault works on the target. Change sets a new password. Reconcile uses a separate reconcile account to reset the password when the stored one no longer works.'],
+        ['How does PSM protect sessions?', 'Users connect through PSM without ever seeing the password. PSM injects the credential, isolates the target from the user\'s workstation, and records the session for audit and live monitoring.'],
+        ['How do you onboard accounts at scale?', 'Use account discovery to find privileged accounts on servers and in directories, then onboarding rules that assign discovered accounts to the right safe and platform automatically.'],
+      ]},
+      { title: 'Secrets and endpoints', qa: [
+        ['How do you remove hard-coded passwords from applications?', 'Use CyberArk Secrets Manager: Conjur for cloud-native and DevOps workloads, and Credential Providers for traditional applications, so applications fetch credentials at runtime instead of storing them in code or config files.'],
+        ['What does Endpoint Privilege Manager do?', 'It removes local administrator rights from workstations and servers, elevates specific trusted applications when needed, and controls which applications can run.'],
+        ['How do you protect against a Vault outage?', 'With a Disaster Recovery Vault that replicates from the primary, Vault high availability where required, regular backups, and tested failover procedures.'],
+      ]},
+      { title: 'Troubleshooting scenarios', qa: [
+        ['A CPM password change keeps failing. How do you troubleshoot?', 'Read the error on the account in PVWA, then the CPM logs for that account. Check network access from the CPM to the target, the platform settings and password policy, whether the stored password is still valid, and whether a reconcile account is configured. Fix the cause before triggering a reconcile.'],
+        ['Users cannot connect through PSM. What do you check?', 'Check the PSM server health and connection component used by the platform, the user\'s safe permissions, the target\'s reachability from the PSM server, and the session error details in PVWA and the PSM logs.'],
+        ['How do you prepare for a CyberArk audit?', 'Show which accounts are onboarded and rotated, safe permissions and owners, session recordings for sensitive systems, and reports on accounts that failed verification or were used outside policy.'],
+      ]},
+    ],
+  },
+  {
+    slug: 'saviynt-interview-questions',
+    title: 'Saviynt Interview Questions and Answers (Enterprise Identity Cloud)',
+    short: 'Saviynt interview questions',
+    description: '14 Saviynt interview questions with clear answers: security systems, endpoints, connections, import jobs, rules, ARS, workflows, roles, campaigns, SoD and troubleshooting.',
+    date: '2026-11-01',
+    course: 'saviynt',
+    tag: 'IGA',
+    intro: [
+      'Saviynt interviews test whether you can connect applications, automate the identity lifecycle with rules and run access governance in Saviynt Enterprise Identity Cloud (EIC).',
+      'Use the product\'s own terms in your answers, such as security system, endpoint and connection, and support them with a project example.',
+    ],
+    sections: [
+      { title: 'Fundamentals', qa: [
+        ['What are a security system, an endpoint and a connection?', 'A security system represents an application in Saviynt. An endpoint is a specific instance or target within it where accounts and entitlements live. A connection holds the technical details the connector uses to reach the system, such as URLs, credentials and JSON configuration.'],
+        ['How do users get into Saviynt?', 'Through user import jobs from an authoritative source such as an HR system or a file, which create and update users. Account and entitlement imports then bring in access from connected applications.'],
+        ['What does an account import correlate?', 'It links imported accounts to existing users through a correlation configuration, typically on employee ID or username. Uncorrelated accounts are orphans that need review.'],
+      ]},
+      { title: 'Lifecycle and rules', qa: [
+        ['What are user update rules and technical rules?', 'User update rules react to changes in user data, for example a department change, and can trigger actions. Technical rules assign birthright access such as accounts and entitlements based on user attributes.'],
+        ['How do you implement joiner, mover and leaver?', 'Joiners get birthright access through technical rules after the HR import. Movers trigger user update rules that add new access and remove access no longer needed. Leavers are disabled or deprovisioned based on the HR termination status and date.'],
+        ['What are pending tasks?', 'Provisioning tasks Saviynt has created but not yet completed, for example account creation waiting for a provisioning job or manual fulfilment. Monitoring them is part of daily operations.'],
+      ]},
+      { title: 'Requests, roles and reviews', qa: [
+        ['What is ARS?', 'The Access Request System, where users request access, approvals run through configured workflows, and approved requests turn into provisioning tasks.'],
+        ['Which workflow types have you built?', 'Serial, parallel and conditional approval workflows, for example manager approval followed by application owner approval, with escalations when approvers do not respond.'],
+        ['Enterprise roles vs application roles?', 'Application roles bundle entitlements within one application. Enterprise roles span several applications and represent a job function. Both can be requested, assigned by rules and certified.'],
+        ['Which campaigns have you run?', 'User manager campaigns, entitlement owner campaigns and role campaigns, with reminders, escalations and automatic revocation of rejected access.'],
+      ]},
+      { title: 'Compliance and troubleshooting', qa: [
+        ['How does SoD work in Saviynt?', 'Rulesets define conflicting functions and the entitlements behind them. Saviynt detects violations in existing access and in requests, and violations can be remediated or accepted with mitigating controls. This is especially strong for SAP and ERP applications.'],
+        ['Provisioning to an application fails. What do you check?', 'Test the connection, read the job and task logs for the failing tasks, check the connection JSON and the target API response, and confirm the account and attribute mappings. Then reprocess the pending tasks.'],
+        ['How do you move configuration between environments?', 'With Saviynt\'s transport feature, which exports configuration objects such as connections, rules and workflows from one environment and imports them into the next, ideally with a documented change log.'],
+        ['How do you report on access in Saviynt?', 'With analytics queries and reports, for example orphan accounts, users with SoD violations or access granted outside requests, scheduled and sent to owners.'],
+      ]},
+    ],
+  },
+  {
+    slug: 'active-directory-interview-questions',
+    title: 'Active Directory Interview Questions and Answers',
+    short: 'Active Directory interview questions',
+    description: '16 Active Directory interview questions with clear answers: forests, FSMO roles, replication, Kerberos, group scopes, GPO, delegation, gMSA, LAPS, tiering and recovery.',
+    date: '2026-11-01',
+    course: 'active-directory',
+    tag: 'DIRECTORY',
+    intro: [
+      'Almost every IAM role touches Active Directory, so interviewers expect you to know its structure, how authentication works and how to keep it secure.',
+      'Expect security questions too: tiering, privileged groups and common attack paths are now part of most AD interviews.',
+    ],
+    sections: [
+      { title: 'Structure and replication', qa: [
+        ['Forest, domain, tree and OU: what is the difference?', 'A forest is the security boundary and top-level container. Domains inside it are administrative and replication units; domains sharing a namespace form a tree. Organisational units organise objects within a domain for delegation and Group Policy.'],
+        ['What are the FSMO roles?', 'Five single-master roles: Schema Master and Domain Naming Master (one per forest), and RID Master, PDC Emulator and Infrastructure Master (one per domain). The PDC Emulator also acts as the time source and handles urgent password changes.'],
+        ['How does AD replication work?', 'Domain controllers replicate changes multi-master. Within a site, replication is fast and frequent; between sites it follows site links and schedules. Tools such as repadmin and dcdiag show replication health.'],
+      ]},
+      { title: 'Authentication and groups', qa: [
+        ['Kerberos vs NTLM?', 'Kerberos uses tickets issued by the domain controller and supports mutual authentication and delegation. NTLM is an older challenge-response protocol used as a fallback. Reducing NTLM usage is a common hardening goal.'],
+        ['Explain group scopes.', 'Global groups contain users from their own domain, domain local groups grant permissions to resources in their domain, and universal groups can contain members from any domain in the forest. The classic pattern is AGDLP: accounts into global groups, global groups into domain local groups, and permissions on domain local groups.'],
+        ['What is a gMSA?', 'A group Managed Service Account: a service account whose complex password is generated and rotated automatically by AD and can be used by several servers, removing manually managed service account passwords.'],
+      ]},
+      { title: 'Group Policy and delegation', qa: [
+        ['In what order is Group Policy applied?', 'Local, site, domain, then OU (LSDOU), with child OUs applied last. Enforced links, block inheritance, security filtering and WMI filters change the result.'],
+        ['How do you delegate helpdesk password resets?', 'Use Delegation of Control on the OUs that hold user accounts to grant a helpdesk group only the reset password and unlock rights, instead of adding them to privileged groups.'],
+        ['What is AdminSDHolder?', 'A container whose permissions are applied regularly to members of protected privileged groups by the SDProp process. It prevents permission changes on those accounts, which is why delegated rights do not apply to them.'],
+      ]},
+      { title: 'Security', qa: [
+        ['What is the AD tiering model?', 'A separation of administration into tiers: Tier 0 for identity infrastructure such as domain controllers, Tier 1 for servers and Tier 2 for workstations. Admins use separate accounts per tier and never log on to a lower tier with higher-tier credentials.'],
+        ['What does LAPS do?', 'Windows LAPS gives every computer a unique, regularly rotated local administrator password stored in AD or Entra ID, which stops attackers reusing one local password across machines.'],
+        ['What is Kerberoasting and how do you reduce the risk?', 'Attackers request service tickets for accounts with SPNs and try to crack them offline. Reduce the risk with gMSAs, long random passwords for service accounts, AES encryption and monitoring for unusual ticket requests.'],
+        ['What is the Protected Users group?', 'A group that applies stronger protections to its members, such as no NTLM, no credential caching and no weak Kerberos encryption, for privileged accounts that can work with those limits.'],
+      ]},
+      { title: 'Operations and recovery', qa: [
+        ['How do you recover a deleted object?', 'With the AD Recycle Bin, if enabled, you restore the object with its attributes and group memberships. Without it, you use an authoritative restore from a system state backup.'],
+        ['How do you clean up stale accounts safely?', 'Find users and computers inactive for a defined period using lastLogonTimestamp, disable and move them to a quarantine OU first, notify owners, and delete only after a grace period.'],
+        ['Replication is failing between two sites. Where do you start?', 'Run repadmin /replsummary and dcdiag, check DNS resolution and network ports between the domain controllers, site link configuration and time synchronisation, then read the Directory Service event logs.'],
+      ]},
+    ],
+  },
+  {
+    slug: 'ping-identity-interview-questions',
+    title: 'Ping Identity Interview Questions and Answers (PingFederate, PingOne)',
+    short: 'Ping Identity interview questions',
+    description: '15 Ping Identity interview questions with clear answers: PingFederate connections, adapters, OAuth and OIDC, PingAccess, PingDirectory, PingOne, DaVinci and troubleshooting.',
+    date: '2026-11-01',
+    course: 'ping-identity',
+    tag: 'ACCESS',
+    intro: [
+      'Ping Identity interviews go deep on federation. You will be asked how PingFederate connections, adapters and policies fit together, and how OAuth and OpenID Connect work in practice.',
+      'Have a federation project ready to explain end to end, including how you debugged it.',
+    ],
+    sections: [
+      { title: 'Federation with PingFederate', qa: [
+        ['What is the difference between an SP connection and an IdP connection?', 'An SP connection is configured when PingFederate acts as the identity provider for an application (service provider). An IdP connection is configured when PingFederate trusts an external identity provider and acts as the service provider side.'],
+        ['What are adapters?', 'Plug-ins that connect PingFederate to the outside world. IdP adapters authenticate users (for example the HTML Form adapter with a password credential validator); SP adapters hand the session to the application.'],
+        ['What is an attribute contract?', 'The list of attributes a connection or adapter sends. Attribute fulfilment maps each one to a source, such as the adapter, a data store like LDAP, or an expression.'],
+        ['What are authentication policies?', 'Rule trees that decide which authentication sources and steps a user goes through, for example password first, then MFA only for external networks, before a connection completes.'],
+      ]},
+      { title: 'OAuth and OpenID Connect', qa: [
+        ['Which OAuth grant types do you use for which clients?', 'Authorization code with PKCE for web, mobile and single-page applications, client credentials for service-to-service calls, and the device authorization grant for devices without a browser. Avoid the implicit and password grants.'],
+        ['JWT vs reference access tokens?', 'JWT tokens are self-contained and validated locally by the resource server. Reference tokens are opaque and must be introspected at the authorization server, which makes immediate revocation easier.'],
+        ['What is an access token manager?', 'The PingFederate component that defines how access tokens are issued: format, lifetime, signing and which attributes they carry. Clients are linked to an access token manager.'],
+      ]},
+      { title: 'PingAccess, PingDirectory and PingOne', qa: [
+        ['Gateway vs agent deployment in PingAccess?', 'In gateway mode, PingAccess sits in front of the application as a reverse proxy. In agent mode, an agent on the web server asks PingAccess for policy decisions. Gateway mode needs no change on the web server; agent mode avoids routing all traffic through a proxy.'],
+        ['What is PingDirectory used for?', 'A high-performance LDAP directory for large user stores, often for customer identity, with replication and data synchronisation to other sources.'],
+        ['What is PingOne DaVinci?', 'A no-code orchestration service in PingOne for building registration, login and verification journeys from connectors, including third-party services, without changing the application.'],
+        ['What does PingOne Protect add?', 'Risk signals such as bot detection, anomalous behaviour and IP reputation, used in authentication flows to require MFA or block high-risk attempts.'],
+      ]},
+      { title: 'Operations and troubleshooting', qa: [
+        ['How is PingFederate clustered?', 'An administrative console node holds the configuration and replicates it to engine nodes, which handle runtime traffic behind a load balancer. Configuration changes are made on the console node and replicated to the cluster.'],
+        ['SAML SSO fails after a certificate renewal. What do you check?', 'Check that the partner has the new signing certificate or metadata, that the connection uses the right certificate, and that both sides\' clocks are in sync. The PingFederate server log and a SAML trace show the exact error.'],
+        ['Where do you look first when a federation flow fails?', 'The PingFederate server log and audit log for the transaction, the browser trace (SAML tracer or developer tools), and the partner\'s logs for the error they returned.'],
+        ['What happened between Ping Identity and ForgeRock?', 'They merged under Ping Identity. ForgeRock\'s cloud platform continues as PingOne Advanced Identity Cloud, so interviewers may ask about both product lines.'],
+      ]},
+    ],
+  },
+  {
+    slug: 'how-to-start-a-career-in-iam',
+    kind: 'guide',
+    title: 'How to Start a Career in Identity & Access Management (IAM)',
+    short: 'How to start a career in IAM',
+    description: 'A practical roadmap into Identity & Access Management: the roles, the skills to learn first, a 6-month learning plan and how to land your first IAM job.',
+    date: '2026-11-01',
+    course: 'iam-fundamentals',
+    tag: 'CAREER',
+    intro: [
+      'Identity & Access Management decides who can access what, and every organisation needs it. Demand for people who can run IAM platforms keeps growing, and the field rewards practical skills more than any single degree.',
+      'This guide shows the main IAM roles, what to learn first and a realistic six-month plan to get job-ready.',
+    ],
+    sections: [
+      { title: 'What IAM people actually do', paras: [
+        'IAM teams make sure the right people and systems get the right access at the right time, and lose it when they no longer need it. Day to day, that means onboarding applications, automating joiners, movers and leavers, running access reviews, securing privileged accounts and fixing sign-in problems.',
+      ]},
+      { title: 'The main IAM roles', bullets: [
+        'IAM analyst or operations engineer: handles access requests, user lifecycle issues, access reviews and first-line troubleshooting. A common entry point.',
+        'IGA engineer: configures identity governance platforms such as One Identity Manager, SailPoint, Omada or Saviynt; connects HR and target systems; builds roles and certifications.',
+        'Access management engineer: runs single sign-on, MFA and federation with Microsoft Entra ID, Okta or Ping Identity.',
+        'PAM engineer: secures privileged accounts with CyberArk or BeyondTrust: vaulting, password rotation and session recording.',
+        'IAM architect: designs the overall identity landscape, chooses platforms and leads programmes. Usually reached after several years in one of the roles above.',
+      ]},
+      { title: 'Skills to learn first', bullets: [
+        'Core concepts: authentication vs authorisation, least privilege, RBAC, segregation of duties, the identity lifecycle.',
+        'Active Directory and Microsoft Entra ID: almost every IAM job touches them.',
+        'Protocols: SAML 2.0, OAuth 2.0 and OpenID Connect, at least well enough to read a token or assertion.',
+        'Basic scripting and data skills: PowerShell and SQL help in every IAM role.',
+        'One platform in depth: pick the IGA, access management or PAM platform most used in the jobs you want.',
+      ]},
+      { title: 'A 6-month learning plan', bullets: [
+        'Month 1: IAM fundamentals and Active Directory basics. Build a small lab domain.',
+        'Month 2: Microsoft Entra ID: users, groups, Conditional Access, app SSO in a free developer tenant.',
+        'Month 3: protocols: set up SAML and OIDC sign-in for a test application and read the tokens.',
+        'Months 4–5: one main platform in depth, for example One Identity Manager, SailPoint, Okta or CyberArk, with hands-on labs and a capstone project.',
+        'Month 6: interview preparation, a portfolio write-up of your lab projects, and applications.',
+      ]},
+      { title: 'Certifications worth considering', paras: [
+        'Certifications help you get past CV filters, especially for your first role. Common choices include Microsoft SC-300 (Identity and Access Administrator) for Entra ID, and the vendor certifications from Okta, CyberArk and SailPoint once you know those platforms. Hands-on skill still matters more in interviews than the certificate itself.',
+      ]},
+      { title: 'How to land your first IAM job', bullets: [
+        'Move sideways if you are already in IT: helpdesk, system administration and SAP basis roles all lead naturally into IAM.',
+        'Show your lab work: a short write-up of a joiner-mover-leaver flow you built speaks louder than a list of tools.',
+        'Prepare with real interview questions for your platform and practise explaining one project end to end.',
+        'Use LinkedIn: follow IAM practitioners, share what you learn, and connect with recruiters who hire for IAM.',
+      ]},
+    ],
+  },
+  {
+    slug: 'iga-vs-pam-vs-access-management',
+    kind: 'guide',
+    title: 'IGA vs PAM vs Access Management: Which Should You Learn First?',
+    short: 'IGA vs PAM vs Access Management',
+    description: 'What identity governance (IGA), privileged access management (PAM) and access management do, the platforms behind each, and how to choose the right one for your IAM career.',
+    date: '2026-11-01',
+    course: 'iam-fundamentals',
+    tag: 'CAREER',
+    intro: [
+      'Identity & Access Management has three big areas: identity governance and administration (IGA), access management (AM) and privileged access management (PAM). They overlap, but the daily work and the platforms are different.',
+      'Here is what each one does and how to decide where to start.',
+    ],
+    sections: [
+      { title: 'Identity governance and administration (IGA)', paras: [
+        'IGA manages the identity lifecycle and who has which access: joiner, mover and leaver automation, role models, access requests, access reviews and segregation of duties. It is closely tied to HR data and compliance.',
+      ], bullets: [
+        'Platforms: One Identity Manager, SailPoint, Omada, Saviynt.',
+        'Good fit if you like data, processes and business rules, and do not mind some scripting.',
+      ]},
+      { title: 'Access management (AM)', paras: [
+        'Access management controls how people sign in: single sign-on, multi-factor authentication, federation and Conditional Access. It is the most visible part of IAM, because every user meets it every day.',
+      ], bullets: [
+        'Platforms: Microsoft Entra ID, Okta, Ping Identity, OneLogin, SAP Cloud Identity Services.',
+        'Good fit if you enjoy protocols (SAML, OAuth, OpenID Connect), troubleshooting and working with many applications.',
+      ]},
+      { title: 'Privileged access management (PAM)', paras: [
+        'PAM protects the accounts that can do the most damage: administrators, service accounts and secrets. It covers vaulting, password rotation, session recording and removing standing admin rights.',
+      ], bullets: [
+        'Platforms: CyberArk, BeyondTrust.',
+        'Good fit if you have a system administration or security background and like infrastructure work.',
+      ]},
+      { title: 'Which should you learn first?', paras: [
+        'Start with the foundation all three share: IAM concepts, Active Directory and Microsoft Entra ID. Then choose by background: system administrators often move fastest into PAM, people with application or SAP experience into IGA, and those who enjoy cloud and protocols into access management.',
+        'Whichever you pick, learn one platform deeply with hands-on labs. Employers hire for platform experience, and moving between areas later is much easier once you know one well.',
+      ]},
+    ],
+  },
+  {
+    slug: 'sailpoint-vs-saviynt-vs-one-identity-manager',
+    kind: 'guide',
+    title: 'SailPoint vs Saviynt vs One Identity Manager: Which IGA Platform Should You Learn?',
+    short: 'SailPoint vs Saviynt vs One Identity Manager',
+    description: 'A practical comparison of SailPoint, Saviynt and One Identity Manager for IAM professionals: deployment models, how they are customised, typical projects and how to choose which to learn.',
+    date: '2026-11-01',
+    course: 'one-identity-manager',
+    tag: 'CAREER',
+    intro: [
+      'SailPoint, Saviynt and One Identity Manager are three of the identity governance platforms you will see most in job postings. All three automate the identity lifecycle, access requests and reviews, but they are built and customised in different ways.',
+      'This comparison focuses on what matters for your skills and career, not on which product is "best".',
+    ],
+    sections: [
+      { title: 'SailPoint', paras: [
+        'SailPoint offers IdentityIQ, installed and run by the customer, and Identity Security Cloud, a SaaS platform. IdentityIQ is customised with Java-based BeanShell rules and workflows; Identity Security Cloud with transforms, workflows and APIs.',
+      ], bullets: [
+        'Skills you build: identity data modelling, connectors, rules or transforms, certifications.',
+        'Learning tip: understand both products, since many organisations are moving from IdentityIQ to Identity Security Cloud.',
+      ]},
+      { title: 'Saviynt', paras: [
+        'Saviynt Enterprise Identity Cloud is a cloud-native platform combining identity governance with application access governance, including fine-grained SoD for ERP systems such as SAP.',
+      ], bullets: [
+        'Skills you build: connections and JSON-based connector configuration, rules, workflows, SoD rulesets, analytics.',
+        'Learning tip: get comfortable with REST APIs and JSON; much of the configuration uses them.',
+      ]},
+      { title: 'One Identity Manager', paras: [
+        'One Identity Manager is a highly configurable platform built around a central SQL Server database, with a strong data model, process orchestration and deep connectors for Active Directory, Entra ID and SAP. It is particularly common in larger enterprises in Europe.',
+      ], bullets: [
+        'Skills you build: data model and schema extensions, synchronization projects, processes, VB.NET scripting, performance tuning.',
+        'Learning tip: SQL skills pay off quickly, because so much of the product lives in the database.',
+      ]},
+      { title: 'How to choose', bullets: [
+        'Look at job postings in the city or region where you want to work, and count which platform appears most.',
+        'Match your background: Java helps with IdentityIQ, REST and JSON with Saviynt and Identity Security Cloud, SQL and .NET with One Identity Manager.',
+        'Consider your target employers: large enterprises with complex on-premises landscapes often run IdentityIQ or One Identity Manager; cloud-first organisations lean towards SaaS platforms.',
+        'Do not worry about choosing wrong: the concepts transfer, and many IGA consultants know two or more of these platforms.',
+      ]},
+    ],
+  },
 ];
 
 export const articleBySlug = (slug) => ARTICLES.find((a) => a.slug === slug);
+
+export const isGuide = (a) => a.kind === 'guide';
+export const questionCount = (a) => a.sections.reduce((n, s) => n + (s.qa ? s.qa.length : 0), 0);
+export function readMinutes(a) {
+  const text = [...a.intro, ...a.sections.flatMap((s) => [...(s.paras || []), ...(s.bullets || []), ...(s.qa || []).flat()])].join(' ');
+  return Math.max(1, Math.round(text.split(/\s+/).length / 200));
+}

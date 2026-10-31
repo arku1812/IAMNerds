@@ -2,6 +2,7 @@ import { useCallback, useRef, useState } from 'react';
 import { getCountries, getCountryCallingCode, isValidPhoneNumber } from 'libphonenumber-js';
 import { COURSES, EMAIL, ENQUIRY_TYPES, RECAPTCHA_SITE_KEY } from './data';
 import CountrySelect from './CountrySelect';
+import { track } from './track';
 import Recaptcha from './Recaptcha';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -71,6 +72,7 @@ export default function ContactForm({ countries, defaultCourse = '', defaultType
       if (r.ok && j.ok) {
         f.reset();
         setSent(true);
+        track('Enquiry submitted', { type: data.enquiryType, course: data.course });
         setStatus({ kind: 'ok', text: 'Thanks! A nerd will get back to you soon.' });
         return;
       }
