@@ -14,14 +14,11 @@ const CONTACT_TO = process.env.CONTACT_TO || 'hello@iamnerds.io';
 const MAIL_FROM = process.env.MAIL_FROM || 'hello@iamnerds.io';
 
 const TOPICS = new Set([
-  'IGA strategy & architecture',
-  'Joiner, mover, leaver',
-  'Role models & certifications',
-  'Privileged access (PAM)',
-  'Non-human identities',
-  'AI agent identity governance',
-  'SAP & directories',
-  'Audit readiness',
+  'Course waitlist',
+  'IAM Fundamentals access',
+  'Team training',
+  'Live instructor-led batch',
+  'Question about a course',
   'Something else',
 ]);
 
