@@ -13,7 +13,7 @@ export default function Home({ logos }) {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
-      { '@type': 'EducationalOrganization', '@id': `${SITE}/#organization`, name: 'IAMNerds', url: `${SITE}/`, logo: `${SITE}/icon-512.png`, email: 'hello@iamnerds.io', sameAs: ['https://www.linkedin.com/company/iamnerds/'] },
+      { '@type': 'EducationalOrganization', '@id': `${SITE}/#organization`, name: 'IAMNerds', url: `${SITE}/`, logo: `${SITE}/icon-512.png`, email: 'hello@iamnerds.io', sameAs: ['https://www.linkedin.com/company/iamnerds/'], address: { '@type': 'PostalAddress', addressLocality: 'Hyderabad', addressRegion: 'Telangana', addressCountry: 'IN' }, areaServed: [{ '@type': 'Country', name: 'India' }, { '@type': 'Country', name: 'United States' }] },
       { '@type': 'WebSite', '@id': `${SITE}/#website`, url: `${SITE}/`, name: 'IAMNerds', inLanguage: 'en' },
       { '@type': 'ItemList', name: 'IAMNerds courses', itemListElement: COURSES.map((c, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE}/courses/${c.slug}`, name: c.title })) },
     ],
@@ -21,7 +21,7 @@ export default function Home({ logos }) {
   return (
     <>
       <Seo
-        title="IAMNerds | Online IAM, IGA & PAM Training"
+        title="IAMNerds | Online IAM, IGA & PAM Training in India & USA"
         description="Hands-on online training for Identity & Access Management: One Identity Manager, SailPoint, Omada, Saviynt, SAP, Entra ID, Okta, Ping, CyberArk and BeyondTrust. 30–45 hours per course."
         path="/"
         jsonLd={jsonLd}
