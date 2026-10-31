@@ -1225,4 +1225,4 @@ export const COMPANIES = [
 // Google reCAPTCHA v2 ("I'm not a robot") site key from https://www.google.com/recaptcha/admin.
 // Public by design. Leave empty to hide the checkbox. The matching secret key goes into the
 // Azure Static Web App environment variable RECAPTCHA_SECRET.
-export const RECAPTCHA_SITE_KEY = '';
+export const RECAPTCHA_SITE_KEY = '6LdTUwouAAAAADCJLjBsfopqQuy4WHcuV-Jh6EOJ';
