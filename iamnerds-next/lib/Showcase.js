@@ -29,11 +29,20 @@ export function StudentsStat() {
   );
 }
 
+const GOOGLE = ['#4285F4', '#EA4335', '#FBBC05', '#4285F4', '#34A853', '#EA4335'];
+
+function CompanyName({ c }) {
+  if (c.color === 'multi') {
+    return <b>{c.name.split('').map((ch, i) => <span key={i} style={{ color: GOOGLE[i % GOOGLE.length] }}>{ch}</span>)}</b>;
+  }
+  return <b style={{ color: c.color }}>{c.name}{c.dot && <span style={{ color: c.dot }}>.</span>}</b>;
+}
+
 // Scrolling strip of company names. Hidden while COMPANIES is empty.
 export function CompanyMarquee() {
   if (!COMPANIES.length) return null;
   const row = (k) => COMPANIES.map((c) => (
-    <span className="mq-item" key={k + c.name}><b>{c.name}</b><small>{c.sector}</small></span>
+    <span className="mq-item" key={k + c.name}><CompanyName c={c} /><small>{c.sector}</small></span>
   ));
   return (
     <section className="band companies" aria-labelledby="companies-h">

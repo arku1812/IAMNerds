@@ -113,7 +113,7 @@ export default function Layout({ children }) {
               <span key={href}>{i > 0 && ' · '}<Link href={href}>{label}</Link></span>
             ))}
           </nav>
-          <span><Link href="/privacy-policy">Privacy policy</Link> · <Link href="/refund-policy">Refund policy</Link></span>
+          <span><Link href="/privacy-policy">Privacy policy</Link> · <Link href="/terms">Terms and Conditions</Link></span>
         </div>
         <div className="wrap legal-note">
           Independent training. Vendor and product names are trademarks of their owners; IAMNerds is not affiliated with or endorsed by them.
