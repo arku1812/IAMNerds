@@ -2,6 +2,14 @@
   "trailingSlash": "never",
   "routes": [
     {
+      "route": "/iam-training-usa",
+      "rewrite": "/iam-training-usa.html"
+    },
+    {
+      "route": "/iam-training-india",
+      "rewrite": "/iam-training-india.html"
+    },
+    {
       "route": "/blog/sailpoint-vs-saviynt-vs-one-identity-manager",
       "rewrite": "/blog/sailpoint-vs-saviynt-vs-one-identity-manager.html"
     },
