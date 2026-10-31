@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { BATCHES, BATCH_NOTE, PRICES, bySlug } from './data';
 
@@ -11,28 +10,12 @@ export function upcomingBatches(slug) {
   return BATCHES.filter((b) => b.start >= today && (!slug || b.course === slug)).sort((a, b) => a.start.localeCompare(b.start));
 }
 
-// Visitors in India see INR first; everyone else sees USD first. Both amounts are always shown.
-// Detected in the browser from the time zone / language, so no IP lookup or cookies are needed.
-export function useCurrency() {
-  const [cur, setCur] = useState('INR');
-  useEffect(() => {
-    let india = false;
-    try {
-      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
-      india = /^Asia\/(Kolkata|Calcutta)$/.test(tz) || (navigator.languages || [navigator.language]).some((l) => /-IN$/i.test(l || ''));
-    } catch (_) { india = false; }
-    setCur(india ? 'INR' : 'USD');
-  }, []);
-  return cur;
-}
-
 export function Price({ slug, block = false }) {
-  const cur = useCurrency();
   const p = PRICES[slug];
   if (!p) return <span className="price">Fee on request</span>;
-  const inr = money(p.inr, 'INR');
-  const usd = money(p.usd, 'USD');
-  const [main, alt] = cur === 'INR' ? [inr, usd] : [usd, inr];
+  // INR first, USD in brackets.
+  const main = money(p.inr, 'INR');
+  const alt = money(p.usd, 'USD');
   return (
     <span className={`price ${block ? 'price-block' : ''}`}>
       <span className="price-main">{main}</span> <span className="price-alt">({alt})</span>
