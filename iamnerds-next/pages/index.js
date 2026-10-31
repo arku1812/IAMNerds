@@ -2,12 +2,12 @@ import Link from 'next/link';
 import Chamber from '../lib/Chamber';
 import { Seo, CtaBand } from '../lib/Layout';
 import CourseCard from '../lib/CourseCard';
-import { COURSES, PATHS, SITE, STUDENTS, bySlug } from '../lib/data';
+import { COURSES, HOURS_RANGE, PATHS, SITE, STUDENTS, bySlug } from '../lib/data';
 import { logoMap } from '../lib/logos';
 import { CompanyMarquee, LinkedInButton, StudentsStat } from '../lib/Showcase';
 import Testimonials from '../lib/Testimonials';
 
-const FEATURED = ['one-identity-manager', 'sailpoint', 'sap-identity-authorizations', 'microsoft-entra-id', 'okta', 'cyberark', 'active-directory', 'saviynt'];
+const FEATURED = ['one-identity-manager', 'sailpoint', 'sap-cloud-identity-services', 'microsoft-entra-id', 'okta', 'cyberark', 'active-directory', 'saviynt'];
 
 export default function Home({ logos }) {
   const jsonLd = {
@@ -22,7 +22,7 @@ export default function Home({ logos }) {
     <>
       <Seo
         title="IAMNerds | Online IAM, IGA & PAM Training"
-        description="Hands-on online training for Identity & Access Management: One Identity Manager, SailPoint, Omada, Saviynt, SAP, Entra ID, Okta, Ping, CyberArk and BeyondTrust. 30 hours per course."
+        description="Hands-on online training for Identity & Access Management: One Identity Manager, SailPoint, Omada, Saviynt, SAP, Entra ID, Okta, Ping, CyberArk and BeyondTrust. 30–45 hours per course."
         path="/"
         jsonLd={jsonLd}
       />
@@ -30,7 +30,7 @@ export default function Home({ logos }) {
         <div className="wrap hero-grid">
           <div>
             <h1>Least privilege, <em>maximum learning.</em></h1>
-            <p className="lede">Hands-on online training for Identity &amp; Access Management, taught by people who have run the projects and fixed the war rooms. {COURSES.length} courses, 30 hours each, real labs, zero fluff.</p>
+            <p className="lede">Hands-on online training for Identity &amp; Access Management, taught by people who have run the projects and fixed the war rooms. {COURSES.length} courses of {HOURS_RANGE} hours, real labs, zero fluff.</p>
             <div className="cta">
               <Link className="btn primary" href="/courses">Browse courses</Link>
               <Link className="btn" href="/contact?type=demo#talk">Book a free demo</Link>
@@ -62,7 +62,7 @@ export default function Home({ logos }) {
         <div className="wrap">
           <div className="sec-head">
             <h2>How learning works</h2>
-            <p>The same rhythm in every 30-hour course, so you always know what comes next.</p>
+            <p>The same rhythm in every course, so you always know what comes next.</p>
           </div>
           <ol className="steps">
             <li><h3>Learn</h3><p>Instructor-led sessions with a cheat sheet per module and a real-world scenario solved step by step.</p></li>
@@ -103,7 +103,7 @@ export default function Home({ logos }) {
               <div className="fact"><div className="n">18+</div><div className="l">years in enterprise IAM</div></div>
               <div className="fact"><div className="n">{STUDENTS}</div><div className="l">students trained worldwide</div></div>
               <div className="fact"><div className="n">{COURSES.length}</div><div className="l">IAM courses</div></div>
-              <div className="fact"><div className="n">30 h</div><div className="l">per course</div></div>
+              <div className="fact"><div className="n">{HOURS_RANGE} h</div><div className="l">per course</div></div>
             </div>
           </div>
           <div className="more more-row"><Link href="/about">More about IAMNerds →</Link><LinkedInButton /></div>

@@ -17,7 +17,7 @@ export default function Batches({ batches }) {
           <Crumbs items={[['/', 'Home'], ['/batches', 'Batches']]} />
           <div className="eyebrow">Batches</div>
           <h1>New batch every month. <em>Pick your course.</em></h1>
-          <p className="lede">Every course is 30 hours of live, hands-on training. Book a free demo first if you want to meet the instructor before you register.</p>
+          <p className="lede">Every course is 30 to 45 hours of live, hands-on training. Book a free demo first if you want to meet the instructor before you register.</p>
           <div className="cta" style={{ marginTop: 'var(--s5)' }}>
             <Link className="btn primary" href="/contact?type=demo#talk">Book a free demo</Link>
             <Link className="btn" href="/courses">Browse courses</Link>

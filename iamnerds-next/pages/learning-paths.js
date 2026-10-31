@@ -2,6 +2,12 @@ import Link from 'next/link';
 import { Seo, Crumbs, CtaBand } from '../lib/Layout';
 import { PATHS, SITE, bySlug } from '../lib/data';
 
+function pathHours(steps) {
+  const hrs = (fn) => steps.reduce((t, s) => t + fn(...s.split('|').map((o) => bySlug(o).hours)), 0);
+  const lo = hrs(Math.min), hi = hrs(Math.max);
+  return lo === hi ? `${lo}` : `${lo}–${hi}`;
+}
+
 function Step({ step }) {
   const opts = step.split('|');
   return (
@@ -19,7 +25,7 @@ export default function LearningPaths() {
     <>
       <Seo
         title="IAM Learning Paths: IGA, SAP Security, Access Management, PAM | IAMNerds"
-        description="IAMNerds learning paths: IGA Track, SAP Security Track, Access Management Track and PAM Track, 30 hours per course."
+        description="IAMNerds learning paths: IGA Track, SAP Security Track, Access Management Track and PAM Track, 30–45 hours per course."
         path="/learning-paths"
         jsonLd={{ '@context': 'https://schema.org', '@type': 'WebPage', url: `${SITE}/learning-paths`, name: 'Learning paths | IAMNerds', inLanguage: 'en' }}
       />
@@ -28,7 +34,7 @@ export default function LearningPaths() {
           <Crumbs items={[['/', 'Home'], ['/learning-paths', 'Learning paths']]} />
           <div className="eyebrow">Learning paths</div>
           <h1>Pick a track, <em>then go deep.</em></h1>
-          <p className="lede">Each track bundles courses in the order a real project needs them. Every course is 30 hours with hands-on labs.</p>
+          <p className="lede">Each track bundles courses in the order a real project needs them. Every course is 30 to 45 hours, with hands-on labs.</p>
         </div>
       </section>
 
@@ -40,7 +46,7 @@ export default function LearningPaths() {
               <div>
                 <h2>{p.name}</h2>
                 <p>{p.text}</p>
-                <h3>Courses, in order · {p.steps.length * 30} hours</h3>
+                <h3>Courses, in order · {pathHours(p.steps)} hours</h3>
                 <ol className="path-list">{p.steps.map((s) => <Step key={s} step={s} />)}</ol>
               </div>
             </article>

@@ -29,7 +29,7 @@ export default function VisionMission() {
           <article className="detail">
             <span className="k">OUR MISSION</span>
             <h2>Turn learners into job-ready IAM professionals.</h2>
-            <p>We teach Identity &amp; Access Management the way it is practised on real projects: hands-on labs, real-world scenarios and instructors with years of enterprise experience, in focused 30-hour courses for the platforms organizations actually run.</p>
+            <p>We teach Identity &amp; Access Management the way it is practised on real projects: hands-on labs, real-world scenarios and instructors with years of enterprise experience, in focused, hands-on courses for the platforms organizations actually run.</p>
           </article>
         </div>
       </div></section>
