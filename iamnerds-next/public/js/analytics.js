@@ -31,4 +31,15 @@
     item.tags['ai.cloud.role'] = 'iamnerds.io';
   });
   ai.trackPageView();
+
+  // Custom events for the site (WhatsApp, demo and register clicks, enquiries).
+  // Events sent before this script loaded are queued in window.__iamq.
+  window.iamnerdsTrack = function (name, props) {
+    try { ai.trackEvent({ name: name }, props || {}); } catch (e) { /* ignore */ }
+  };
+  window.iamnerdsPageView = function (uri) {
+    try { ai.trackPageView({ uri: uri }); } catch (e) { /* ignore */ }
+  };
+  (window.__iamq || []).forEach(function (e) { window.iamnerdsTrack(e[0], e[1]); });
+  window.__iamq = [];
 })();
