@@ -50,6 +50,7 @@ const COURSES = new Set([
   "CyberArk",
   "BeyondTrust",
 ]);
+const TYPES = new Set(['Free demo session', 'Register for a batch', 'Question about a course']);
 const PHONE_RE = /^\+\d{1,4}$/;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -128,6 +129,7 @@ function validate(body) {
     country: clean(body.country, 2).toUpperCase(),
     phone: clean(body.phone, 20).replace(/[^\d]/g, ''),
     course: clean(body.course, 80),
+    enquiryType: TYPES.has(body.enquiryType) ? body.enquiryType : 'Course enquiry',
     message: clean(body.message, 5000),
     consent: body.consent === true,
   };
@@ -181,12 +183,13 @@ async function contactHandler(request, context) {
     await sendMail({
       replyToName: data.name.replace(/[<>"]/g, ''),
       replyToEmail: data.email,
-      subject: `Course enquiry: ${data.course} — ${data.name}${data.company ? ` (${data.company})` : ''}`,
+      subject: `${data.enquiryType}: ${data.course} — ${data.name}${data.company ? ` (${data.company})` : ''}`,
       text: [
         `Name:    ${data.name}`,
         `Email:   ${data.email}`,
         `Mobile:  ${data.dialCode} ${data.phone} (${data.country || '-'})`,
         `Company: ${data.company || '-'}`,
+        `Request: ${data.enquiryType}`,
         `Course:  ${data.course}`,
         `Sent:    ${new Date().toISOString()}`,
         '',
