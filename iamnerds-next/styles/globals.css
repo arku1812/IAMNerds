@@ -524,3 +524,13 @@ nav.links a[aria-current="page"]{color:var(--fg);font-weight:500}
 
 /* Header with more links */
 @media (max-width:1240px) and (min-width:1101px){nav.links{gap:var(--s4)}nav.links a{font-size:14px}}
+
+/* Fees */
+.price-alt{color:var(--muted);font-weight:400;font-size:.9em}
+.price-block{display:flex;flex-direction:column;line-height:1.15}
+.price-block .price-alt{font-family:var(--f-mono);font-size:13px;margin-top:4px}
+.course-facts{grid-template-columns:repeat(3,minmax(0,240px))}
+.fees-h{font-size:clamp(26px,3vw,36px);margin-top:var(--s8)}
+.fees-note{color:var(--muted);margin:var(--s2) 0 var(--s5);max-width:46em}
+@media (max-width:860px){.course-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.fact .n .price-main{background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent}
