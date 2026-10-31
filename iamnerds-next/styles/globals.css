@@ -534,3 +534,30 @@ nav.links a[aria-current="page"]{color:var(--fg);font-weight:500}
 .fees-note{color:var(--muted);margin:var(--s2) 0 var(--s5);max-width:46em}
 @media (max-width:860px){.course-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .fact .n .price-main{background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* Card fee */
+.card-fee{font-size:15px}
+.card-fee .price-main{font-weight:700}
+
+/* Radiant (gradient) text across headings, card titles and key numbers */
+main h2,
+main h3,
+.course-card h3,
+.students-t,
+.price-main,
+.mq-item small,
+.phase .n,
+.steps li::before,
+.qa .qn{
+  background:var(--grad-text);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  -webkit-box-decoration-break:clone;
+  box-decoration-break:clone;
+}
+main h2,
+main h3{width:fit-content;max-width:100%}
+.students-t{width:fit-content}
+/* Keep form and widget titles readable in plain colour */
+.talk h3,.wa h3{background:none;color:var(--fg);-webkit-background-clip:border-box;background-clip:border-box}
