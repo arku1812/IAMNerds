@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Seo, Crumbs, CtaBand } from '../../lib/Layout';
-import { COURSES, SITE, bySlug } from '../../lib/data';
+import { COURSES, PRICES, SITE, bySlug } from '../../lib/data';
 import { logoFor } from '../../lib/logos';
 import { VendorMark } from '../../lib/CourseCard';
 import { CourseBatches, Price, upcomingBatches, demoHref } from '../../lib/Batches';
@@ -16,7 +16,9 @@ export default function Course({ slug, logo, batches }) {
       {
         '@type': 'Course', name: `${c.title} course`, description: c.intro, url: SITE + path, inLanguage: 'en',
         provider: { '@type': 'Organization', name: 'IAMNerds', url: `${SITE}/` },
-        hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: `PT${c.hours}H` },
+        hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: `PT${c.hours}H`, location: { '@type': 'VirtualLocation', url: SITE + path } },
+        ...(PRICES[c.slug] ? { offers: [['INR', PRICES[c.slug].inr], ['USD', PRICES[c.slug].usd]].map(([cur, price]) => ({ '@type': 'Offer', category: 'Paid', price, priceCurrency: cur, availability: 'https://schema.org/InStock', url: SITE + path })) } : {}),
+        availableLanguage: 'en',
         syllabusSections: c.modules.map((m) => ({ '@type': 'Syllabus', name: m.name, description: m.topics })),
       },
       { '@type': 'BreadcrumbList', itemListElement: [['/', 'Home'], ['/courses', 'Courses'], [path, c.title]].map(([h, t], i) => ({ '@type': 'ListItem', position: i + 1, name: t, item: SITE + h })) },
