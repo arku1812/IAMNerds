@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Seo, Crumbs, CtaBand } from '../../lib/Layout';
-import { ARTICLES } from '../../lib/articles';
+import { ARTICLES, isGuide, questionCount, readMinutes } from '../../lib/articles';
 import { SITE } from '../../lib/data';
 
 const fmt = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
@@ -23,16 +23,21 @@ export default function Blog() {
         </div>
       </section>
       <section className="band"><div className="wrap">
-        <div className="plat-cards">
-          {ARTICLES.map((a) => (
-            <Link className="plat course-card" key={a.slug} href={`/blog/${a.slug}`}>
-              <span className="k">{a.tag} · INTERVIEW PREP</span>
-              <h3>{a.title}</h3>
-              <p>{a.description}</p>
-              <span className="meta">{fmt(a.date)} · {a.sections.reduce((n, s) => n + s.qa.length, 0)} questions</span>
-            </Link>
-          ))}
-        </div>
+        {[['Career guides', ARTICLES.filter(isGuide)], ['Interview questions', ARTICLES.filter((a) => !isGuide(a))]].map(([label, list]) => (
+          <div className="plat-group blog-group" key={label}>
+            <h2>{label}</h2>
+            <div className="plat-cards">
+              {list.map((a) => (
+                <Link className="plat course-card" key={a.slug} href={`/blog/${a.slug}`}>
+                  <span className="k">{isGuide(a) ? 'CAREER GUIDE' : `${a.tag} · INTERVIEW PREP`}</span>
+                  <h3>{a.title}</h3>
+                  <p>{a.description}</p>
+                  <span className="meta">{fmt(a.date)} · {isGuide(a) ? `${readMinutes(a)} min read` : `${questionCount(a)} questions`}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        ))}
       </div></section>
       <CtaBand title="Prepare with a nerd." text="Our courses include interview-style scenarios in every module." href="/contact?type=demo#talk" label="Book a free demo" />
     </>
