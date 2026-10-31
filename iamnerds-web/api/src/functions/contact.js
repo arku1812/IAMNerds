@@ -2,6 +2,7 @@
 // Receives the course enquiry form and emails it to hello@iamnerds.io via Microsoft Graph
 // (app-only, client credentials). hello@iamnerds.io is a shared mailbox, so Graph sends as it
 // directly; no mailbox password or SMTP AUTH involved.
+//   RECAPTCHA_SECRET  optional: reCAPTCHA v2 secret key; when set, submissions need a valid token
 // Settings come from the Static Web App's environment variables (Azure portal → Settings → Environment variables),
 // or from api/local.settings.json when running locally:
 //   GRAPH_TENANT_ID, GRAPH_CLIENT_ID, GRAPH_CLIENT_SECRET  (app registration with Mail.Send, Application)
@@ -12,6 +13,26 @@ const { app } = require('@azure/functions');
 
 const CONTACT_TO = process.env.CONTACT_TO || 'hello@iamnerds.io';
 const MAIL_FROM = process.env.MAIL_FROM || 'hello@iamnerds.io';
+// reCAPTCHA v2 secret key. When set, every submission must carry a valid "I'm not a robot" token.
+const RECAPTCHA_SECRET = process.env.RECAPTCHA_SECRET || '';
+
+async function recaptchaOk(token, ip) {
+  if (!RECAPTCHA_SECRET) return true;
+  if (!token || typeof token !== 'string' || token.length > 4000) return false;
+  try {
+    const params = new URLSearchParams({ secret: RECAPTCHA_SECRET, response: token });
+    if (ip && ip !== 'unknown') params.set('remoteip', ip);
+    const r = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params,
+    });
+    const j = await r.json();
+    return j.success === true;
+  } catch {
+    return false;
+  }
+}
 
 const COURSES = new Set([
   "IAM Fundamentals",
@@ -140,6 +161,10 @@ async function contactHandler(request, context) {
 
   if (rateLimited(clientIp(request))) {
     return { status: 429, jsonBody: { ok: false, error: 'Too many requests' } };
+  }
+
+  if (!(await recaptchaOk(body.recaptcha, clientIp(request)))) {
+    return { status: 400, jsonBody: { ok: false, error: 'Captcha failed', errors: { captcha: 'Please confirm you are not a robot.' } } };
   }
 
   const { data, errors } = validate(body);
