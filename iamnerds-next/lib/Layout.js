@@ -5,6 +5,11 @@ import { SITE, LINKEDIN } from './data';
 import { LinkedInIcon } from './Showcase';
 import WhatsAppChat from './WhatsAppChat';
 
+export const MARKETS = [
+  ['/iam-training-india', 'IAM training in India'],
+  ['/iam-training-usa', 'IAM training in the USA'],
+];
+
 const NAV = [
   ['/courses', 'Courses'],
   ['/learning-paths', 'Learning paths'],
@@ -23,6 +28,9 @@ export function Seo({ title, description, path, jsonLd }) {
       <meta name="description" content={description} />
       <meta name="robots" content="index, follow, max-image-preview:large" />
       <link rel="canonical" href={url} />
+      <link rel="alternate" hrefLang="en-in" href={url} />
+      <link rel="alternate" hrefLang="en-us" href={url} />
+      <link rel="alternate" hrefLang="x-default" href={url} />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="IAMNerds" />
       <meta property="og:title" content={title} />
@@ -115,7 +123,7 @@ export default function Layout({ children }) {
               <span key={href}>{i > 0 && ' · '}<Link href={href}>{label}</Link></span>
             ))}
           </nav>
-          <span><Link href="/privacy-policy">Privacy policy</Link> · <Link href="/terms">Terms and Conditions</Link></span>
+          <span>{MARKETS.map(([h, l]) => <span key={h}><Link href={h}>{l}</Link> · </span>)}<Link href="/privacy-policy">Privacy policy</Link> · <Link href="/terms">Terms and Conditions</Link></span>
         </div>
         <div className="wrap legal-note">
           Independent training. Vendor and product names are trademarks of their owners; IAMNerds is not affiliated with or endorsed by them.
