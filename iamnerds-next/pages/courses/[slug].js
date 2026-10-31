@@ -3,8 +3,10 @@ import { Seo, Crumbs, CtaBand } from '../../lib/Layout';
 import { COURSES, SITE, bySlug } from '../../lib/data';
 import { logoFor } from '../../lib/logos';
 import { VendorMark } from '../../lib/CourseCard';
+import { CourseBatches, upcomingBatches, demoHref } from '../../lib/Batches';
+import Testimonials from '../../lib/Testimonials';
 
-export default function Course({ slug, logo }) {
+export default function Course({ slug, logo, batches }) {
   const c = bySlug(slug);
   const path = `/courses/${c.slug}`;
   const n = c.modules.length;
@@ -39,7 +41,7 @@ export default function Course({ slug, logo }) {
             <div className="fact"><div className="n">{n}</div><div className="l">modules, each with a lab</div></div>
           </div>
           <div className="cta" style={{ marginTop: 'var(--s6)' }}>
-            <Link className="btn primary" href={`/contact?course=${encodeURIComponent(c.title)}#talk`}>Enquire about this course</Link>
+            <Link className="btn primary" href={demoHref(c.title)}>Book a free demo</Link>
             <a className="btn" href="#curriculum">See the curriculum</a>
           </div>
         </div>
@@ -59,10 +61,7 @@ export default function Course({ slug, logo }) {
             ))}
           </tbody>
         </table></div>
-        <div className="register-row">
-          <p><b>Next batch forming now.</b> Reserve your seat for the {c.title} course.</p>
-          <Link className="btn primary btn-lg" href={`/contact?course=${encodeURIComponent(c.title)}#talk`}>Register for a Batch</Link>
-        </div>
+        <CourseBatches course={c} batches={batches} />
       </div></section>
 
       {c.capstone && (
@@ -82,15 +81,18 @@ export default function Course({ slug, logo }) {
         </div>
       </div></section>
 
+      <Testimonials course={c.slug} />
+
       <section className="band"><div className="wrap">
         <div className="sec-head"><h2>Frequently asked questions</h2><p /></div>
         <div className="faq">
           <details><summary>Is this an official {c.title} course?</summary><p>No. It is independent training written by practitioners. Vendor and product names are used only to describe what the course covers.</p></details>
-          <details><summary>When does the next batch start?</summary><p>Send an enquiry or message us on WhatsApp and we will share the next batch dates and timings.</p></details>
+          <details><summary>When does the next batch start?</summary><p>Upcoming start dates are listed above. If none are listed yet, book a free demo session or message us on WhatsApp and we will share the next batch dates and timings.</p></details>
+          <details><summary>Can I attend a demo before registering?</summary><p>Yes. Book a free demo session to meet the instructor, see how labs work and ask your questions before you pay.</p></details>
           <details><summary>Can my team take it together?</summary><p>Yes. Get in touch for team batches and private sessions.</p></details>
         </div>
       </div></section>
-      <CtaBand title="Want in?" text={`Ask about the next ${c.title} batch.`} href={`/contact?course=${encodeURIComponent(c.title)}#talk`} label="Enquire now" />
+      <CtaBand title="Want in?" text={`Book a free demo for the ${c.title} course, then pick your batch.`} href={demoHref(c.title)} label="Book a free demo" />
     </>
   );
 }
@@ -100,5 +102,5 @@ export function getStaticPaths() {
 }
 
 export function getStaticProps({ params }) {
-  return { props: { slug: params.slug, logo: logoFor(params.slug) } };
+  return { props: { slug: params.slug, logo: logoFor(params.slug), batches: upcomingBatches(params.slug) } };
 }
