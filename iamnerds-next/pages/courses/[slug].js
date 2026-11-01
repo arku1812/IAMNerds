@@ -15,8 +15,8 @@ export default function Course({ slug, logo, batches }) {
     '@graph': [
       {
         '@type': 'Course', name: `${c.title} course`, description: c.intro, url: SITE + path, inLanguage: 'en',
-        provider: { '@type': 'Organization', name: 'IAMNerds', url: `${SITE}/` },
-        hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: `PT${c.hours}H`, location: { '@type': 'VirtualLocation', url: SITE + path } },
+        provider: { '@type': 'Organization', '@id': `${SITE}/#organization`, name: 'IAMNerds', url: `${SITE}/`, sameAs: ['https://www.linkedin.com/company/iamnerds/'] },
+        hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: `PT${c.hours}H`, inLanguage: 'en', location: { '@type': 'VirtualLocation', url: SITE + path } },
         ...(PRICES[c.slug] ? { offers: [['INR', PRICES[c.slug].inr], ['USD', PRICES[c.slug].usd]].map(([cur, price]) => ({ '@type': 'Offer', category: 'Paid', price, priceCurrency: cur, availability: 'https://schema.org/InStock', url: SITE + path })) } : {}),
         availableLanguage: 'en',
         syllabusSections: c.modules.map((m) => ({ '@type': 'Syllabus', name: m.name, description: m.topics })),
@@ -27,7 +27,7 @@ export default function Course({ slug, logo, batches }) {
   return (
     <>
       <Seo
-        title={`${c.title} Course: ${c.hours}-Hour Online Training with Labs | IAMNerds`}
+        title={`${c.title} Online Training | ${c.hours}h Live Course with Labs | IAMNerds`}
         description={`${c.title} online course by IAMNerds: ${c.hours} hours, ${n} modules with hands-on labs${c.capstone ? ' and a capstone project' : ''}. ${c.intro}`.slice(0, 300)}
         path={path}
         jsonLd={jsonLd}
