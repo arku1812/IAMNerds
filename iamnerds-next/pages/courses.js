@@ -40,7 +40,7 @@ export default function Courses({ logos }) {
         <div className="sec-head"><h2>Frequently asked questions</h2><p /></div>
         <div className="faq">
           <details><summary>Are these official vendor courses?</summary><p>No. IAMNerds courses are independent training written by practitioners. Product names are used only to describe what the course covers.</p></details>
-          <details><summary>How long is each course?</summary><p>Most courses are 30 hours; One Identity Manager and SailPoint are 35 hours and SAP Cloud Identity Services is 45 hours. Every course includes hands-on labs and a capstone project.</p></details>
+          <details><summary>How long is each course?</summary><p>Most courses are 30 hours; One Identity Manager, SailPoint IIQ and SailPoint Identity Security Cloud are 35 hours and SAP Cloud Identity Services is 45 hours. Every course includes hands-on labs and a capstone project.</p></details>
           <details><summary>Do I need my own licence for the labs?</summary><p>No. Each course comes with a lab environment: vendor trial or developer tenants where they exist, and prepared virtual machines for on-premises products.</p></details>
           <details><summary>Can I train a whole team?</summary><p>Yes. <Link href="/contact#talk">Get in touch</Link> and we will put together courses and sessions for your team.</p></details>
         </div>

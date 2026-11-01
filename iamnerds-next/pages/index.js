@@ -7,7 +7,7 @@ import { companyLogoMap, logoMap } from '../lib/logos';
 import { CompanyMarquee, LinkedInButton, StudentsStat } from '../lib/Showcase';
 import Testimonials from '../lib/Testimonials';
 
-const FEATURED = ['one-identity-manager', 'sailpoint', 'sap-cloud-identity-services', 'microsoft-entra-id', 'okta', 'cyberark', 'active-directory', 'saviynt'];
+const FEATURED = ['one-identity-manager', 'sailpoint-identityiq', 'sailpoint-identity-security-cloud', 'sap-cloud-identity-services', 'microsoft-entra-id', 'okta', 'cyberark', 'saviynt'];
 
 export default function Home({ logos, companyLogos }) {
   const jsonLd = {
