@@ -18,7 +18,7 @@ const FILTERS = [
   ['SAP', 'SAP'],
   ['NHI', 'Non-human identity'],
 ];
-const TRENDING = ['sailpoint', 'one-identity-manager', 'saviynt', 'cyberark', 'okta', 'microsoft-entra-id'];
+const TRENDING = ['sailpoint-identityiq', 'sailpoint-identity-security-cloud', 'one-identity-manager', 'saviynt', 'cyberark', 'okta', 'microsoft-entra-id'];
 
 export default function Blog() {
   const [filter, setFilter] = useState('all');

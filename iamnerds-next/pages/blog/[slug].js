@@ -71,7 +71,7 @@ export default function Article({ slug }) {
           <div className="side-card">
             <span className="k">TRENDING COURSES</span>
             <ul className="side-list">
-              {['sailpoint', 'one-identity-manager', 'saviynt', 'cyberark', 'okta', 'microsoft-entra-id'].filter((x) => x !== c.slug).slice(0, 5).map((x) => {
+              {['sailpoint-identityiq', 'sailpoint-identity-security-cloud', 'one-identity-manager', 'saviynt', 'cyberark', 'okta', 'microsoft-entra-id'].filter((x) => x !== c.slug).slice(0, 5).map((x) => {
                 const t = COURSES.find((y) => y.slug === x);
                 return <li key={x}><Link href={`/courses/${x}`}><b>{t.title}</b><span>{t.hours} h · <Price slug={x} /></span></Link></li>;
               })}
