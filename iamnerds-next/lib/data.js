@@ -1106,6 +1106,7 @@ export const STUDENTS = '2,700+';
 // Companies where past students work. The strip hides itself if this list is empty.
 // Text colours approximate each company's brand colour ('multi' = Google's letter colours).
 export const COMPANIES = [
+  { name: 'Qubital GmbH', sector: 'IT Services', color: 'grad' },
   { name: 'Infosys', sector: 'IT Services', color: '#007CC3' },
   { name: 'TCS', sector: 'IT Services', color: '#0072BC' },
   { name: 'Wipro', sector: 'IT Services', color: '#6D2077' },

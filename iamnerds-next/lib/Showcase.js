@@ -31,7 +31,9 @@ export function StudentsStat() {
 
 const GOOGLE = ['#4285F4', '#EA4335', '#FBBC05', '#4285F4', '#34A853', '#EA4335'];
 
-function CompanyName({ c }) {
+function CompanyName({ c, logo }) {
+  if (logo) return <img className="mq-logo" src={logo} alt={c.name} loading="lazy" />;
+  if (c.color === 'grad') return <b className="mq-grad">{c.name}</b>;
   if (c.color === 'multi') {
     return <b>{c.name.split('').map((ch, i) => <span key={i} style={{ color: GOOGLE[i % GOOGLE.length] }}>{ch}</span>)}</b>;
   }
@@ -39,10 +41,10 @@ function CompanyName({ c }) {
 }
 
 // Scrolling strip of company names. Hidden while COMPANIES is empty.
-export function CompanyMarquee() {
+export function CompanyMarquee({ logos = {} }) {
   if (!COMPANIES.length) return null;
   const row = (k) => COMPANIES.map((c) => (
-    <span className="mq-item" key={k + c.name}><CompanyName c={c} /></span>
+    <span className="mq-item" key={k + c.name}><CompanyName c={c} logo={logos[c.name]} /></span>
   ));
   return (
     <section className="band companies" aria-labelledby="companies-h">
