@@ -2,14 +2,14 @@ import Link from 'next/link';
 import Chamber from '../lib/Chamber';
 import { Seo, CtaBand } from '../lib/Layout';
 import CourseCard from '../lib/CourseCard';
-import { COURSES, HOURS_RANGE, PATHS, SITE, STUDENTS, bySlug } from '../lib/data';
-import { logoMap } from '../lib/logos';
+import { COMPANIES, COURSES, HOURS_RANGE, PATHS, SITE, STUDENTS, bySlug } from '../lib/data';
+import { companyLogoMap, logoMap } from '../lib/logos';
 import { CompanyMarquee, LinkedInButton, StudentsStat } from '../lib/Showcase';
 import Testimonials from '../lib/Testimonials';
 
 const FEATURED = ['one-identity-manager', 'sailpoint', 'sap-cloud-identity-services', 'microsoft-entra-id', 'okta', 'cyberark', 'active-directory', 'saviynt'];
 
-export default function Home({ logos }) {
+export default function Home({ logos, companyLogos }) {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -56,7 +56,7 @@ export default function Home({ logos }) {
         </div>
       </section>
 
-      <CompanyMarquee />
+      <CompanyMarquee logos={companyLogos} />
 
       <section className="band" id="how">
         <div className="wrap">
@@ -116,5 +116,5 @@ export default function Home({ logos }) {
 }
 
 export function getStaticProps() {
-  return { props: { logos: logoMap(COURSES.map((c) => c.slug)) } };
+  return { props: { logos: logoMap(COURSES.map((c) => c.slug)), companyLogos: companyLogoMap(COMPANIES.map((c) => c.name)) } };
 }
