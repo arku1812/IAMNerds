@@ -615,3 +615,23 @@ main h3{width:fit-content;max-width:100%}
 .mq-wordmark[alt="HCL Technologies"]{height:20px}
 .mq-wordmark[alt="Wipro"]{height:44px}
 .mq-wordmark[alt="Juniper Networks"]{height:30px}
+/* Company tiles: gradient border on hover, like the course tiles */
+.mq-item{border:1px solid transparent;background:linear-gradient(var(--panel),var(--panel)) padding-box,linear-gradient(var(--line),var(--line)) border-box;transition:transform .2s ease,box-shadow .2s ease}
+.mq-item:hover{background:linear-gradient(var(--panel),var(--panel)) padding-box,var(--grad) border-box;transform:translateY(-2px);box-shadow:0 10px 24px -16px rgba(106,75,214,.45)}
+/* Product logo box on course tiles */
+.course-card{display:flex;flex-direction:column}
+.card-logo{display:flex;align-items:center;height:56px;padding:0 16px;margin-bottom:var(--s4);border:1px solid var(--line);border-radius:12px;background:#fff}
+.card-logo img{height:24px;width:auto;max-width:100%;object-fit:contain;object-position:left center}
+.card-logo img[src*="sap-cloud"]{height:30px}
+.card-logo img[src*="active-directory"],.card-logo img[src*="entra"]{height:26px}
+.card-logo img[src*="ping-identity"]{height:22px}
+.course-card .card-top{margin-bottom:var(--s2)}
+.mq-wordmark{max-width:150px}
+.mq-wordmark[alt="AWS"]{height:34px}
+.mq-wordmark[alt="Tech Mahindra"]{height:36px}
+.mq-wordmark[alt="Amazon"]{height:32px}
+.mq-wordmark[alt="IBM"]{height:30px}
+.mq-wordmark[alt="Deloitte"]{height:24px}
+.mq-wordmark[alt="Oracle"]{height:20px}
+.mq-wordmark[alt="CrowdStrike"]{height:26px}
+.mq-wordmark[alt="Adobe"]{height:26px}
