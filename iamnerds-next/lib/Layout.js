@@ -23,8 +23,7 @@ export function Seo({ title, description, path, jsonLd }) {
       <meta name="description" content={description} />
       <meta name="robots" content="index, follow, max-image-preview:large" />
       <link rel="canonical" href={url} />
-      <link rel="alternate" hrefLang="en-in" href={url} />
-      <link rel="alternate" hrefLang="en-us" href={url} />
+      <link rel="alternate" hrefLang="en" href={url} />
       <link rel="alternate" hrefLang="x-default" href={url} />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="IAMNerds" />
@@ -32,6 +31,8 @@ export function Seo({ title, description, path, jsonLd }) {
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
       <meta property="og:locale" content="en_US" />
+      <meta property="og:locale:alternate" content="en_IN" />
+      <meta property="og:locale:alternate" content="en_GB" />
       <meta property="og:image" content={`${SITE}/og.png`} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
@@ -112,7 +113,7 @@ export default function Layout({ children }) {
       <footer>
         <div className="wrap giant-wrap" aria-hidden="true"><div className="giant">IAMNerds</div></div>
         <div className="wrap footbar">
-          <span className="foot-brand">© 2026 IAMNerds · India <a className="foot-li" href={LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="IAMNerds on LinkedIn"><LinkedInIcon size={16} /></a></span>
+          <span className="foot-brand">© 2026 IAMNerds · Hyderabad, India · Learners worldwide <a className="foot-li" href={LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="IAMNerds on LinkedIn"><LinkedInIcon size={16} /></a></span>
           <nav className="footnav" aria-label="Footer">
             {NAV.map(([href, label], i) => (
               <span key={href}>{i > 0 && ' · '}<Link href={href}>{label}</Link></span>
