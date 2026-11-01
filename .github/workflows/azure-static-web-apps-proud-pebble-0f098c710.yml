@@ -4,10 +4,18 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'backup/**'
+      - '**/README*'
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
       - main
+
+# A newer push replaces a deploy still running, so superseded runs show as cancelled, not failed.
+concurrency:
+  group: swa-deploy-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build_and_deploy_job:
@@ -15,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
         with:
           submodules: true
           lfs: false
