@@ -433,7 +433,7 @@ nav.links a[aria-current="page"]{color:var(--fg);font-weight:500}
 .mq-item b{font-family:var(--f-display);font-size:19px;font-weight:700;color:var(--fg)}
 .mq-item small{font-size:12.5px;color:var(--muted)}
 @keyframes mq{to{transform:translateX(calc(-50% - var(--s4) / 2))}}
-@media (prefers-reduced-motion:reduce){.mq-track{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.mq-track > :nth-child(n+33){display:none}.mq{-webkit-mask-image:none;mask-image:none}}
+@media (prefers-reduced-motion:reduce){.mq-track{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.mq-track > :nth-child(n+35){display:none}.mq{-webkit-mask-image:none;mask-image:none}}
 
 /* LinkedIn */
 .li-btn svg{color:#0A66C2}
@@ -608,3 +608,10 @@ main h3{width:fit-content;max-width:100%}
 @media (max-width:640px){.post-card{grid-template-columns:minmax(0,1fr)}.cover-hero{height:150px}.cover-hero svg{height:110px}}
 .mq-logo{height:30px;width:auto;max-width:130px;object-fit:contain;display:block}
 .mq-grad{background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mq-item{min-height:62px}
+.mq-lockup{display:inline-flex;align-items:center;gap:10px}
+.mq-icon{height:26px;width:26px;object-fit:contain}
+.mq-wordmark{height:28px;max-width:140px}
+.mq-wordmark[alt="HCL Technologies"]{height:20px}
+.mq-wordmark[alt="Wipro"]{height:44px}
+.mq-wordmark[alt="Juniper Networks"]{height:30px}
