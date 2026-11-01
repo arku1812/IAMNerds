@@ -32,7 +32,20 @@ export function StudentsStat() {
 const GOOGLE = ['#4285F4', '#EA4335', '#FBBC05', '#4285F4', '#34A853', '#EA4335'];
 
 function CompanyName({ c, logo }) {
-  if (logo) return <img className="mq-logo" src={logo} alt={c.name} loading="lazy" />;
+  // Wordmark logos stand alone; symbol logos sit next to the company name.
+  if (logo && c.wordmark) return <img className="mq-logo mq-wordmark" src={logo} alt={c.name} loading="lazy" />;
+  if (logo) {
+    return (
+      <span className="mq-lockup">
+        <img className="mq-logo mq-icon" src={logo} alt="" aria-hidden="true" loading="lazy" />
+        <CompanyText c={c} />
+      </span>
+    );
+  }
+  return <CompanyText c={c} />;
+}
+
+function CompanyText({ c }) {
   if (c.color === 'grad') return <b className="mq-grad">{c.name}</b>;
   if (c.color === 'multi') {
     return <b>{c.name.split('').map((ch, i) => <span key={i} style={{ color: GOOGLE[i % GOOGLE.length] }}>{ch}</span>)}</b>;
