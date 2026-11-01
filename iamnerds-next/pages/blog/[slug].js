@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { Seo, Crumbs } from '../../lib/Layout';
-import { ARTICLES, articleBySlug, isGuide, questionCount, readMinutes } from '../../lib/articles';
-import { SITE, bySlug } from '../../lib/data';
+import { ARTICLES, CATEGORY_LABELS, articleBySlug, isGuide, kindLabel, questionCount, readMinutes } from '../../lib/articles';
+import Cover from '../../lib/Cover';
+import { COURSES, SITE, bySlug } from '../../lib/data';
 import { Price, demoHref } from '../../lib/Batches';
 
 const fmt = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
@@ -17,7 +18,7 @@ export default function Article({ slug }) {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
-      { '@type': 'Article', headline: a.title, description: a.description, datePublished: a.date, dateModified: a.date, url: SITE + path, inLanguage: 'en', author: { '@type': 'Organization', name: 'IAMNerds', url: `${SITE}/` }, publisher: { '@type': 'Organization', name: 'IAMNerds', logo: { '@type': 'ImageObject', url: `${SITE}/icon-512.png` } }, image: `${SITE}/og.png` },
+      { '@type': 'Article', articleSection: kindLabel(a), headline: a.title, description: a.description, datePublished: a.date, dateModified: a.date, url: SITE + path, inLanguage: 'en', author: { '@type': 'Organization', name: 'IAMNerds', url: `${SITE}/` }, publisher: { '@type': 'Organization', name: 'IAMNerds', logo: { '@type': 'ImageObject', url: `${SITE}/icon-512.png` } }, image: `${SITE}/og.png` },
       ...(guide ? [] : [{ '@type': 'FAQPage', mainEntity: a.sections.flatMap((s) => (s.qa || []).map(([q, ans]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: ans } }))) }]),
       { '@type': 'BreadcrumbList', itemListElement: [['/', 'Home'], ['/blog', 'Blog'], [path, a.short]].map(([h, t], n) => ({ '@type': 'ListItem', position: n + 1, name: t, item: SITE + h })) },
     ],
@@ -28,9 +29,10 @@ export default function Article({ slug }) {
       <section className="hero page-hero">
         <div className="wrap">
           <Crumbs items={[['/', 'Home'], ['/blog', 'Blog'], [path, a.short]]} />
-          <div className="eyebrow">{guide ? `Career guide · ${readMinutes(a)} min read` : `${a.tag} · Interview prep · ${count} questions`}</div>
+          <div className="eyebrow">{kindLabel(a)} · {CATEGORY_LABELS[a.category] || a.category}</div>
           <h1>{a.title}</h1>
-          <p className="lede">Updated {fmt(a.date)}</p>
+          <p className="lede">By IAMNerds · {fmt(a.date)} · {readMinutes(a)} min read</p>
+          <Cover category={a.category} label={kindLabel(a)} size="hero" />
         </div>
       </section>
       <section className="band"><div className="wrap article">
@@ -65,6 +67,23 @@ export default function Article({ slug }) {
             <p className="side-fee"><Price slug={c.slug} /></p>
             <Link className="btn primary" href={demoHref(c.title)}>Book a free demo</Link>
             <Link className="btn" href={`/courses/${c.slug}`}>See the curriculum</Link>
+          </div>
+          <div className="side-card">
+            <span className="k">TRENDING COURSES</span>
+            <ul className="side-list">
+              {['sailpoint', 'one-identity-manager', 'saviynt', 'cyberark', 'okta', 'microsoft-entra-id'].filter((x) => x !== c.slug).slice(0, 5).map((x) => {
+                const t = COURSES.find((y) => y.slug === x);
+                return <li key={x}><Link href={`/courses/${x}`}><b>{t.title}</b><span>{t.hours} h · <Price slug={x} /></span></Link></li>;
+              })}
+            </ul>
+          </div>
+          <div className="side-card">
+            <span className="k">MORE FROM THE BLOG</span>
+            <ul className="side-list">
+              {ARTICLES.filter((x) => x.slug !== a.slug && x.kind === a.kind).slice(0, 4).map((x) => (
+                <li key={x.slug}><Link href={`/blog/${x.slug}`}><b>{x.short}</b><span>{kindLabel(x)}</span></Link></li>
+              ))}
+            </ul>
           </div>
         </aside>
       </div></section>
