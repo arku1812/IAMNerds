@@ -180,7 +180,16 @@
     },
     {
       "route": "/courses/sailpoint",
-      "rewrite": "/courses/sailpoint.html"
+      "redirect": "/courses/sailpoint-identityiq",
+      "statusCode": 301
+    },
+    {
+      "route": "/courses/sailpoint-identityiq",
+      "rewrite": "/courses/sailpoint-identityiq.html"
+    },
+    {
+      "route": "/courses/sailpoint-identity-security-cloud",
+      "rewrite": "/courses/sailpoint-identity-security-cloud.html"
     },
     {
       "route": "/courses/omada",
