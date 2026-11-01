@@ -2,6 +2,87 @@
   "trailingSlash": "never",
   "routes": [
     {
+      "route": "/blog/secure-partner-and-contractor-access",
+      "rewrite": "/blog/secure-partner-and-contractor-access.html"
+    },
+    {
+      "route": "/blog/governing-service-accounts-and-ai-agents",
+      "rewrite": "/blog/governing-service-accounts-and-ai-agents.html"
+    },
+    {
+      "route": "/blog/removing-local-admin-rights",
+      "rewrite": "/blog/removing-local-admin-rights.html"
+    },
+    {
+      "route": "/blog/vaulting-privileged-accounts",
+      "rewrite": "/blog/vaulting-privileged-accounts.html"
+    },
+    {
+      "route": "/blog/zero-trust-conditional-access",
+      "rewrite": "/blog/zero-trust-conditional-access.html"
+    },
+    {
+      "route": "/blog/sso-and-mfa-for-saas",
+      "rewrite": "/blog/sso-and-mfa-for-saas.html"
+    },
+    {
+      "route": "/blog/segregation-of-duties-sap",
+      "rewrite": "/blog/segregation-of-duties-sap.html"
+    },
+    {
+      "route": "/blog/access-reviews-for-audits",
+      "rewrite": "/blog/access-reviews-for-audits.html"
+    },
+    {
+      "route": "/blog/automating-joiner-mover-leaver",
+      "rewrite": "/blog/automating-joiner-mover-leaver.html"
+    },
+    {
+      "route": "/blog/ping-identity-interview-questions",
+      "redirect": "/blog",
+      "statusCode": 301
+    },
+    {
+      "route": "/blog/active-directory-interview-questions",
+      "redirect": "/blog",
+      "statusCode": 301
+    },
+    {
+      "route": "/blog/saviynt-interview-questions",
+      "redirect": "/blog",
+      "statusCode": 301
+    },
+    {
+      "route": "/blog/cyberark-interview-questions",
+      "redirect": "/blog",
+      "statusCode": 301
+    },
+    {
+      "route": "/blog/okta-interview-questions",
+      "redirect": "/blog",
+      "statusCode": 301
+    },
+    {
+      "route": "/blog/microsoft-entra-id-interview-questions",
+      "redirect": "/blog",
+      "statusCode": 301
+    },
+    {
+      "route": "/blog/sap-cloud-identity-services-interview-questions",
+      "redirect": "/blog",
+      "statusCode": 301
+    },
+    {
+      "route": "/blog/one-identity-manager-interview-questions",
+      "redirect": "/blog",
+      "statusCode": 301
+    },
+    {
+      "route": "/blog/sailpoint-interview-questions",
+      "redirect": "/blog",
+      "statusCode": 301
+    },
+    {
       "route": "/iam-training-usa",
       "redirect": "/courses",
       "statusCode": 301
@@ -24,45 +105,9 @@
       "rewrite": "/blog/how-to-start-a-career-in-iam.html"
     },
     {
-      "route": "/blog/ping-identity-interview-questions",
-      "rewrite": "/blog/ping-identity-interview-questions.html"
-    },
-    {
-      "route": "/blog/active-directory-interview-questions",
-      "rewrite": "/blog/active-directory-interview-questions.html"
-    },
-    {
-      "route": "/blog/saviynt-interview-questions",
-      "rewrite": "/blog/saviynt-interview-questions.html"
-    },
-    {
-      "route": "/blog/cyberark-interview-questions",
-      "rewrite": "/blog/cyberark-interview-questions.html"
-    },
-    {
-      "route": "/blog/okta-interview-questions",
-      "rewrite": "/blog/okta-interview-questions.html"
-    },
-    {
-      "route": "/blog/microsoft-entra-id-interview-questions",
-      "rewrite": "/blog/microsoft-entra-id-interview-questions.html"
-    },
-    {
-      "route": "/blog/sap-cloud-identity-services-interview-questions",
-      "rewrite": "/blog/sap-cloud-identity-services-interview-questions.html"
-    },
-    {
       "route": "/courses/sap-identity-authorizations",
       "redirect": "/courses/sap-cloud-identity-services",
       "statusCode": 301
-    },
-    {
-      "route": "/blog/one-identity-manager-interview-questions",
-      "rewrite": "/blog/one-identity-manager-interview-questions.html"
-    },
-    {
-      "route": "/blog/sailpoint-interview-questions",
-      "rewrite": "/blog/sailpoint-interview-questions.html"
     },
     {
       "route": "/blog",
