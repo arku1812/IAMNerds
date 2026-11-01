@@ -13,7 +13,7 @@ export default function Home({ logos, companyLogos }) {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
-      { '@type': 'EducationalOrganization', '@id': `${SITE}/#organization`, name: 'IAMNerds', url: `${SITE}/`, logo: `${SITE}/icon-512.png`, email: 'hello@iamnerds.io', sameAs: ['https://www.linkedin.com/company/iamnerds/'], address: { '@type': 'PostalAddress', addressLocality: 'Hyderabad', addressRegion: 'Telangana', addressCountry: 'IN' }, areaServed: [{ '@type': 'Country', name: 'India' }, { '@type': 'Country', name: 'United States' }] },
+      { '@type': 'EducationalOrganization', '@id': `${SITE}/#organization`, name: 'IAMNerds', url: `${SITE}/`, logo: `${SITE}/icon-512.png`, email: 'hello@iamnerds.io', sameAs: ['https://www.linkedin.com/company/iamnerds/'], address: { '@type': 'PostalAddress', addressLocality: 'Hyderabad', addressRegion: 'Telangana', addressCountry: 'IN' }, areaServed: { '@type': 'Place', name: 'Worldwide' }, knowsAbout: ['Identity and Access Management', 'Identity Governance and Administration', 'Privileged Access Management', 'Access Management', 'SailPoint', 'One Identity Manager', 'Saviynt', 'Omada', 'SAP Cloud Identity Services', 'Microsoft Entra ID', 'Okta', 'CyberArk', 'BeyondTrust'], contactPoint: { '@type': 'ContactPoint', contactType: 'admissions', email: 'hello@iamnerds.io', telephone: '+91-9703330367', availableLanguage: ['English'], areaServed: 'Worldwide' } },
       { '@type': 'WebSite', '@id': `${SITE}/#website`, url: `${SITE}/`, name: 'IAMNerds', inLanguage: 'en' },
       { '@type': 'ItemList', name: 'IAMNerds courses', itemListElement: COURSES.map((c, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE}/courses/${c.slug}`, name: c.title })) },
     ],
@@ -21,8 +21,8 @@ export default function Home({ logos, companyLogos }) {
   return (
     <>
       <Seo
-        title="IAMNerds | Online IAM, IGA & PAM Training in India & USA"
-        description="Hands-on online training for Identity & Access Management: One Identity Manager, SailPoint, Omada, Saviynt, SAP, Entra ID, Okta, Ping, CyberArk and BeyondTrust. 30–45 hours per course."
+        title="IAMNerds | Online IAM, IGA & PAM Training, Live Classes Worldwide"
+        description="Live online Identity & Access Management training for learners worldwide: SailPoint IIQ and ISC, One Identity Manager, Saviynt, Omada, SAP, Entra ID, Okta, CyberArk and more, with hands-on labs."
         path="/"
         jsonLd={jsonLd}
       />

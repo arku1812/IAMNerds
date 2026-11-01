@@ -6,7 +6,7 @@ export default function About() {
   return (
     <>
       <Seo
-        title="About IAMNerds | IAM Training by Practitioners"
+        title="About IAMNerds | Online IAM Training for Learners Worldwide"
         description="IAMNerds is an online training platform purely for Identity & Access Management technologies, based in India and open to learners worldwide."
         path="/about"
         jsonLd={{ '@context': 'https://schema.org', '@type': 'AboutPage', url: `${SITE}/about`, name: 'About IAMNerds', inLanguage: 'en' }}
