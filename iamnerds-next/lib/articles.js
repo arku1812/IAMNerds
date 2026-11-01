@@ -46,7 +46,7 @@ export const ARTICLES = [
     short: 'Access reviews for audits',
     description: 'How to replace spreadsheet-based access recertification with automated review campaigns that managers can actually complete and auditors trust.',
     date: '2026-11-01',
-    course: 'sailpoint',
+    course: 'sailpoint-identityiq',
     intro: [
       'Most regulations and standards, including SOX, ISO 27001 and NIS2, expect organisations to review regularly who has access to what. Done by spreadsheet, these reviews are slow, error-prone and easy to rubber-stamp.',
     ],

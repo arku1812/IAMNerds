@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 const NAMES = [
-  'One Identity Manager', 'SailPoint', 'Omada', 'Saviynt', 'SAP Cloud Identity Services', 'Okta',
+  'One Identity Manager', 'SailPoint IIQ', 'SailPoint ISC', 'Omada', 'Saviynt', 'SAP Cloud Identity Services', 'Okta',
   'OneLogin', 'Ping Identity', 'Entra ID', 'Active Directory', 'CyberArk', 'BeyondTrust',
 ];
 

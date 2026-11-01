@@ -153,91 +153,182 @@ export const COURSES = [
   "capstone": "End-to-end: HR source, AD + Entra ID, role model, attestation, SoD"
  },
  {
-  "slug": "sailpoint",
+  "slug": "sailpoint-identityiq",
   "vendor": "SailPoint",
-  "title": "SailPoint",
+  "title": "SailPoint IIQ",
   "tag": "IGA",
   "category": "IGA",
   "hours": 35,
   "free": false,
-  "scope": "IdentityIQ, Identity Security Cloud",
+  "scope": "IdentityIQ",
   "tagline": "Aggregate, correlate, certify. Repeat without tears.",
-  "intro": "Both IdentityIQ (on-premises) and Identity Security Cloud (SaaS), with shared basics and separate labs for each product.",
-  "lab": "Vendor trial or developer tenant",
+  "intro": "SailPoint IdentityIQ (IIQ), the on-premises IGA platform: from connecting applications to rules, workflows, plugins and deployment.",
+  "lab": "Vendor trial or lab instance",
   "modules": [
    {
-    "name": "SailPoint overview",
-    "topics": "IdentityIQ vs Identity Security Cloud, architecture, identity cube / identity profile",
-    "lab": "Tour of both products"
+    "name": "IdentityIQ overview & architecture",
+    "topics": "Identity cube, application server, database, IQService, task and request servers",
+    "lab": "Tour of an IdentityIQ instance"
    },
    {
-    "name": "Identities & sources",
-    "topics": "Authoritative sources, accounts, entitlements, correlation",
-    "lab": "Inspect an identity and its accounts"
+    "name": "Identities & applications",
+    "topics": "Authoritative applications, accounts, entitlements, correlation",
+    "lab": "Inspect an identity cube"
+   },
+   {
+    "name": "Connecting applications",
+    "topics": "Connectors (AD, Entra ID, JDBC, LDAP, delimited file), schemas, IQService",
+    "lab": "Connect AD and a CSV HR source"
+   },
+   {
+    "name": "Aggregation & identity refresh",
+    "topics": "Aggregation tasks, correlation rules, identity refresh options",
+    "lab": "Run aggregation and refresh"
+   },
+   {
+    "name": "Identity lifecycle",
+    "topics": "Identity attributes, lifecycle events, joiner-mover-leaver, provisioning policies",
+    "lab": "Automate joiner and leaver"
    },
    {
     "name": "Access requests",
-    "topics": "Request center, approvals, access profiles",
+    "topics": "Lifecycle Manager, request center, approvals, quicklinks",
+    "lab": "Request and approve access"
+   },
+   {
+    "name": "Roles & access modeling",
+    "topics": "Business and IT roles, entitlement catalog, role mining",
+    "lab": "Build a role from access data"
+   },
+   {
+    "name": "Certifications",
+    "topics": "Manager, targeted and role composition certifications, remediation",
+    "lab": "Run a manager certification"
+   },
+   {
+    "name": "Policies",
+    "topics": "SoD, activity and risk policies, violations",
+    "lab": "Create and trigger an SoD policy"
+   },
+   {
+    "name": "Rules",
+    "topics": "BeanShell rule types, rule libraries, debug pages",
+    "lab": "Write an attribute rule"
+   },
+   {
+    "name": "Workflows & forms",
+    "topics": "Workflow engine, steps, forms, approval workflows",
+    "lab": "Customise an approval workflow"
+   },
+   {
+    "name": "Reporting & operations",
+    "topics": "Reports, advanced analytics, audit events, syslog",
+    "lab": "Build an access report"
+   },
+   {
+    "name": "Plugins & APIs",
+    "topics": "Plugin framework, REST and SCIM APIs",
+    "lab": "Build a simple plugin page"
+   },
+   {
+    "name": "Deployment & upgrades",
+    "topics": "Services Standard Build (SSB), environment promotion, patches",
+    "lab": "Package and deploy a change"
+   },
+   {
+    "name": "Performance & troubleshooting",
+    "topics": "Task partitioning, logging, aggregation tuning",
+    "lab": "Diagnose a slow aggregation"
+   }
+  ],
+  "capstone": "End-to-end IdentityIQ: HR, AD, a JDBC application, roles, SoD, certification"
+ },
+ {
+  "slug": "sailpoint-identity-security-cloud",
+  "vendor": "SailPoint",
+  "title": "SailPoint Identity Security Cloud",
+  "tag": "IGA",
+  "category": "IGA",
+  "hours": 35,
+  "free": false,
+  "scope": "Identity Security Cloud (ISC)",
+  "tagline": "Identity governance as a service, configured properly.",
+  "intro": "SailPoint Identity Security Cloud (ISC), the SaaS IGA platform: sources, transforms, lifecycle, roles, certifications, workflows and APIs.",
+  "lab": "Vendor trial or developer tenant",
+  "modules": [
+   {
+    "name": "Identity Security Cloud overview",
+    "topics": "SaaS architecture, tenants, virtual appliances, identity profiles",
+    "lab": "Tour of an ISC tenant"
+   },
+   {
+    "name": "Sources & virtual appliances",
+    "topics": "VA clusters, connectors (AD, Entra ID, JDBC, delimited file, SaaS), aggregation",
+    "lab": "Connect AD and a CSV HR source"
+   },
+   {
+    "name": "Identity profiles & attributes",
+    "topics": "Identity profiles, attribute mapping, correlation",
+    "lab": "Map identity attributes"
+   },
+   {
+    "name": "Transforms",
+    "topics": "Transform types, nested transforms, testing",
+    "lab": "Build username and email transforms"
+   },
+   {
+    "name": "Identity lifecycle",
+    "topics": "Lifecycle states, joiner-mover-leaver, account create profiles",
+    "lab": "Automate joiner and leaver"
+   },
+   {
+    "name": "Access profiles & roles",
+    "topics": "Access profiles, roles, membership criteria, role discovery",
+    "lab": "Build a role"
+   },
+   {
+    "name": "Access requests",
+    "topics": "Request center, approvals, access request settings",
     "lab": "Request and approve access"
    },
    {
     "name": "Certifications",
-    "topics": "Manager and targeted certifications, decisions, remediation",
-    "lab": "Complete a certification"
+    "topics": "Manager, search and source-owner campaigns, remediation",
+    "lab": "Run a certification campaign"
    },
    {
-    "name": "Connecting sources",
-    "topics": "Connectors (AD, Entra ID, JDBC, delimited file, SaaS), aggregation, schemas, VA / IQService",
-    "lab": "Connect AD and a CSV HR source"
-   },
-   {
-    "name": "Identity lifecycle",
-    "topics": "Identity attributes, lifecycle states, joiner-mover-leaver, provisioning policies",
-    "lab": "Automate joiner and leaver"
-   },
-   {
-    "name": "Roles & access modeling",
-    "topics": "Access profiles, business and IT roles, role mining",
-    "lab": "Build a role from access data"
-   },
-   {
-    "name": "Policies",
-    "topics": "SoD policies, violations, policy-based approvals",
+    "name": "Policies & SoD",
+    "topics": "SoD policies, violations, policy reports",
     "lab": "Create and trigger an SoD policy"
    },
    {
-    "name": "IdentityIQ configuration",
-    "topics": "Rules (BeanShell), tasks, workflows, debug pages",
-    "lab": "Write an attribute rule"
-   },
-   {
-    "name": "Identity Security Cloud configuration",
-    "topics": "Transforms, rules, workflows, event triggers, APIs",
-    "lab": "Build a transform and a workflow"
-   },
-   {
-    "name": "Reporting & operations",
-    "topics": "Reports, search, audit events, health checks",
+    "name": "Search & reporting",
+    "topics": "Search queries, saved searches, reports, audit events",
     "lab": "Build an access report"
    },
    {
-    "name": "Advanced IdentityIQ",
-    "topics": "Custom workflows, plugins, quicklinks, deployment with SSB",
-    "lab": "Package and deploy a change"
+    "name": "Rules",
+    "topics": "Cloud rules and connector rules, rule review",
+    "lab": "Write a connector rule"
    },
    {
-    "name": "Advanced Identity Security Cloud",
-    "topics": "REST APIs, SaaS connectivity, custom connectors, CI/CD for configuration",
+    "name": "Workflows & event triggers",
+    "topics": "Workflow builder, triggers, actions, approvals",
+    "lab": "Build an onboarding workflow"
+   },
+   {
+    "name": "APIs & automation",
+    "topics": "REST APIs, personal access tokens, SailPoint CLI, SDKs",
     "lab": "Automate configuration via API"
    },
    {
-    "name": "Performance & scaling",
-    "topics": "Aggregation tuning, task partitioning, troubleshooting",
-    "lab": "Diagnose a slow aggregation"
+    "name": "SaaS connectivity",
+    "topics": "Custom SaaS connectors with the connector SDK",
+    "lab": "Build a simple SaaS connector"
    },
    {
-    "name": "Architecture & migration",
-    "topics": "Solution design, IdentityIQ to Identity Security Cloud migration planning",
+    "name": "Operations & migration",
+    "topics": "Health checks, sandbox to production configuration, IdentityIQ to ISC migration",
     "lab": "Migration plan for a sample client"
    }
   ],
@@ -1018,7 +1109,8 @@ export const GROUPS = [
   "text": "Lifecycle, roles, requests and certifications.",
   "slugs": [
    "one-identity-manager",
-   "sailpoint",
+   "sailpoint-identityiq",
+   "sailpoint-identity-security-cloud",
    "omada",
    "saviynt"
   ]
@@ -1059,7 +1151,7 @@ export const PATHS = [
   "steps": [
    "iam-fundamentals",
    "active-directory",
-   "one-identity-manager|sailpoint|omada|saviynt"
+   "one-identity-manager|sailpoint-identityiq|sailpoint-identity-security-cloud|omada|saviynt"
   ]
  },
  {
@@ -1111,24 +1203,24 @@ export const COMPANIES = [
   { name: 'TCS', sector: 'IT Services', color: '#0072BC', wordmark: true },
   { name: 'Wipro', sector: 'IT Services', color: '#6D2077', wordmark: true },
   { name: 'Accenture', sector: 'Consulting', color: '#A100FF' },
-  { name: 'Deloitte', sector: 'Consulting', color: '#86BC25', dot: '#86BC25' },
-  { name: 'IBM', sector: 'Technology', color: '#0F62FE' },
-  { name: 'Capgemini', sector: 'IT Services', color: '#0070AD' },
-  { name: 'Cognizant', sector: 'IT Services', color: '#0033A1' },
+  { name: 'Deloitte', sector: 'Consulting', color: '#86BC25', dot: '#86BC25', wordmark: true },
+  { name: 'IBM', sector: 'Technology', color: '#0F62FE', wordmark: true },
+  { name: 'Capgemini', sector: 'IT Services', color: '#0070AD', wordmark: true },
+  { name: 'Cognizant', sector: 'IT Services', color: '#0033A1', wordmark: true },
   { name: 'HCL Technologies', sector: 'IT Services', color: '#0F5FDC', wordmark: true },
-  { name: 'Tech Mahindra', sector: 'IT Services', color: '#E31837' },
+  { name: 'Tech Mahindra', sector: 'IT Services', color: '#E31837', wordmark: true },
   { name: 'HDFC Bank', sector: 'BFSI', color: '#004C8F' },
   { name: 'Axis Bank', sector: 'BFSI', color: '#97144D' },
-  { name: 'Oracle', sector: 'Technology', color: '#C74634' },
+  { name: 'Oracle', sector: 'Technology', color: '#C74634', wordmark: true },
   { name: 'SAP India', sector: 'Technology', color: '#008FD3', wordmark: true },
-  { name: 'Microsoft', sector: 'Technology', color: '#00A4EF' },
-  { name: 'Amazon', sector: 'Technology', color: '#FF9900' },
-  { name: 'AWS', sector: 'Cloud', color: '#FF9900' },
+  { name: 'Microsoft', sector: 'Technology', color: '#00A4EF', wordmark: true },
+  { name: 'Amazon', sector: 'Technology', color: '#FF9900', wordmark: true },
+  { name: 'AWS', sector: 'Cloud', color: '#FF9900', wordmark: true },
   { name: 'Google', sector: 'Technology', color: 'multi' },
-  { name: 'Adobe', sector: 'Software', color: '#FA0F00' },
+  { name: 'Adobe', sector: 'Software', color: '#FA0F00', wordmark: true },
   { name: 'Snowflake', sector: 'Cloud Data', color: '#29B5E8' },
   { name: 'Palo Alto Networks', sector: 'Cybersecurity', color: '#FA582D' },
-  { name: 'CrowdStrike', sector: 'Cybersecurity', color: '#FC0000' },
+  { name: 'CrowdStrike', sector: 'Cybersecurity', color: '#FC0000', wordmark: true },
   { name: 'Fortinet', sector: 'Cybersecurity', color: '#EE3124' },
   { name: 'Cisco Systems', sector: 'Networking', color: '#049FD9', wordmark: true },
   { name: 'Juniper Networks', sector: 'Networking', color: '#84B135', wordmark: true },
@@ -1137,7 +1229,7 @@ export const COMPANIES = [
   { name: 'Qualcomm', sector: 'Semiconductors', color: '#3253DC' },
   { name: 'AMD', sector: 'Semiconductors', color: '#ED1C24', wordmark: true },
   { name: 'Broadcom', sector: 'Semiconductors', color: '#CC092F' },
-  { name: 'Micron Technology', sector: 'Semiconductors', color: '#0075BE' },
+  { name: 'Micron Technology', sector: 'Semiconductors', color: '#0075BE', wordmark: true },
   { name: 'Apple', sector: 'Technology', color: '#0071E3' },
 ];
 
@@ -1159,7 +1251,8 @@ export const BATCHES = [];
 export const PRICES = {
   'iam-fundamentals': { inr: 29999, usd: 319 },
   'one-identity-manager': { inr: 39999, usd: 429 },
-  'sailpoint': { inr: 44999, usd: 479 },
+  'sailpoint-identityiq': { inr: 39999, usd: 429 },
+  'sailpoint-identity-security-cloud': { inr: 44999, usd: 479 },
   'omada': { inr: 39999, usd: 429 },
   'saviynt': { inr: 39999, usd: 429 },
   'sap-cloud-identity-services': { inr: 44999, usd: 479 },
@@ -1176,7 +1269,7 @@ export const PRICES = {
 export const BATCH_NOTE = 'New batches start every month.';
 
 // Real student testimonials only, shared with the student's permission.
-// { name: 'Full Name', role: 'IAM Engineer', company: 'Company', course: 'sailpoint', quote: '…', linkedin: 'https://…' }
+// { name: 'Full Name', role: 'IAM Engineer', company: 'Company', course: 'sailpoint-identityiq', quote: '…', linkedin: 'https://…' }
 export const TESTIMONIALS = [];
 
 export const ENQUIRY_TYPES = ['Free demo session', 'Register for a batch', 'Question about a course'];
