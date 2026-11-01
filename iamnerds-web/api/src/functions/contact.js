@@ -37,7 +37,8 @@ async function recaptchaOk(token, ip) {
 const COURSES = new Set([
   "IAM Fundamentals",
   "One Identity Manager",
-  "SailPoint",
+  "SailPoint IIQ",
+  "SailPoint Identity Security Cloud",
   "Omada",
   "Saviynt",
   "SAP Cloud Identity Services",
