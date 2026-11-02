@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Seo, Crumbs, CtaBand } from '../../lib/Layout';
-import { COURSES, PRICES, SITE, bySlug } from '../../lib/data';
+import { COURSES, PRICES, SHOW_FEES, SITE, bySlug } from '../../lib/data';
 import { logoFor } from '../../lib/logos';
 import { VendorMark } from '../../lib/CourseCard';
 import { CourseBatches, Price, upcomingBatches, demoHref } from '../../lib/Batches';
@@ -17,7 +17,7 @@ export default function Course({ slug, logo, batches }) {
         '@type': 'Course', name: `${c.title} course`, description: c.intro, url: SITE + path, inLanguage: 'en',
         provider: { '@type': 'Organization', '@id': `${SITE}/#organization`, name: 'IAMNerds', url: `${SITE}/`, sameAs: ['https://www.linkedin.com/company/iamnerds/'] },
         hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: `PT${c.hours}H`, inLanguage: 'en', location: { '@type': 'VirtualLocation', url: SITE + path } },
-        ...(PRICES[c.slug] ? { offers: [['INR', PRICES[c.slug].inr], ['USD', PRICES[c.slug].usd]].map(([cur, price]) => ({ '@type': 'Offer', category: 'Paid', price, priceCurrency: cur, availability: 'https://schema.org/InStock', url: SITE + path })) } : {}),
+        ...(SHOW_FEES && PRICES[c.slug] ? { offers: [['INR', PRICES[c.slug].inr], ['USD', PRICES[c.slug].usd]].map(([cur, price]) => ({ '@type': 'Offer', category: 'Paid', price, priceCurrency: cur, availability: 'https://schema.org/InStock', url: SITE + path })) } : { offers: [{ '@type': 'Offer', category: 'Paid', availability: 'https://schema.org/InStock', url: SITE + path }] }),
         availableLanguage: 'en',
         syllabusSections: c.modules.map((m) => ({ '@type': 'Syllabus', name: m.name, description: m.topics })),
       },
@@ -28,7 +28,7 @@ export default function Course({ slug, logo, batches }) {
     <>
       <Seo
         title={`${c.title} Online Training | ${c.hours}h Live Course with Labs | IAMNerds`}
-        description={`${c.title} online course by IAMNerds: ${c.hours} hours, ${n} modules with hands-on labs${c.capstone ? ' and a capstone project' : ''}. ${c.intro}`.slice(0, 300)}
+        description={`${c.title} live online training by IAMNerds: ${c.hours} hours, ${n} modules with hands-on labs${c.capstone ? ' and a capstone project' : ''}. New batch every month; book a free demo.`}
         path={path}
         jsonLd={jsonLd}
       />
@@ -41,7 +41,7 @@ export default function Course({ slug, logo, batches }) {
           <div className="course-facts">
             <div className="fact"><div className="n">{c.hours} h</div><div className="l">training and labs</div></div>
             <div className="fact"><div className="n">{n}</div><div className="l">modules, each with a lab</div></div>
-            <div className="fact"><div className="n"><Price slug={c.slug} block /></div><div className="l">course fee</div></div>
+            {SHOW_FEES && <div className="fact"><div className="n"><Price slug={c.slug} block /></div><div className="l">course fee</div></div>}
           </div>
           <div className="cta" style={{ marginTop: 'var(--s6)' }}>
             <Link className="btn primary" href={demoHref(c.title)}>Book a free demo</Link>
