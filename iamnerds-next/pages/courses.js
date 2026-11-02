@@ -9,7 +9,7 @@ export default function Courses({ logos }) {
     <>
       <Seo
         title="IAM, IGA & PAM Courses | IAMNerds"
-        description={`All IAMNerds courses, 30–45 hours each: ${COURSES.map((c) => c.title).join(', ')}.`}
+        description="Live online IAM courses of 30–45 hours with hands-on labs: SailPoint IIQ and ISC, One Identity Manager, Saviynt, Omada, SAP, Entra ID, Okta, CyberArk, BeyondTrust and more."
         path="/courses"
         jsonLd={{ '@context': 'https://schema.org', '@type': 'CollectionPage', url: `${SITE}/courses`, name: 'IAM courses | IAMNerds', inLanguage: 'en' }}
       />
