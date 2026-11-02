@@ -4,6 +4,7 @@ import { ARTICLES, CATEGORY_LABELS, articleBySlug, isGuide, kindLabel, questionC
 import Cover from '../../lib/Cover';
 import { COURSES, SITE, bySlug } from '../../lib/data';
 import { Price, demoHref } from '../../lib/Batches';
+import { SHOW_FEES } from '../../lib/data';
 
 const fmt = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 const anchor = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -64,7 +65,7 @@ export default function Article({ slug }) {
             <span className="k">{c.tag} · COURSE</span>
             <h3>{c.title}</h3>
             <p>{c.tagline} {c.hours} hours, {c.modules.length} modules, every module with a lab.</p>
-            <p className="side-fee"><Price slug={c.slug} /></p>
+            {SHOW_FEES && <p className="side-fee"><Price slug={c.slug} /></p>}
             <Link className="btn primary" href={demoHref(c.title)}>Book a free demo</Link>
             <Link className="btn" href={`/courses/${c.slug}`}>See the curriculum</Link>
           </div>
@@ -73,7 +74,7 @@ export default function Article({ slug }) {
             <ul className="side-list">
               {['sailpoint-identityiq', 'sailpoint-identity-security-cloud', 'one-identity-manager', 'saviynt', 'cyberark', 'okta', 'microsoft-entra-id'].filter((x) => x !== c.slug).slice(0, 5).map((x) => {
                 const t = COURSES.find((y) => y.slug === x);
-                return <li key={x}><Link href={`/courses/${x}`}><b>{t.title}</b><span>{t.hours} h · <Price slug={x} /></span></Link></li>;
+                return <li key={x}><Link href={`/courses/${x}`}><b>{t.title}</b><span>{t.hours} h{SHOW_FEES && <> · <Price slug={x} /></>}</span></Link></li>;
               })}
             </ul>
           </div>

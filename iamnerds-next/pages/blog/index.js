@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Seo, Crumbs } from '../../lib/Layout';
 import Cover from '../../lib/Cover';
 import { Price } from '../../lib/Batches';
+import { SHOW_FEES } from '../../lib/data';
 import { ARTICLES, CATEGORY_LABELS, isGuide, kindLabel, readMinutes } from '../../lib/articles';
 import { COURSES, SITE, WHATSAPP } from '../../lib/data';
 
@@ -86,7 +87,7 @@ export default function Blog() {
               {TRENDING.map((s) => {
                 const c = COURSES.find((x) => x.slug === s);
                 return (
-                  <li key={s}><Link href={`/courses/${s}`}><b>{c.title}</b><span>{c.hours} h · <Price slug={s} /></span></Link></li>
+                  <li key={s}><Link href={`/courses/${s}`}><b>{c.title}</b><span>{c.hours} h{SHOW_FEES && <> · <Price slug={s} /></>}</span></Link></li>
                 );
               })}
             </ul>
