@@ -1246,6 +1246,10 @@ export const RECAPTCHA_SITE_KEY = '6LdTUwouAAAAADCJLjBsfopqQuy4WHcuV-Jh6EOJ';
 // { course: 'okta', start: '2026-12-05', days: 'Sat & Sun', time: '10:00–13:00 IST', seats: 15 }
 export const BATCHES = [];
 
+// Fees are hidden on the website while SHOW_FEES is false (cards, course pages, blog, batches, structured data).
+// Set it to true to show them again; the amounts below are kept.
+export const SHOW_FEES = false;
+
 // Course fees by course slug. Leave a course out to show "Fee on request".
 // USD = INR fee at 1 USD = 94.97 INR (Wise mid-market, 31 Oct 2026), rounded up to end in 9.
 export const PRICES = {

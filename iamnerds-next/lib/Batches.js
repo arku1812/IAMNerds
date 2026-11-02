@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { BATCHES, BATCH_NOTE, PRICES, bySlug } from './data';
+import { BATCHES, BATCH_NOTE, PRICES, SHOW_FEES, bySlug } from './data';
 
 const fmt = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 const money = (n, cur) => new Intl.NumberFormat(cur === 'INR' ? 'en-IN' : 'en-US', { style: 'currency', currency: cur, maximumFractionDigits: 0 }).format(n);
@@ -11,6 +11,7 @@ export function upcomingBatches(slug) {
 }
 
 export function Price({ slug, block = false }) {
+  if (!SHOW_FEES) return null;
   const p = PRICES[slug];
   if (!p) return <span className="price">Fee on request</span>;
   // INR first, USD in brackets.
@@ -32,7 +33,7 @@ export function BatchTable({ batches, showCourse = false }) {
     <div className="mod-wrap"><table className="mod-table batch-table">
       <thead><tr>
         {showCourse && <th scope="col">Course</th>}
-        <th scope="col">Starts</th><th scope="col">Schedule</th><th scope="col">Fee</th><th scope="col"><span className="sr">Action</span></th>
+        <th scope="col">Starts</th><th scope="col">Schedule</th>{SHOW_FEES && <th scope="col">Fee</th>}<th scope="col"><span className="sr">Action</span></th>
       </tr></thead>
       <tbody>
         {batches.map((b) => {
@@ -42,7 +43,7 @@ export function BatchTable({ batches, showCourse = false }) {
               {showCourse && <td><Link href={`/courses/${c.slug}`}><strong>{c.title}</strong></Link></td>}
               <td><strong>{fmt(b.start)}</strong>{b.seats ? <span>{b.seats} seats</span> : null}</td>
               <td>{b.days}<span>{b.time}</span></td>
-              <td><Price slug={b.course} /></td>
+              {SHOW_FEES && <td><Price slug={b.course} /></td>}
               <td className="batch-act"><Link className="btn primary" href={registerHref(c.title)}>Register</Link></td>
             </tr>
           );
@@ -58,7 +59,7 @@ export function CourseBatches({ course: c, batches }) {
     <div className="batches">
       <div className="batches-head">
         <h3>Upcoming batches</h3>
-        <span className="batches-fee">Course fee: <Price slug={c.slug} /></span>
+        {SHOW_FEES && <span className="batches-fee">Course fee: <Price slug={c.slug} /></span>}
       </div>
       {batches.length ? (
         <BatchTable batches={batches} />

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Price } from './Batches';
+import { SHOW_FEES } from './data';
 
 export function VendorMark({ course: c, logo, big = false }) {
   // Shows the product logo when a file exists in public/logos; no text badge (it would repeat the course name).
@@ -15,7 +16,7 @@ export default function CourseCard({ course: c, logo }) {
       <h3>{c.title}</h3>
       <p>{c.tagline}</p>
       <span className="meta">{c.modules.length} modules · {c.hours} h</span>
-      <span className="card-fee"><Price slug={c.slug} /></span>
+      {SHOW_FEES && <span className="card-fee"><Price slug={c.slug} /></span>}
     </Link>
   );
 }
