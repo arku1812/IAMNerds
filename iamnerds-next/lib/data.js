@@ -1189,6 +1189,7 @@ export const PATHS = [
 export const bySlug = (slug) => COURSES.find((c) => c.slug === slug);
 export const SITE = 'https://iamnerds.io';
 export const WHATSAPP = '919703330367';
+export const WHATSAPP_DISPLAY = '+91 97033 30367';
 export const EMAIL = 'hello@iamnerds.io';
 
 export const LINKEDIN = 'https://www.linkedin.com/company/iamnerds/';
