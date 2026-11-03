@@ -5,7 +5,7 @@ import Cover from '../../lib/Cover';
 import { Price } from '../../lib/Batches';
 import { SHOW_FEES } from '../../lib/data';
 import { ARTICLES, CATEGORY_LABELS, isGuide, kindLabel, readMinutes } from '../../lib/articles';
-import { COURSES, SITE, WHATSAPP } from '../../lib/data';
+import { COURSES, SITE, WHATSAPP_URL } from '../../lib/data';
 
 const fmt = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 const PER_PAGE = 6;
@@ -97,7 +97,7 @@ export default function Blog() {
             <span className="k">TALK TO A NERD</span>
             <p>Questions about a course or your IAM career? We reply personally.</p>
             <Link className="btn primary" href="/contact?type=demo#talk">Book a free demo</Link>
-            <a className="btn" href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noopener noreferrer">WhatsApp us</a>
+            <a className="btn" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">WhatsApp us</a>
           </div>
         </aside>
       </div></section>
