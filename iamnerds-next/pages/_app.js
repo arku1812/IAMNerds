@@ -21,9 +21,23 @@ export default function App({ Component, pageProps }) {
       if (name) track(name, { href, label: (a.textContent || '').trim().slice(0, 60) });
     };
     document.addEventListener('click', onClick, true);
+    // Copy guard: selection is already off in CSS; also block copy/cut (Ctrl+A,
+    // Ctrl+C, context menu) unless it is an email link or a form field.
+    const ALLOWED = 'a[href^="mailto:"], input, textarea, select, [contenteditable="true"]';
+    const allowed = (n) => { const el = n && n.nodeType === 1 ? n : n && n.parentElement; return !!(el && el.closest(ALLOWED)); };
+    const guard = (e) => {
+      if (allowed(document.activeElement)) return;
+      const sel = document.getSelection();
+      if (sel && !sel.isCollapsed && allowed(sel.anchorNode) && allowed(sel.focusNode)) return;
+      e.preventDefault();
+    };
+    document.addEventListener('copy', guard);
+    document.addEventListener('cut', guard);
     return () => {
       router.events.off('routeChangeComplete', onRoute);
       document.removeEventListener('click', onClick, true);
+      document.removeEventListener('copy', guard);
+      document.removeEventListener('cut', guard);
     };
   }, [router.events]);
 
