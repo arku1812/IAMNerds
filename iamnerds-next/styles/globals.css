@@ -25,7 +25,9 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0}
+body{margin:0;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+/* Content cannot be selected or copied (see the copy guard in pages/_app.js); only email addresses and form fields can */
+a[href^="mailto:"],input,textarea,select,[contenteditable="true"]{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
 img{max-width:100%}
 [hidden]{display:none!important}
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
