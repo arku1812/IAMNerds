@@ -113,7 +113,7 @@ export default function Layout({ children }) {
       <footer>
         <div className="wrap giant-wrap" aria-hidden="true"><div className="giant">IAMNerds</div></div>
         <div className="wrap footbar">
-          <span className="foot-brand">© 2026 IAMNerds · Hyderabad, India · Learners worldwide <a className="foot-li" href={LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="IAMNerds on LinkedIn"><LinkedInIcon size={16} /></a></span>
+          <span className="foot-brand">© 2026 IAMNerds. All rights reserved. No reproduction without written permission. · Hyderabad, India · Learners worldwide <a className="foot-li" href={LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="IAMNerds on LinkedIn"><LinkedInIcon size={16} /></a></span>
           <nav className="footnav" aria-label="Footer">
             {NAV.map(([href, label], i) => (
               <span key={href}>{i > 0 && ' · '}<Link href={href}>{label}</Link></span>
