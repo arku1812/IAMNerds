@@ -22,8 +22,8 @@ export default function App({ Component, pageProps }) {
     };
     document.addEventListener('click', onClick, true);
     // Copy guard: selection is already off in CSS; also block copy/cut (Ctrl+A,
-    // Ctrl+C, context menu) unless it is an email link or a form field.
-    const ALLOWED = 'a[href^="mailto:"], input, textarea, select, [contenteditable="true"]';
+    // Ctrl+C, context menu) unless it is an email link, the WhatsApp number or a form field.
+    const ALLOWED = 'a[href^="mailto:"], .allow-copy, input, textarea, select, [contenteditable="true"]';
     const allowed = (n) => { const el = n && n.nodeType === 1 ? n : n && n.parentElement; return !!(el && el.closest(ALLOWED)); };
     const guard = (e) => {
       if (allowed(document.activeElement)) return;
