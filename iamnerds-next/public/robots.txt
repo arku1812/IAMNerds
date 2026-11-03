@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /whatsapp
 
 # Crawlers that collect content to train AI models are asked to stay out.
 # Search engines and AI assistants fetching a page for a user are unaffected.

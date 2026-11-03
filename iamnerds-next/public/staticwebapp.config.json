@@ -2,6 +2,11 @@
   "trailingSlash": "never",
   "routes": [
     {
+      "route": "/whatsapp",
+      "redirect": "https://wa.me/919703330367?text=Hi%21%20I%20would%20like%20to%20know%20more%20about%20the%20IAMNerds%20courses.",
+      "statusCode": 302
+    },
+    {
       "route": "/blog/secure-partner-and-contractor-access",
       "rewrite": "/blog/secure-partner-and-contractor-access.html"
     },
