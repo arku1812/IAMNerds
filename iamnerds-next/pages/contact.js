@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { Seo, Crumbs } from '../lib/Layout';
 import ContactForm, { countryList } from '../lib/ContactForm';
-import { COURSES, EMAIL, ENQUIRY_TYPES, SITE, WHATSAPP, WHATSAPP_DISPLAY } from '../lib/data';
+import { COURSES, EMAIL, ENQUIRY_TYPES, SITE, WHATSAPP } from '../lib/data';
 import { LinkedInButton } from '../lib/Showcase';
 
 export default function Contact({ countries }) {
@@ -27,7 +27,6 @@ export default function Contact({ countries }) {
               <a className="btn primary" href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noopener noreferrer">WhatsApp us</a>
               <LinkedInButton />
               <a className="email" href={`mailto:${EMAIL}`}>{EMAIL}</a>
-              <a className="email allow-copy" href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noopener noreferrer" aria-label={`WhatsApp ${WHATSAPP_DISPLAY}`}>{WHATSAPP_DISPLAY}</a>
             </div>
           </div>
           <ContactForm key={pre + type} countries={countries} defaultCourse={pre} defaultType={type} />
