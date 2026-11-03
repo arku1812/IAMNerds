@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { WHATSAPP } from './data';
+import { WHATSAPP_URL } from './data';
 import { track } from './track';
 
-const GREETING = 'Hi! I would like to know more about the IAMNerds courses.';
 
 function WaIcon({ size = 28 }) {
   return (
@@ -20,7 +19,7 @@ export default function WhatsAppChat() {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
-  const href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(GREETING)}`;
+  const href = WHATSAPP_URL;
   return (
     <div className="wa">
       {open && (

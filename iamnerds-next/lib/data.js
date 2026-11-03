@@ -1188,7 +1188,9 @@ export const PATHS = [
 
 export const bySlug = (slug) => COURSES.find((c) => c.slug === slug);
 export const SITE = 'https://iamnerds.io';
-export const WHATSAPP = '919703330367';
+// WhatsApp chat link. The number itself lives only in the /whatsapp redirect in
+// public/staticwebapp.config.json, so it never appears in the site's pages.
+export const WHATSAPP_URL = '/whatsapp';
 export const EMAIL = 'hello@iamnerds.io';
 
 export const LINKEDIN = 'https://www.linkedin.com/company/iamnerds/';
