@@ -1188,8 +1188,8 @@ export const PATHS = [
 
 export const bySlug = (slug) => COURSES.find((c) => c.slug === slug);
 export const SITE = 'https://iamnerds.io';
-// WhatsApp chat link. The number itself lives only in the /whatsapp redirect in
-// public/staticwebapp.config.json, so it never appears in the site's pages.
+// WhatsApp chat link. /whatsapp redirects to the WhatsApp Business short link in
+// public/staticwebapp.config.json, so the phone number never appears on the site.
 export const WHATSAPP_URL = '/whatsapp';
 export const EMAIL = 'hello@iamnerds.io';
 
