@@ -1188,9 +1188,12 @@ export const PATHS = [
 
 export const bySlug = (slug) => COURSES.find((c) => c.slug === slug);
 export const SITE = 'https://iamnerds.io';
-// WhatsApp chat link. /whatsapp redirects to the WhatsApp Business short link in
-// public/staticwebapp.config.json, so the phone number never appears on the site.
+// WhatsApp: links to /whatsapp open the chat widget (lib/WhatsAppChat.js), which
+// writes the learner's message and opens wa.me/<username>. Without JavaScript,
+// /whatsapp redirects there (public/staticwebapp.config.json). The username link
+// never exposes the phone number.
 export const WHATSAPP_URL = '/whatsapp';
+export const WHATSAPP_USERNAME = 'IAMNerds';
 export const EMAIL = 'hello@iamnerds.io';
 
 export const LINKEDIN = 'https://www.linkedin.com/company/iamnerds/';

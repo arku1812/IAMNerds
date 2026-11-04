@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { WHATSAPP_URL } from './data';
+import { useEffect, useId, useState } from 'react';
+import { COURSES, WHATSAPP_USERNAME } from './data';
 import { track } from './track';
 
 
@@ -11,15 +11,50 @@ function WaIcon({ size = 28 }) {
   );
 }
 
+// Opens from the floating button, or from any link to /whatsapp on the site
+// (pages/_app.js turns those clicks into an 'iamnerds:whatsapp' event).
+export const OPEN_WHATSAPP_EVENT = 'iamnerds:whatsapp';
+
+const INTRO = 'Hi! I would like to know more about the IAMNerds courses.';
+
+// The message the learner sends: their name, the intro line and the courses
+// they ticked. WhatsApp messages cannot hold checkboxes, so ticks become ✅ lines.
+export function buildMessage(name, courses) {
+  const lines = [`Hello IAMNerds, my name is ${name}.`, INTRO];
+  if (courses.length) lines.push('', "I'm interested in:", ...courses.map((c) => `✅ ${c}`));
+  else lines.push('', "I'm not sure yet which course fits me.");
+  return lines.join('\n');
+}
+
+// Username link: opens the chat with @IAMNerds and the message typed in, and
+// never exposes the phone number.
+export const waLink = (text) => `https://wa.me/${WHATSAPP_USERNAME}?text=${encodeURIComponent(text)}`;
+
 export default function WhatsAppChat() {
   const [open, setOpen] = useState(false);
+  const [name, setName] = useState('');
+  const [picked, setPicked] = useState([]);
+  const [tried, setTried] = useState(false);
+  const nameId = useId();
+
+  useEffect(() => {
+    const onOpen = () => { setOpen(true); track('WhatsApp chat opened'); };
+    window.addEventListener(OPEN_WHATSAPP_EVENT, onOpen);
+    return () => window.removeEventListener(OPEN_WHATSAPP_EVENT, onOpen);
+  }, []);
   useEffect(() => {
     if (!open) return;
     const onKey = (e) => e.key === 'Escape' && setOpen(false);
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
-  const href = WHATSAPP_URL;
+
+  const first = name.trim().split(/\s+/)[0];
+  const valid = name.trim().length >= 2;
+  const titles = COURSES.map((c) => c.title);
+  const toggle = (t) => setPicked((p) => (p.includes(t) ? p.filter((x) => x !== t) : [...p, t]));
+  const href = waLink(buildMessage(name.trim(), titles.filter((t) => picked.includes(t))));
+
   return (
     <div className="wa">
       {open && (
@@ -36,11 +71,44 @@ export default function WhatsAppChat() {
             <button className="wa-close" type="button" aria-label="Close chat" onClick={() => setOpen(false)}>×</button>
           </div>
           <div className="wa-body">
-            <p className="wa-bubble">Hi! Welcome to <b>IAMNerds</b>.<br />How can I help you?</p>
+            <p className="wa-bubble">
+              {valid ? <>Welcome, <b>{first}</b>! 👋<br />Which courses are you interested in?</> : <>Hi! Welcome to <b>IAMNerds</b>.<br />What&apos;s your name?</>}
+            </p>
+            <label className="wa-label" htmlFor={nameId}>Your name</label>
+            <input
+              id={nameId}
+              className={`wa-input${tried && !valid ? ' wa-invalid' : ''}`}
+              type="text"
+              autoComplete="name"
+              maxLength={60}
+              placeholder="e.g. Priya Sharma"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              aria-invalid={tried && !valid}
+            />
+            {tried && !valid && <p className="wa-error">Please tell us your name first.</p>}
+            <fieldset className="wa-courses">
+              <legend>Courses <span>(select any)</span></legend>
+              {titles.map((t) => (
+                <label key={t} className="wa-course">
+                  <input type="checkbox" checked={picked.includes(t)} onChange={() => toggle(t)} />
+                  <span>{t}</span>
+                </label>
+              ))}
+            </fieldset>
           </div>
           <div className="wa-foot">
-            <a className="wa-btn" href={href} target="_blank" rel="noopener noreferrer">
-              <WaIcon size={22} /> WhatsApp Us
+            <a
+              className="wa-btn"
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => {
+                if (!valid) { e.preventDefault(); setTried(true); return; }
+                track('WhatsApp message prepared', { courses: picked.length });
+              }}
+            >
+              <WaIcon size={22} /> Continue on WhatsApp
             </a>
             <p className="wa-meta">Online | <a href="/privacy-policy">Privacy policy</a></p>
           </div>
