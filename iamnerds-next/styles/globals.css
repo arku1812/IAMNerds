@@ -384,6 +384,19 @@ nav.links a[aria-current="page"]{color:var(--fg);font-weight:500}
 .wa-btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:46px;border-radius:999px;background:#25D366;color:#fff;font-weight:600;font-size:17px;text-decoration:none}
 .wa-btn:hover{background:#1FBF5B}
 .wa-meta{margin-top:10px;font-size:13px;color:var(--muted)}
+.wa-panel{display:flex;flex-direction:column;max-height:calc(100vh - 120px);max-height:calc(100dvh - 120px)}
+.wa-body{overflow-y:auto;overscroll-behavior:contain}
+.wa-label{display:block;margin-top:16px;font-size:13px;font-weight:600;color:#3B3A45}
+.wa-input{width:100%;box-sizing:border-box;margin-top:6px;min-height:42px;padding:8px 12px;border:1px solid #C9C3BA;border-radius:10px;background:#fff;color:#16151F;font:inherit;font-size:16px}
+.wa-input:focus{outline:2px solid #25D366;outline-offset:1px;border-color:transparent}
+.wa-input.wa-invalid{border-color:#D93025}
+.wa-error{margin:6px 0 0;font-size:13px;color:#D93025}
+.wa-courses{margin:16px 0 0;padding:0;border:0;display:grid;gap:6px}
+.wa-courses legend{padding:0;margin-bottom:8px;font-size:13px;font-weight:600;color:#3B3A45}
+.wa-courses legend span{font-weight:400;color:#6B6976}
+.wa-course{display:flex;align-items:center;gap:10px;min-height:38px;padding:6px 10px;border-radius:10px;background:#fff;color:#16151F;font-size:15px;cursor:pointer}
+.wa-course input{width:18px;height:18px;flex:none;accent-color:#25D366;margin:0}
+.wa-course:has(input:checked){background:#DCF8C6}
 .wa-meta a{color:var(--muted)}
 
 /* Legal pages */
