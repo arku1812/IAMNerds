@@ -1,5 +1,5 @@
 import { useEffect, useId, useState } from 'react';
-import { COURSES, WHATSAPP_USERNAME } from './data';
+import { COURSES, WHATSAPP_TARGET } from './data';
 import { track } from './track';
 
 
@@ -26,9 +26,8 @@ export function buildMessage(name, courses) {
   return lines.join('\n');
 }
 
-// Username link: opens the chat with @IAMNerds and the message typed in, and
-// never exposes the phone number.
-export const waLink = (text) => `https://wa.me/${WHATSAPP_USERNAME}?text=${encodeURIComponent(text)}`;
+// Opens the chat with the message typed in (see WHATSAPP_TARGET in lib/data.js).
+export const waLink = (text) => `https://wa.me/${WHATSAPP_TARGET}?text=${encodeURIComponent(text)}`;
 
 export default function WhatsAppChat() {
   const [open, setOpen] = useState(false);
