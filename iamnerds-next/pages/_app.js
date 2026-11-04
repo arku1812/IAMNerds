@@ -3,6 +3,8 @@ import Script from 'next/script';
 import { useRouter } from 'next/router';
 import Layout from '../lib/Layout';
 import { linkEvent, track } from '../lib/track';
+import { WHATSAPP_URL } from '../lib/data';
+import { OPEN_WHATSAPP_EVENT } from '../lib/WhatsAppChat';
 import '../styles/globals.css';
 
 export default function App({ Component, pageProps }) {
@@ -17,6 +19,8 @@ export default function App({ Component, pageProps }) {
       const a = e.target.closest && e.target.closest('a[href]');
       if (!a) return;
       const href = a.getAttribute('href');
+      // Site WhatsApp buttons open the chat widget instead of leaving the page.
+      if (href === WHATSAPP_URL) { e.preventDefault(); window.dispatchEvent(new Event(OPEN_WHATSAPP_EVENT)); return; }
       const name = linkEvent(href);
       if (name) track(name, { href, label: (a.textContent || '').trim().slice(0, 60) });
     };
