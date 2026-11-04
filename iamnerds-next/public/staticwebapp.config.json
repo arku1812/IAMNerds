@@ -3,7 +3,7 @@
   "routes": [
     {
       "route": "/whatsapp",
-      "redirect": "https://wa.me/message/T2VBT6VZ76J3P1",
+      "redirect": "https://wa.me/IAMNerds?text=Hi%21%20I%20would%20like%20to%20know%20more%20about%20the%20IAMNerds%20courses.",
       "statusCode": 302
     },
     {
