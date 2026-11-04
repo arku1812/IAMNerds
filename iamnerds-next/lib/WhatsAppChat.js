@@ -27,7 +27,10 @@ export function buildMessage(name, courses) {
 }
 
 // Opens the chat with the message typed in (see WHATSAPP_TARGET in lib/data.js).
-export const waLink = (text) => `https://wa.me/${WHATSAPP_TARGET}?text=${encodeURIComponent(text)}`;
+// api.whatsapp.com directly, not wa.me: the wa.me redirect corrupts emoji such
+// as ✅ into "�" on the way.
+export const waLink = (text) =>
+  `https://api.whatsapp.com/send?phone=${WHATSAPP_TARGET}&text=${encodeURIComponent(text)}`;
 
 export default function WhatsAppChat() {
   const [open, setOpen] = useState(false);
